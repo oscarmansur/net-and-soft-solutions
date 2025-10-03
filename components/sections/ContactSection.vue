@@ -251,7 +251,7 @@ const form = ref({
 })
 
 const whatsappLink = computed(() => {
-  const phone = '573218497687'
+  const phone = '584144785215'
   const message = encodeURIComponent('Hola, me gustaría obtener más información sobre los servicios de Net & Soft Solutions')
   return `https://wa.me/${phone}?text=${message}`
 })
@@ -259,7 +259,7 @@ const whatsappLink = computed(() => {
 const handleSubmit = () => {
   // In a real application, this would send the form data to a backend
   const message = `Hola, soy ${form.value.name}. ${form.value.message}. Mi teléfono es ${form.value.phone}${form.value.service ? `. Estoy interesado en: ${form.value.service}` : ''}`
-  const phone = '573218497687'
+  const phone = '584144785215'
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
   window.open(whatsappUrl, '_blank')
   

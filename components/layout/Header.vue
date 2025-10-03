@@ -100,7 +100,7 @@ const navItems = [
 ]
 
 const whatsappLink = computed(() => {
-  const phone = '573218497687'
+  const phone = '584144785215'
   const message = encodeURIComponent('Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions')
   return `https://wa.me/${phone}?text=${message}`
 })

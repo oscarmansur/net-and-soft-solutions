@@ -21,7 +21,7 @@
 import { computed } from 'vue'
 
 const whatsappLink = computed(() => {
-  const phone = '573218497687' // Número de WhatsApp Colombia
+  const phone = '584144785215' // Número de WhatsApp Colombia
   const message = encodeURIComponent('Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions')
   return `https://wa.me/${phone}?text=${message}`
 })

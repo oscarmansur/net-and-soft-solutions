@@ -168,7 +168,7 @@ const services = [
 ]
 
 const getWhatsAppLink = (serviceName: string) => {
-  const phone = '573218497687'
+  const phone = '584144785215'
   const message = encodeURIComponent(`Hola, me gustaría solicitar información sobre el servicio de ${serviceName}`)
   return `https://wa.me/${phone}?text=${message}`
 }
