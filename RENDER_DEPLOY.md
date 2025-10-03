@@ -97,7 +97,7 @@ Si necesitas agregar variables de entorno:
 1. Ve a "Settings" en tu servicio
 2. Scroll hasta "Custom Domain"
 3. Click en "Add Custom Domain"
-4. Ingresa tu dominio: `netandsoftsolutions.com.ve`
+4. Ingresa tu dominio: `netandsoft.com.ve`
 5. Configura los DNS según las instrucciones:
    ```
    Type: CNAME
@@ -225,14 +225,14 @@ Render configura automáticamente:
 - Status: [status.render.com](https://status.render.com)
 
 ### Proyecto
-- Email: info@netandsoftsolutions.com.ve
+- Email: info@netandsoft.com.ve
 - WhatsApp: +58 424-123-4567
 
 ## 🎉 ¡Listo!
 
 Tu landing page está ahora desplegada en Render. Comparte tu URL:
 - URL de Render: `https://net-and-soft-solutions.onrender.com`
-- Dominio personalizado: `https://netandsoftsolutions.com.ve` (cuando lo configures)
+- Dominio personalizado: `https://netandsoft.com.ve` (cuando lo configures)
 
 ---
 

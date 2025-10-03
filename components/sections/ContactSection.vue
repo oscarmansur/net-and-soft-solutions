@@ -230,8 +230,8 @@ const contactInfo = [
     title: 'Email',
     description: 'Envíanos un correo electrónico',
     icon: EmailIcon,
-    value: 'info@netandsoftsolutions.com.ve',
-    link: 'mailto:info@netandsoftsolutions.com.ve',
+    value: 'info@netandsoft.com.ve',
+    link: 'mailto:info@netandsoft.com.ve',
     linkText: 'Enviar email',
     external: false
   },

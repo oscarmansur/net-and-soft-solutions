@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     },
   },
   site: {
-    url: 'https://netandsoftsolutions.com.ve',
+    url: 'https://netandsoft.com.ve',
     name: 'Net And Soft Solutions',
     description: 'Servicios médicos profesionales a domicilio. Consultas generales, procedimientos médicos y ecografías. Atención de calidad en la comodidad de tu hogar.',
     defaultLocale: 'es'

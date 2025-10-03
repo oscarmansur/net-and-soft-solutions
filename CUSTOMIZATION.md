@@ -21,7 +21,7 @@ El número de WhatsApp aparece en múltiples lugares. Busca y reemplaza `5842412
 ## 📧 Actualizar Información de Contacto
 
 ### Email
-Busca y reemplaza `info@netandsoftsolutions.com.ve` en:
+Busca y reemplaza `info@netandsoft.com.ve` en:
 - [`components/layout/Footer.vue`](components/layout/Footer.vue:67)
 - [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue:179)
 - [`pages/index.vue`](pages/index.vue:96)

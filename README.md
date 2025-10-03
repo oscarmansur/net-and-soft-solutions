@@ -297,7 +297,7 @@ npm install
 ## 📞 Soporte
 
 Para soporte técnico o consultas:
-- Email: info@netandsoftsolutions.com.ve
+- Email: info@netandsoft.com.ve
 - WhatsApp: +58 414-478-5215
 
 ## 📄 Licencia

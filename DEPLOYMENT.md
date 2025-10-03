@@ -176,7 +176,7 @@ Para mayor control y personalización.
    ```nginx
    server {
        listen 80;
-       server_name netandsoftsolutions.com.ve www.netandsoftsolutions.com.ve;
+       server_name netandsoft.com.ve www.netandsoft.com.ve;
        
        root /var/www/net-and-soft-solutions/.output/public;
        index index.html;
@@ -194,7 +194,7 @@ Para mayor control y personalización.
 6. **Instalar SSL con Let's Encrypt**
    ```bash
    sudo apt-get install certbot python3-certbot-nginx
-   sudo certbot --nginx -d netandsoftsolutions.com.ve -d www.netandsoftsolutions.com.ve
+   sudo certbot --nginx -d netandsoft.com.ve -d www.netandsoft.com.ve
    ```
 
 ---
@@ -303,7 +303,7 @@ npm run build
 ## 📞 Soporte
 
 Si necesitas ayuda con el despliegue:
-- Email: info@netandsoftsolutions.com.ve
+- Email: info@netandsoft.com.ve
 - WhatsApp: +58 424-123-4567
 
 ---

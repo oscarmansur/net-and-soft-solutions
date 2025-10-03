@@ -40,11 +40,11 @@ useHead({
     },
     {
       property: 'og:url',
-      content: 'https://netandsoftsolutions.com.ve'
+      content: 'https://netandsoft.com.ve'
     },
     {
       property: 'og:image',
-      content: 'https://netandsoftsolutions.com.ve/og-image.jpg'
+      content: 'https://netandsoft.com.ve/og-image.jpg'
     },
     {
       property: 'og:locale',
@@ -65,7 +65,7 @@ useHead({
     },
     {
       name: 'twitter:image',
-      content: 'https://netandsoftsolutions.com.ve/og-image.jpg'
+      content: 'https://netandsoft.com.ve/og-image.jpg'
     },
     // Additional Meta Tags
     {
@@ -92,7 +92,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: 'https://netandsoftsolutions.com.ve'
+      href: 'https://netandsoft.com.ve'
     }
   ],
   htmlAttrs: {
@@ -104,14 +104,14 @@ useHead({
 useSchemaOrg([
   {
     '@type': 'ProfessionalService',
-    '@id': 'https://netandsoftsolutions.com.ve',
+    '@id': 'https://netandsoft.com.ve',
     name: 'Net And Soft Solutions',
     description: 'Empresa de soluciones tecnológicas especializada en desarrollo de software, infraestructura de redes, sistemas de videovigilancia CCTV y soporte técnico profesional.',
-    url: 'https://netandsoftsolutions.com.ve',
-    logo: 'https://netandsoftsolutions.com.ve/logo.svg',
-    image: 'https://netandsoftsolutions.com.ve/og-image.jpg',
+    url: 'https://netandsoft.com.ve',
+    logo: 'https://netandsoft.com.ve/logo.svg',
+    image: 'https://netandsoft.com.ve/og-image.jpg',
     telephone: '+58-414-478-5215',
-    email: 'info@netandsoftsolutions.com.ve',
+    email: 'info@netandsoft.com.ve',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'VE',
@@ -184,23 +184,23 @@ useSchemaOrg([
   },
   {
     '@type': 'WebSite',
-    '@id': 'https://netandsoftsolutions.com.ve/#website',
-    url: 'https://netandsoftsolutions.com.ve',
+    '@id': 'https://netandsoft.com.ve/#website',
+    url: 'https://netandsoft.com.ve',
     name: 'Net And Soft Solutions',
     description: 'Soluciones Tecnológicas Integrales - Desarrollo de Software, Redes, CCTV y Soporte Técnico',
     publisher: {
-      '@id': 'https://netandsoftsolutions.com.ve'
+      '@id': 'https://netandsoft.com.ve'
     },
     inLanguage: 'es-VE'
   },
   {
     '@type': 'Organization',
-    '@id': 'https://netandsoftsolutions.com.ve/#organization',
+    '@id': 'https://netandsoft.com.ve/#organization',
     name: 'Net And Soft Solutions',
-    url: 'https://netandsoftsolutions.com.ve',
+    url: 'https://netandsoft.com.ve',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://netandsoftsolutions.com.ve/logo.svg'
+      url: 'https://netandsoft.com.ve/logo.svg'
     },
     contactPoint: {
       '@type': 'ContactPoint',
