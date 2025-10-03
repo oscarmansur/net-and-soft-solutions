@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <defs>
+    <!-- Paleta de colores -->
+    <linearGradient id="gradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F7A8C" />
+      <stop offset="100%" stop-color="#022B3A" />
+    </linearGradient>
+    <linearGradient id="gradSecondary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BFDBF7" />
+      <stop offset="100%" stop-color="#E1E5F2" />
+    </linearGradient>
+    
+    <!-- Filtro de glow -->
+    <filter id="lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#1F7A8C" flood-opacity="0.4" result="glowColor"/>
+      <feComposite in="glowColor" in2="blur" operator="in" result="glow"/>
+      <feBlend in="SourceGraphic" in2="glow" mode="screen"/>
+    </filter>
+    
+    <!-- Sombra suave -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="6" stdDeviation="7" flood-color="#022B3A" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Red de nodos central -->
+  <g transform="translate(400, 400)" filter="url(#softShadow)">
+    <!-- Líneas radiales (más largas) -->
+    <g stroke="#BFDBF7" stroke-width="1.5" opacity="0.3">
+      <line x1="0" y1="0" x2="-140" y2="-140"/>
+      <line x1="0" y1="0" x2="0" y2="-160"/>
+      <line x1="0" y1="0" x2="140" y2="-140"/>
+      <line x1="0" y1="0" x2="160" y2="0"/>
+      <line x1="0" y1="0" x2="140" y2="140"/>
+      <line x1="0" y1="0" x2="0" y2="160"/>
+      <line x1="0" y1="0" x2="-140" y2="140"/>
+      <line x1="0" y1="0" x2="-160" y2="0"/>
+    </g>
+    
+    <!-- Nodos periféricos -->
+    <g fill="#1F7A8C">
+      <circle cx="-140" cy="-140" r="9"/>
+      <circle cx="0" cy="-160" r="9"/>
+      <circle cx="140" cy="-140" r="9"/>
+      <circle cx="160" cy="0" r="9"/>
+      <circle cx="140" cy="140" r="9"/>
+      <circle cx="0" cy="160" r="9"/>
+      <circle cx="-140" cy="140" r="9"/>
+      <circle cx="-160" cy="0" r="9"/>
+    </g>
+    
+    <!-- Nodo central -->
+    <circle cx="0" cy="0" r="32" fill="url(#gradPrimary)" filter="url(#lightGlow)"/>
+  </g>
+
+  <!-- Servidor izquierdo -->
+  <g transform="translate(150, 305)" filter="url(#softShadow)">
+    <rect x="-60" y="-85" width="120" height="170" rx="10" fill="url(#gradPrimary)"/>
+    <rect x="-50" y="-75" width="100" height="150" rx="8" fill="#E1E5F2"/>
+    
+    <!-- LEDs animados -->
+    <g>
+      <circle cx="-20" cy="-45" r="4.5" fill="#1F7A8C">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" begin="0s"/>
+      </circle>
+      <circle cx="0" cy="-45" r="4.5" fill="#1F7A8C">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s" repeatCount="indefinite" begin="0.3s"/>
+      </circle>
+      <circle cx="20" cy="-45" r="4.5" fill="#1F7A8C">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
+      </circle>
+    </g>
+    
+    <!-- Ranuras -->
+    <g fill="#BFDBF7">
+      <rect x="-32" y="-25" width="64" height="8" rx="3"/>
+      <rect x="-32" y="-10" width="64" height="8" rx="3"/>
+      <rect x="-32" y="5" width="64" height="8" rx="3"/>
+      <rect x="-32" y="20" width="64" height="8" rx="3"/>
+      <rect x="-32" y="35" width="64" height="8" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Código fuente derecho -->
+  <g transform="translate(650, 300)" filter="url(#softShadow)">
+    <rect x="-70" y="-75" width="170" height="180" rx="10" fill="url(#gradSecondary)"/>
+    <rect x="-65" y="-70" width="160" height="170" rx="8" fill="#FFFFFF"/>
+    
+    <!-- Código legible -->
+    <g font-family="monospace" font-size="13" fill="#022B3A" opacity="0.85">
+      <text x="-55" y="-40">function connect() {</text>
+      <text x="-50" y="-22">  api.connect();</text>
+      <text x="-50" y="-4">  return status;</text>
+      <text x="-55" y="14">}</text>
+      <text x="-55" y="32">class Network {</text>
+      <text x="-50" y="50">  this.nodes = [];</text>
+      <text x="-50" y="68">  this.connect();</text>
+      <text x="-55" y="86">}</text>
+    </g>
+  </g>
+
+  <!-- Base de datos inferior -->
+  <g transform="translate(400, 600)" filter="url(#softShadow)">
+    <!-- Cuerpo del cilindro -->
+    <path d="M -65 -40 
+             L -65 40 
+             A 65 16 0 0 0 65 40 
+             L 65 -40 
+             A 65 16 0 0 1 -65 -40 Z" 
+          fill="url(#gradPrimary)"/>
+    
+    <!-- Tapa superior -->
+    <ellipse cx="0" cy="-40" rx="65" ry="16" fill="url(#gradPrimary)"/>
+    
+    <!-- Líneas de datos -->
+    <g stroke="#E1E5F2" stroke-width="1.8" opacity="0.6" fill="none">
+      <!-- Línea superior (cerca de la tapa) -->
+      <path d="M -45 -15 A 52 10 0 0 0 45 -15" />
+      
+      <!-- Línea media superior -->
+      <path d="M -45 5 A 52 10 0 0 0 45 5" />
+      
+      <!-- Línea media inferior -->
+      <path d="M -45 25 A 52 10 0 0 0 45 25" />
+    </g>
+  </g>
+
+  <!-- Conexiones punteadas -->
+  <g stroke="#1F7A8C" stroke-width="2.6" opacity="0.45" stroke-dasharray="6,5">
+    <path d="M 230 320 Q 300 360, 370 390" fill="none"/>
+    <path d="M 570 320 Q 500 360, 430 390" fill="none"/>
+    <path d="M 400 430 Q 400 500, 400 570" fill="none"/>
+  </g>
+
+  <!-- Flujo de datos animado -->
+  <g>
+    <!-- Izquierda → centro -->
+    <circle cx="195" cy="300" r="5" fill="#1F7A8C" opacity="0.8">
+      <animate attributeName="cx" values="195;400" dur="2.2s" repeatCount="indefinite" keyTimes="0;1" keySplines="0.3,0,0.7,1"/>
+      <animate attributeName="cy" values="300;400" dur="2.2s" repeatCount="indefinite" keyTimes="0;1" keySplines="0.3,0,0.7,1"/>
+      <animate attributeName="opacity" values="0.8;0" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Derecha → centro -->
+    <circle cx="605" cy="300" r="5" fill="#BFDBF7" opacity="0.8">
+      <animate attributeName="cx" values="605;400" dur="2.6s" repeatCount="indefinite" begin="0.4s" keyTimes="0;1" keySplines="0.3,0,0.7,1"/>
+      <animate attributeName="cy" values="300;400" dur="2.6s" repeatCount="indefinite" begin="0.4s" keyTimes="0;1" keySplines="0.3,0,0.7,1"/>
+      <animate attributeName="opacity" values="0.8;0" dur="2.6s" repeatCount="indefinite" begin="0.4s"/>
+    </circle>
+    
+    <!-- Centro → base de datos -->
+    <circle cx="400" cy="400" r="5" fill="#1F7A8C" opacity="0.8">
+      <animate attributeName="cy" values="400;600" dur="2s" repeatCount="indefinite" begin="0.8s" keyTimes="0;1" keySplines="0.3,0,0.7,1"/>
+      <animate attributeName="opacity" values="0.8;0" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+    </circle>
+  </g>
+
+  <!-- Decoración de fondo -->
+  <g opacity="0.08" font-family="monospace" font-size="14" fill="#022B3A">
+    <text x="50" y="100">{"data": true}</text>
+    <text x="750" y="100" text-anchor="end">{"api": "v1"}</text>
+    <text x="50" y="750">{"node": "active"}</text>
+    <text x="750" y="750" text-anchor="end">{"db": "ready"}</text>
+    <text x="400" y="50" text-anchor="middle">NETWORK SYSTEM</text>
+    <text x="400" y="780" text-anchor="middle">DATA FLOW VISUALIZATION</text>
+  </g>
+</svg>
