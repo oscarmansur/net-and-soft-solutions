@@ -90,13 +90,41 @@
           </div>
 
           <!-- Map placeholder -->
-          <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 flex items-center justify-center">
+          <!-- <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 flex items-center justify-center">
             <div class="text-center text-gray-400">
               <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <p class="text-sm">Área de Cobertura Nacional</p>
+            </div>
+          </div> -->
+          <!-- Coverage Map (embedded) -->
+          <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 relative">
+            <!-- Using Google Maps embed centered on Bogotá, Colombia (lat: 4.7110, lng: -74.0721) -->
+            <iframe
+              src="https://www.google.com/maps?q=7.8943617629525225, -67.47137226395206&z=13&output=embed"
+              class="w-full h-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de cobertura - Bogotá, Colombia"
+              aria-label="Mapa mostrando ubicación en Bogotá, Colombia"
+            ></iframe>
+
+            <!-- Informative badge (visually indicates coverage area) -->
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center space-x-2 text-sm font-medium z-10">
+              <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+              </svg>
+              <span>Nuestra ubicación: Calle 24 De Julio, San Fernando de Apure 7001, Apure.</span>
+            </div>
+
+            <!-- Non-interactive visual marker centered over the map (pointer-events-none lets clicks reach the iframe) -->
+            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+              <svg class="w-8 h-8 text-red-500 drop-shadow-md" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" fill="currentColor"/>
+                <circle cx="12" cy="9" r="2" fill="white" />
+              </svg>
             </div>
           </div>
         </div>
