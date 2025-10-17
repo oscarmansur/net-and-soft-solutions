@@ -14,10 +14,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@intlify/unplugin-vue-i18n": "^11.0.1",
+    "@nuxtjs/i18n": "^10.1.0",
+    "ipx": "^3.1.1",
     "nuxt": "^3.19.2",
     "vue": "^3.5.22",
-    "vue-router": "^4.5.1",
-    "ipx": "^3.1.1"
+    "vue-i18n": "^11.1.12",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@nuxt/image": "^1.11.0",

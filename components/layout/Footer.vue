@@ -6,13 +6,13 @@
         <div class="space-y-4">
           <img src="/logo.svg" alt="Net & Soft Solutions" class="h-16 w-auto brightness-0 invert" />
           <p class="text-white/80 text-sm">
-            Soluciones tecnológicas integrales: desarrollo de software, redes, CCTV y soporte técnico especializado.
+            {{ $t('footer.description') }}
           </p>
         </div>
 
         <!-- Quick Links -->
         <div>
-          <h3 class="font-heading font-semibold text-lg mb-4">Enlaces Rápidos</h3>
+          <h3 class="font-heading font-semibold text-lg mb-4">{{ $t('footer.quickLinks') }}</h3>
           <ul class="space-y-2">
             <li v-for="item in quickLinks" :key="item.name">
               <NuxtLink 
@@ -42,7 +42,7 @@
 
         <!-- Contact Info -->
         <div>
-          <h3 class="font-heading font-semibold text-lg mb-4">Contacto</h3>
+          <h3 class="font-heading font-semibold text-lg mb-4">{{ $t('footer.contact') }}</h3>
           <ul class="space-y-3">
             <li class="flex items-start text-white/80 text-sm">
               <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@
               <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Lun - Vie: 8:00 AM - 6:00 PM</span>
+              <span>{{ $t('footer.info[2].value') }}</span>
             </li>
           </ul>
         </div>
@@ -69,7 +69,7 @@
       <!-- Bottom Bar -->
       <div class="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <p class="text-white/60 text-sm">
-          © {{ currentYear }} Net & Soft Solutions. Todos los derechos reservados.
+          © {{ currentYear }} {{ $t('footer.copyright') }}
         </p>
         <div class="flex space-x-6">
           <a href="#" class="text-white/60 hover:text-white transition-colors duration-300" aria-label="Facebook">
@@ -99,22 +99,22 @@ import { computed } from 'vue'
 const currentYear = new Date().getFullYear()
 
 const quickLinks = [
-  { name: 'Inicio', href: '#inicio' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Nosotros', href: '#nosotros' },
-  { name: 'Contacto', href: '#contacto' }
+  { name: $t('footer.quickLinks'), href: '#inicio' },
+  { name: $t('footer.services'), href: '#servicios' },
+  { name: $t('footer.about'), href: '#nosotros' },
+  { name: $t('footer.contact'), href: '#contacto' }
 ]
 
 const services = [
-  'Desarrollo de Software',
-  'Redes e Infraestructura',
-  'Sistemas CCTV',
-  'Soporte Técnico'
+  $t('services.list[0].title'),
+  $t('services.list[1].title'),
+  $t('services.list[2].title'),
+  $t('services.list[3].title')
 ]
 
 const whatsappLink = computed(() => {
   const phone = '584144785215'
-  const message = encodeURIComponent('Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions')
+  const message = encodeURIComponent($t('footer.whatsappMessage'))
   return `https://wa.me/${phone}?text=${message}`
 })
 </script>

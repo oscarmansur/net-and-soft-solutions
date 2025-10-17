@@ -6,13 +6,13 @@
         <div class="space-y-8 animate-fade-in-up">
           <div>
             <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
-              ¿Por Qué Elegirnos?
+              {{ $t('about.WhyChooseUs') }}
             </span>
             <h2 class="font-heading font-bold text-gray-900 mb-6">
-              Tu Éxito Digital es Nuestra <span class="text-gradient">Prioridad</span>
+              {{ $t('about.title').replace($t('about.titleHighlight'), '') }}<span class="text-gradient">{{ $t('about.titleHighlight') }}</span>{{ $t('about.title').includes($t('about.titleHighlight')) ? $t('about.title').substring($t('about.title').indexOf($t('about.titleHighlight')) + $t('about.titleHighlight').length) : '' }}
             </h2>
             <p class="text-lg text-gray-600 leading-relaxed">
-              En Net & Soft Solutions nos especializamos en ofrecer soluciones tecnológicas integrales que impulsan el crecimiento de tu negocio. Nuestro equipo de expertos combina experiencia técnica con innovación para entregar proyectos que superan expectativas.
+              {{ $t('about.description') }}
             </p>
           </div>
 
@@ -44,11 +44,11 @@
           <div class="grid grid-cols-2 gap-6 pt-8">
             <div class="text-center p-6 rounded-xl bg-white shadow-soft">
               <div class="text-3xl font-bold text-primary mb-2">5+</div>
-              <p class="text-gray-600 text-sm">Años de Experiencia</p>
+              <p class="text-gray-600 text-sm">{{ $t('about.stats.experience') }}</p>
             </div>
             <div class="text-center p-6 rounded-xl bg-white shadow-soft">
               <div class="text-3xl font-bold text-primary mb-2">100%</div>
-              <p class="text-gray-600 text-sm">Satisfacción del Cliente</p>
+              <p class="text-gray-600 text-sm">{{ $t('about.stats.satisfaction') }}</p>
             </div>
           </div>
         </div>
@@ -66,10 +66,10 @@
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">Nuestra Misión</h4>
+                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.mission.title') }}</h4>
                 </div>
                 <p class="text-gray-600 text-sm leading-relaxed pl-13">
-                  Proporcionar soluciones tecnológicas innovadoras y de alta calidad que impulsen la transformación digital de nuestros clientes, mejorando su eficiencia operativa y competitividad.
+                  {{ $t('about.mission.description') }}
                 </p>
               </div>
 
@@ -82,10 +82,10 @@
                       <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">Nuestra Visión</h4>
+                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.vision.title') }}</h4>
                 </div>
                 <p class="text-gray-600 text-sm leading-relaxed pl-13">
-                  Ser la empresa líder en soluciones tecnológicas integrales, reconocida por nuestra excelencia técnica, innovación constante y compromiso con el éxito de nuestros clientes.
+                  {{ $t('about.vision.description') }}
                 </p>
               </div>
 
@@ -97,7 +97,7 @@
                       <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">Nuestros Valores</h4>
+                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.values.title') }}</h4>
                 </div>
                 <div class="grid grid-cols-2 gap-2 pl-13">
                   <span v-for="value in values" :key="value" class="text-gray-600 text-sm flex items-center">
@@ -117,12 +117,12 @@
 
       <!-- Certifications/Trust Badges -->
       <div class="mt-20 text-center">
-        <p class="text-gray-500 text-sm mb-8">Tecnologías y Certificaciones</p>
+        <p class="text-gray-500 text-sm mb-8">{{ $t('about.certifications') }}</p>
         <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
-          <div class="text-gray-400 font-semibold text-lg">Microsoft Partner</div>
-          <div class="text-gray-400 font-semibold text-lg">Cisco Certified</div>
-          <div class="text-gray-400 font-semibold text-lg">IBM Certified</div>
-          <div class="text-gray-400 font-semibold text-lg">ISO 9001</div>         
+          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.MicrosoftPartner') }}</div>
+          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.CiscoCertified') }}</div>
+          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.IBMCertified') }}</div>
+          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.ISO9001') }}</div>         
         </div>
       </div>
     </div>
@@ -158,33 +158,33 @@ const StarIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, 
 
 const benefits = [
   {
-    title: 'Experiencia Comprobada',
-    description: 'Equipo de profesionales con amplia experiencia en desarrollo de software y soluciones tecnológicas.',
+    title: $t('about.benefits[0].title'),
+    description: $t('about.benefits[0].description'),
     icon: ShieldIcon
   },
   {
-    title: 'Soporte Continuo',
-    description: 'Asistencia técnica disponible 24/7 para garantizar el funcionamiento óptimo de tus sistemas.',
+    title: $t('about.benefits[1].title'),
+    description: $t('about.benefits[1].description'),
     icon: ClockIcon
   },
   {
-    title: 'Soluciones Personalizadas',
-    description: 'Cada proyecto se adapta a las necesidades específicas de tu negocio y objetivos.',
+    title: $t('about.benefits[2].title'),
+    description: $t('about.benefits[2].description'),
     icon: UserGroupIcon
   },
   {
-    title: 'Calidad Garantizada',
-    description: 'Utilizamos las mejores prácticas y tecnologías de vanguardia en todos nuestros proyectos.',
+    title: $t('about.benefits[3].title'),
+    description: $t('about.benefits[3].description'),
     icon: StarIcon
   }
 ]
 
 const values = [
-  'Innovación',
-  'Compromiso',
-  'Excelencia',
-  'Integridad',
-  'Colaboración',
-  'Responsabilidad'
+  $t('about.values.list[0]'),
+  $t('about.values.list[1]'),
+  $t('about.values.list[2]'),
+  $t('about.values.list[3]'),
+  $t('about.values.list[4]'),
+  $t('about.values.list[5]')
 ]
 </script>

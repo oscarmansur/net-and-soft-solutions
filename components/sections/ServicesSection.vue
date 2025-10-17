@@ -4,13 +4,13 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
         <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
-          Nuestros Servicios
+          {{ $t('services.badge') }}
         </span>
         <h2 class="font-heading font-bold text-gray-900 mb-6">
-          Soluciones <span class="text-gradient">Tecnológicas</span> Integrales
+          {{ $t('services.title') }} <span class="text-gradient">{{ $t('services.titleHighlight') }}</span> {{ $t('services.titleEnd') }}
         </h2>
         <p class="text-lg text-gray-600">
-          Ofrecemos una amplia gama de servicios tecnológicos diseñados para impulsar tu negocio hacia el futuro digital.
+          {{ $t('services.description') }}
         </p>
       </div>
 
@@ -39,7 +39,7 @@
           </p>
 
           <!-- Features List -->
-          <ul class="space-y-2 mb-6">
+            <ul class="space-y-2 mb-6">
             <li 
               v-for="feature in service.features" 
               :key="feature"
@@ -52,6 +52,7 @@
             </li>
           </ul>
 
+
           <!-- CTA -->
           <a 
             :href="getWhatsAppLink(service.title)" 
@@ -59,7 +60,7 @@
             rel="noopener noreferrer"
             class="inline-flex items-center text-primary font-medium group-hover:text-secondary transition-colors duration-300 text-sm"
           >
-            Solicitar servicio
+            {{$t('services.cta')}}
             <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -72,15 +73,15 @@
         <div class="grid md:grid-cols-3 gap-8 text-center">
           <div class="space-y-2">
             <div class="text-4xl font-bold text-primary">24/7</div>
-            <p class="text-gray-600">Soporte Técnico</p>
+            <p class="text-gray-600">{{$t('services.stats.support')}}</p>
           </div>
           <div class="space-y-2">
             <div class="text-4xl font-bold text-primary">+100</div>
-            <p class="text-gray-600">Proyectos Completados</p>
+            <p class="text-gray-600">{{$t('services.stats.projects')}}</p>
           </div>
           <div class="space-y-2">
             <div class="text-4xl font-bold text-primary">100%</div>
-            <p class="text-gray-600">Satisfacción</p>
+            <p class="text-gray-600">{{$t('services.stats.satisfaction')}}</p>
           </div>
         </div>
       </div>
@@ -90,6 +91,8 @@
 
 <script setup lang="ts">
 import { h } from 'vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // Service icons as functional components
 const CodeIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
@@ -122,54 +125,54 @@ const SupportIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' 
 
 const services = [
   {
-    title: 'Desarrollo de Software',
-    description: 'Creamos aplicaciones web y móviles personalizadas que impulsan tu negocio hacia el futuro digital.',
+    title: $t('services.list.0.title'),
+    description: $t('services.list.0.description'),
     icon: CodeIcon,
     features: [
-      'Aplicaciones web modernas',
-      'Apps móviles nativas',
-      'Sistemas empresariales',
-      'APIs y microservicios'
+      $t('services.list.0.features.0'),
+      $t('services.list.0.features.1'),
+      $t('services.list.0.features.2'),
+      $t('services.list.0.features.3')
     ]
   },
   {
-    title: 'Redes e Infraestructura',
-    description: 'Diseñamos e implementamos infraestructuras de red robustas y escalables para tu organización.',
+    title: $t('services.list.1.title'),
+    description: $t('services.list.1.description'),
     icon: NetworkIcon,
     features: [
-      'Diseño de redes',
-      'Configuración de servidores',
-      'Seguridad de red',
-      'Optimización de rendimiento'
+      $t('services.list.1.features.0'),
+      $t('services.list.1.features.1'),
+      $t('services.list.1.features.2'),
+      $t('services.list.1.features.3')
     ]
   },
   {
-    title: 'Sistemas CCTV',
-    description: 'Instalación y mantenimiento de sistemas de videovigilancia de última generación para tu seguridad.',
+    title: $t('services.list.2.title'),
+    description: $t('services.list.2.description'),
     icon: CameraIcon,
     features: [
-      'Cámaras IP de alta resolución',
-      'Monitoreo remoto 24/7',
-      'Almacenamiento en la nube',
-      'Análisis de video inteligente'
+      $t('services.list.2.features.0'),
+      $t('services.list.2.features.1'),
+      $t('services.list.2.features.2'),
+      $t('services.list.2.features.3')
     ]
   },
   {
-    title: 'Soporte Técnico',
-    description: 'Asistencia técnica especializada para mantener tus sistemas funcionando de manera óptima.',
+    title: $t('services.list.3.title'),
+    description: $t('services.list.3.description'),
     icon: SupportIcon,
     features: [
-      'Soporte remoto y presencial',
-      'Mantenimiento preventivo',
-      'Resolución de incidencias',
-      'Consultoría tecnológica'
+      $t('services.list.3.features.0'),
+      $t('services.list.3.features.1'),
+      $t('services.list.3.features.2'),
+      $t('services.list.3.features.3')
     ]
   }
 ]
 
 const getWhatsAppLink = (serviceName: string) => {
   const phone = '584144785215'
-  const message = encodeURIComponent(`Hola, me gustaría solicitar información sobre el servicio de ${serviceName}`)
+  const message = encodeURIComponent(`${$t('ServiceRequest')} ${serviceName}`)
   return `https://wa.me/${phone}?text=${message}`
 }
 </script>

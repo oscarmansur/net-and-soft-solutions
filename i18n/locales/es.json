@@ -1,0 +1,201 @@
+{
+  "header": {
+    "navItems": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "about": "Nosotros",
+      "contact": "Contacto"
+    },
+    "contact": "Contactar",
+    "contactWhatsApp": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions"
+  },
+  "hero": {
+    "badge": "Soluciones Tecnológicas Certificadas",
+    "title": "Soluciones Tecnológicas Integrales para tu Empresa",
+    "titleHighlight": "Tecnológicas",
+    "description": "Desarrollo de software, infraestructura de redes, sistemas CCTV y soporte técnico especializado. Transformamos tus ideas en soluciones digitales efectivas.",
+    "features": [
+      "Desarrollo personalizado",
+      "Infraestructura moderna",
+      "Soporte especializado",
+      "Precios competitivos"
+    ],
+    "ctaQuote": "Solicitar Cotización",
+    "ctaServices": "Ver Servicios",
+    "projectsCompleted": "+100 Proyectos Completados",
+    "support247": "Soporte 24/7"
+  },
+  "about": {
+    "badge": "¿Por Qué Elegirnos?",
+    "title": "Tu Éxito Digital es Nuestra Prioridad",
+    "titleHighlight": "Prioridad",
+    "description": "En Net & Soft Solutions nos especializamos en ofrecer soluciones tecnológicas integrales que impulsan el crecimiento de tu negocio. Nuestro equipo de expertos combina experiencia técnica con innovación para entregar proyectos que superan expectativas.",
+    "benefits": [
+      {
+        "title": "Experiencia Comprobada",
+        "description": "Equipo de profesionales con amplia experiencia en desarrollo de software y soluciones tecnológicas."
+      },
+      {
+        "title": "Soporte Continuo",
+        "description": "Asistencia técnica disponible 24/7 para garantizar el funcionamiento óptimo de tus sistemas."
+      },
+      {
+        "title": "Soluciones Personalizadas",
+        "description": "Cada proyecto se adapta a las necesidades específicas de tu negocio y objetivos."
+      },
+      {
+        "title": "Calidad Garantizada",
+        "description": "Utilizamos las mejores prácticas y tecnologías de vanguardia en todos nuestros proyectos."
+      }
+    ],
+    "stats": {
+      "experience": "Años de Experiencia",
+      "satisfaction": "Satisfacción del Cliente"
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Proporcionar soluciones tecnológicas innovadoras y de alta calidad que impulsen la transformación digital de nuestros clientes, mejorando su eficiencia operativa y competitividad."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Ser la empresa líder en soluciones tecnológicas integrales, reconocida por nuestra excelencia técnica, innovación constante y compromiso con el éxito de nuestros clientes."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "list": [
+        "Innovación",
+        "Compromiso",
+        "Excelencia",
+        "Integridad",
+        "Colaboración",
+        "Responsabilidad"
+      ]
+    },
+    "certifications": "Tecnologías y Certificaciones",
+    "WhyChooseUs": "¿Por Qué Elegirnos?",
+    "MicrosoftPartner": "Socio Microsoft",
+    "CiscoCertified": "Certificado Cisco",
+    "IBMCertified": "Certificado IBM",
+    "ISO9001": "ISO 9001"
+  },
+  "services": {
+    "badge": "Nuestros Servicios",
+    "title": "Soluciones",
+    "titleHighlight": "Tecnológicas",
+    "titleEnd": "Integrales",
+    "description": "Ofrecemos una amplia gama de servicios tecnológicos diseñados para impulsar tu negocio hacia el futuro digital.",
+    "list": [
+      {
+        "title": "Desarrollo de Software",
+        "description": "Creamos aplicaciones web y móviles personalizadas que impulsan tu negocio hacia el futuro digital.",
+        "features": [
+          "Aplicaciones web modernas",
+          "Apps móviles nativas",
+          "Sistemas empresariales",
+          "APIs y microservicios"
+        ]
+      },
+      {
+        "title": "Redes e Infraestructura",
+        "description": "Diseñamos e implementamos infraestructuras de red robustas y escalables para tu organización.",
+        "features": [
+          "Diseño de redes",
+          "Configuración de servidores",
+          "Seguridad de red",
+          "Optimización de rendimiento"
+        ]
+      },
+      {
+        "title": "Sistemas CCTV",
+        "description": "Instalación y mantenimiento de sistemas de videovigilancia de última generación para tu seguridad.",
+        "features": [
+          "Cámaras IP de alta resolución",
+          "Monitoreo remoto 24/7",
+          "Almacenamiento en la nube",
+          "Análisis de video inteligente"
+        ]
+      },
+      {
+        "title": "Soporte Técnico",
+        "description": "Asistencia técnica especializada para mantener tus sistemas funcionando de manera óptima.",
+        "features": [
+          "Soporte remoto y presencial",
+          "Mantenimiento preventivo",
+          "Resolución de incidencias",
+          "Consultoría tecnológica"
+        ]
+      }
+    ],
+    "cta": "Solicitar servicio",
+    "stats": {
+      "support": "Soporte Técnico",
+      "projects": "Proyectos Completados",
+      "satisfaction": "Satisfacción"
+    }
+  },
+  "ServiceRequest": "Hola me gustaría solicitar información sobre el servicio de",
+  "contact": {
+    "badge": "Contáctanos",
+    "title": "Estamos Aquí para Ayudarte",
+    "titleHighlight": "Ayudarte",
+    "description": "¿Tienes un proyecto en mente o necesitas asesoría tecnológica? Contáctanos y te responderemos lo antes posible.",
+    "info": [
+      {
+        "title": "Teléfono",
+        "description": "Llámanos para discutir tu proyecto",
+        "value": "+58 414-478-5215",
+        "linkText": "Llamar ahora"
+      },
+      {
+        "title": "Email",
+        "description": "Envíanos un correo electrónico",
+  "value": "info[at]netandsoft.com.ve",
+        "linkText": "Enviar email"
+      },
+      {
+        "title": "Horario",
+        "description": "Estamos disponibles para ti",
+        "value": "Lunes a Viernes: 8:00 AM - 6:00 PM"
+      }
+    ],
+    "whatsapp": {
+      "title": "¿Prefieres WhatsApp?",
+      "description": "Chatea con nosotros directamente y obtén respuestas inmediatas a tus consultas.",
+      "cta": "Abrir WhatsApp",
+      "tooltip": "Contactar por WhatsApp"
+    },
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "name": "Nombre Completo ",
+      "phone": "Teléfono ",
+      "service": "Servicio de Interés",
+      "message": "Mensaje ",
+      "namePlaceholder": "Tu nombre",
+      "phonePlaceholder": "+58 321-849-7687",
+      "servicePlaceholder": "Selecciona un servicio",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
+      "submit": "Enviar Mensaje",
+      "policy": "Al enviar este formulario, aceptas nuestra política de privacidad"
+    },
+    "whatsappMessage": "Hola, me gustaría obtener más información sobre los servicios de Net & Soft Solutions",
+    "HelloIAm": "Hola, me llamo",
+    "myPhone": "Mi teléfono es",
+    "imInterestedIn": "Estoy interesado en",
+    "OurLocation": "Calle 24 De Julio, San Fernando de Apure 7001, Apure."
+  },
+  "footer": {
+    "description": "Soluciones tecnológicas integrales: desarrollo de software, redes, CCTV y soporte técnico especializado.",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "about": "Nosotros",
+    "copyright": "Net & Soft Solutions. Todos los derechos reservados.",
+    "whatsappMessage": "Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions",
+    "Schedule": "Lun - Vie: 8:00 AM - 6:00 PM",
+    "Phone": "+58 414-478-5215"
+  },
+  "whatsapp": {
+    "tooltip": "Contáctanos por WhatsApp"
+  }
+}

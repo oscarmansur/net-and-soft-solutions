@@ -1,0 +1,204 @@
+{
+  "header": {
+    "navItems": {
+      "home": "Home",
+      "services": "Services",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "contact": "Contact",
+    "contactWhatsApp": "Contact via WhatsApp",
+    "whatsappMessage": "Hello, I would like to request information about Net & Soft Solutions services"
+  },
+  "hero": {
+    "badge": "Certified Technological Solutions",
+    "title": "Comprehensive Technological Solutions for Your Business",
+    "titleHighlight": "Technological",
+    "description": "Software development, network infrastructure, CCTV systems and specialized technical support. We transform your ideas into effective digital solutions.",
+    "features": [
+      "Custom development",
+      "Modern infrastructure",
+      "Specialized support",
+      "Competitive prices"
+    ],
+    "ctaQuote": "Request Quote",
+    "ctaServices": "View Services",
+    "projectsCompleted": "+100 Projects Completed",
+    "support247": "24/7 Support"
+  },
+  "about": {
+    "badge": "Why Choose Us?",
+    "title": "Your Digital Success is Our Priority",
+    "titleHighlight": "Priority",
+    "description": "At Net & Soft Solutions we specialize in offering comprehensive technological solutions that drive your business growth. Our team of experts combines technical experience with innovation to deliver projects that exceed expectations.",
+    "benefits": [
+      {
+        "title": "Proven Experience",
+        "description": "Team of professionals with extensive experience in software development and technological solutions."
+      },
+      {
+        "title": "Continuous Support",
+        "description": "Technical assistance available 24/7 to ensure optimal functioning of your systems."
+      },
+      {
+        "title": "Customized Solutions",
+        "description": "Each project adapts to the specific needs of your business and objectives."
+      },
+      {
+        "title": "Guaranteed Quality",
+        "description": "We use best practices and cutting-edge technologies in all our projects."
+      }
+    ],
+    "stats": {
+      "experience": "Years of Experience",
+      "satisfaction": "Customer Satisfaction"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Provide innovative and high-quality technological solutions that drive the digital transformation of our clients, improving their operational efficiency and competitiveness."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading company in comprehensive technological solutions, recognized for our technical excellence, constant innovation and commitment to our clients' success."
+    },
+    "values": {
+      "title": "Our Values",
+      "list": [
+        "Innovation",
+        "Commitment",
+        "Excellence",
+        "Integrity",
+        "Collaboration",
+        "Responsibility"
+      ]
+    },
+    "certifications": "Technologies and Certifications",
+    "MicrosoftPartner": "Microsoft Partner",
+    "CiscoCertified": "Cisco Certified",
+    "IBMCertified": "IBM Certified",
+    "ISO9001": "ISO 9001",
+    "WhyChooseUs": "Why Choose Us?"
+    
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "Comprehensive",
+    "titleHighlight": "Technological",
+    "titleEnd": "Solutions",
+    "description": "We offer a wide range of technological services designed to drive your business towards the digital future.",
+    "list": [
+      {
+        "title": "Software Development",
+        "description": "We create custom web and mobile applications that drive your business towards the digital future.",
+        "features": [
+          "Modern web applications",
+          "Native mobile apps",
+          "Business systems",
+          "APIs and microservices"
+        ]
+      },
+      {
+        "title": "Networks and Infrastructure",
+        "description": "We design and implement robust and scalable network infrastructures for your organization.",
+        "features": [
+          "Network design",
+          "Server configuration",
+          "Network security",
+          "Performance optimization"
+        ]
+      },
+      {
+        "title": "CCTV Systems",
+        "description": "Installation and maintenance of next-generation video surveillance systems for your security.",
+        "features": [
+          "High-resolution IP cameras",
+          "24/7 remote monitoring",
+          "Cloud storage",
+          "Intelligent video analysis"
+        ]
+      },
+      {
+        "title": "Technical Support",
+        "description": "Specialized technical assistance to keep your systems running optimally.",
+        "features": [
+          "Remote and on-site support",
+          "Preventive maintenance",
+          "Incident resolution",
+          "Technology consulting"
+        ]
+      }
+    ],
+    "cta": "Request service",
+    "stats": {
+      "support": "Technical Support",
+      "projects": "Projects Completed",
+      "satisfaction": "Satisfaction"
+    },
+   
+    "whatsappMessage": "Hello, I would like to get more information about Net & Soft Solutions services"
+  },
+  "ServiceRequest": "Hello, I would like to request information about the service of",
+  "contact": {
+    "badge": "Contact Us",
+    "title": "We Are Here to Help You",
+    "titleHighlight": "Help You",
+    "description": "Do you have a project in mind or need technological advice? Contact us and we will respond as soon as possible.",
+    "info": [
+      {
+        "title": "Phone",
+        "description": "Call us to discuss your project",
+        "value": "+58 414-478-5215",
+        "linkText": "Call now"
+      },
+      {
+        "title": "Email",
+        "description": "Send us an email",
+  "value": "info[at]netandsoft.com.ve",
+        "linkText": "Send email"
+      },
+      {
+        "title": "Schedule",
+        "description": "We are available for you",
+        "value": "Monday to Friday: 8:00 AM - 6:00 PM"
+      }
+    ],
+    "whatsapp": {
+      "title": "Prefer WhatsApp?",
+      "description": "Chat with us directly and get immediate answers to your queries.",
+      "cta": "Open WhatsApp",
+      "tooltip": "Contact via WhatsApp"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name ",
+      "phone": "Phone ",
+      "service": "Service of Interest",
+      "message": "Message ",
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "+58 321-849-7687",
+      "servicePlaceholder": "Select a service",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Message",
+      "policy": "By submitting this form, you accept our privacy policy"
+    },
+    "whatsappMessage": "Hello, I would like to get more information about Net & Soft Solutions services",
+    "HelloIAm": "Hello, I am",
+    "myPhone": "My phone is",
+    "imInterestedIn": "I am interested in",
+    "OurLocation": "Street 24 De Julio, San Fernando de Apure 7001, Apure."
+  },
+  "footer": {
+    "description": "Comprehensive technological solutions: software development, networks, CCTV and specialized technical support.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact",
+    "about": "About",
+    "Schedule": "Mon - Fri: 8:00 AM - 6:00 PM",
+    "Phone": "+58 414-478-5215",
+    "copyright": "Net & Soft Solutions. All rights reserved.",
+    "whatsappMessage": "Hello, I would like to request information about Net & Soft Solutions services"
+  },
+  "whatsapp": {
+    "tooltip": "Contact via WhatsApp"
+  }
+}

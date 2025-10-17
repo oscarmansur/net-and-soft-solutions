@@ -4,13 +4,13 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
         <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
-          Contáctanos
+          {{ $t('contact.badge') }}
         </span>
         <h2 class="font-heading font-bold text-gray-900 mb-6">
-          Estamos Aquí para <span class="text-gradient">Ayudarte</span>
+          {{ $t('contact.title') }} <span class="text-gradient">{{ $t('contact.titleHighlight') }}</span>
         </h2>
         <p class="text-lg text-gray-600">
-          ¿Tienes un proyecto en mente o necesitas asesoría tecnológica? Contáctanos y te responderemos lo antes posible.
+          {{ $t('contact.description') }}
         </p>
       </div>
 
@@ -69,10 +69,10 @@
               </div>
               <div class="flex-1">
                 <h3 class="font-heading font-semibold text-xl text-gray-900 mb-2">
-                  ¿Prefieres WhatsApp?
+                  {{ $t('contact.whatsapp.title') }}
                 </h3>
                 <p class="text-gray-600 mb-4">
-                  Chatea con nosotros directamente y obtén respuestas inmediatas a tus consultas.
+                  {{ $t('contact.whatsapp.description') }}
                 </p>
                 <a 
                   :href="whatsappLink" 
@@ -83,7 +83,7 @@
                   <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                   </svg>
-                  Abrir WhatsApp
+                  {{ $t('contact.whatsapp.cta') }}
                 </a>
               </div>
             </div>
@@ -107,8 +107,8 @@
               class="w-full h-full border-0"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de cobertura - Bogotá, Colombia"
-              aria-label="Mapa mostrando ubicación en Bogotá, Colombia"
+              title="Mapa de cobertura - Apure, Venezuela"
+              aria-label="Mapa mostrando ubicación en Apure, Venezuela"
             ></iframe>
 
             <!-- Informative badge (visually indicates coverage area) -->
@@ -116,7 +116,7 @@
               <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
               </svg>
-              <span>Nuestra ubicación: Calle 24 De Julio, San Fernando de Apure 7001, Apure.</span>
+              <span>{{ $t('contact.OurLocation') }}</span>
             </div>
 
             <!-- Non-interactive visual marker centered over the map (pointer-events-none lets clicks reach the iframe) -->
@@ -133,13 +133,13 @@
         <div class="animate-fade-in-up animation-delay-200">
           <div class="card">
             <h3 class="font-heading font-semibold text-2xl text-gray-900 mb-6">
-              Envíanos un Mensaje
+              {{ $t('contact.form.title') }}
             </h3>
             
             <form @submit.prevent="handleSubmit" class="space-y-6">
               <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre Completo *
+                  {{ $t('contact.form.name') }} *
                 </label>
                 <input 
                   id="name"
@@ -153,7 +153,7 @@
 
               <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono *
+                  {{ $t('contact.form.phone') }} *
                 </label>
                 <input 
                   id="phone"
@@ -167,24 +167,24 @@
 
               <div>
                 <label for="service" class="block text-sm font-medium text-gray-700 mb-2">
-                  Servicio de Interés
+                  {{ $t('contact.form.service') }}
                 </label>
                 <select 
                   id="service"
                   v-model="form.service"
                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 >
-                  <option value="">Selecciona un servicio</option>
-                  <option value="desarrollo">Desarrollo de Software</option>
-                  <option value="redes">Redes e Infraestructura</option>
-                  <option value="cctv">Sistemas CCTV</option>
-                  <option value="soporte">Soporte Técnico</option>
+                  <option value="">{{ $t('contact.form.servicePlaceholder') }}</option>
+                  <option value="{{ $t('services.list[0].title') }}">{{ $t('services.list[0].title') }}</option>
+                  <option value="{{ $t('services.list[1].title') }}">{{ $t('services.list[1].title') }}</option>
+                  <option value="{{ $t('services.list[2].title') }}">{{ $t('services.list[2].title') }}</option>
+                  <option value="{{ $t('services.list[3].title') }}">{{ $t('services.list[3].title') }}</option>
                 </select>
               </div>
 
               <div>
                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje *
+                  {{ $t('contact.form.message') }} *
                 </label>
                 <textarea 
                   id="message"
@@ -200,11 +200,11 @@
                 type="submit"
                 class="btn btn-primary w-full text-lg"
               >
-                Enviar Mensaje
+                {{ $t('contact.form.submit') }}
               </button>
 
               <p class="text-xs text-gray-500 text-center">
-                Al enviar este formulario, aceptas nuestra política de privacidad
+                {{ $t('contact.form.policy') }}
               </p>
             </form>
           </div>
@@ -246,28 +246,28 @@ const ClockIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox
 
 const contactInfo = [
   {
-    title: 'Teléfono',
-    description: 'Llámanos para discutir tu proyecto',
+    title: `${$t('contact.info[0].title')}`,
+    description: `${$t('contact.info[0].description')}`,
     icon: PhoneIcon,
-    value: '+58 414-478-5215', 
+    value: `${$t('contact.info[0].value')}`,
     link: 'tel:+584144785215',
-    linkText: 'Llamar ahora',
+    linkText: `${$t('contact.info[0].linkText')}`,
     external: false
   },
   {
-    title: 'Email',
-    description: 'Envíanos un correo electrónico',
+    title: `${$t('contact.info[1].title')}`,
+    description: `${$t('contact.info[1].description')}`,
     icon: EmailIcon,
     value: 'info@netandsoft.com.ve',
     link: 'mailto:info@netandsoft.com.ve',
-    linkText: 'Enviar email',
+    linkText: `${$t('contact.info[1].linkText')}`,
     external: false
   },
   {
-    title: 'Horario',
-    description: 'Estamos disponibles para ti',
+    title: `${$t('contact.info[2].title')}`,
+    description: `${$t('contact.info[2].description')}`,
     icon: ClockIcon,
-    value: 'Lunes a Viernes: 8:00 AM - 6:00 PM'
+    value: `${$t('contact.info[2].value')}`
   }
 ]
 
@@ -280,13 +280,13 @@ const form = ref({
 
 const whatsappLink = computed(() => {
   const phone = '584144785215'
-  const message = encodeURIComponent('Hola, me gustaría obtener más información sobre los servicios de Net & Soft Solutions')
+  const message = encodeURIComponent($t('contact.whatsappMessage'))
   return `https://wa.me/${phone}?text=${message}`
 })
 
 const handleSubmit = () => {
   // In a real application, this would send the form data to a backend
-  const message = `Hola, soy ${form.value.name}. ${form.value.message}. Mi teléfono es ${form.value.phone}${form.value.service ? `. Estoy interesado en: ${form.value.service}` : ''}`
+  const message = `${$t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${$t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${$t('contact.imInterestedIn')} ${form.value.service}` : ''}`
   const phone = '584144785215'
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
   window.open(whatsappUrl, '_blank')
