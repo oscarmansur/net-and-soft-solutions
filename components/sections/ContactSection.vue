@@ -175,10 +175,10 @@
                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                 >
                   <option value="">{{ $t('contact.form.servicePlaceholder') }}</option>
-                  <option value="{{ $t('services.list[0].title') }}">{{ $t('services.list[0].title') }}</option>
-                  <option value="{{ $t('services.list[1].title') }}">{{ $t('services.list[1].title') }}</option>
-                  <option value="{{ $t('services.list[2].title') }}">{{ $t('services.list[2].title') }}</option>
-                  <option value="{{ $t('services.list[3].title') }}">{{ $t('services.list[3].title') }}</option>
+                  <option :value="$t('services.list[0].title')">{{ $t('services.list[0].title') }}</option>
+                  <option :value="$t('services.list[1].title')">{{ $t('services.list[1].title') }}</option>
+                  <option :value="$t('services.list[2].title')">{{ $t('services.list[2].title') }}</option>
+                  <option :value="$t('services.list[3].title')">{{ $t('services.list[3].title') }}</option>
                 </select>
               </div>
 
@@ -286,7 +286,7 @@ const whatsappLink = computed(() => {
 
 const handleSubmit = () => {
   // In a real application, this would send the form data to a backend
-  const message = `${$t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${$t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${$t('contact.imInterestedIn')} ${form.value.service}` : ''}`
+  const message = `${$t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${$t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${$t('contact.imInterestedIn')} ${form.value.service}.` : ''}`
   const phone = '584144785215'
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
   window.open(whatsappUrl, '_blank')
