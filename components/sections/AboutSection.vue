@@ -1,9 +1,9 @@
 <template>
-  <section id="nosotros" class="section bg-gradient-to-br from-gray-50 to-white">
+  <section id="nosotros" class="section bg-gradient-to-br from-gray-50 to-white" data-aos="fade-up">
     <div class="container-custom">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Content -->
-        <div class="space-y-8 animate-fade-in-up">
+        <div class="space-y-8" data-aos="fade-up">
           <div>
             <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
               {{ $t('about.WhyChooseUs') }}
@@ -22,7 +22,8 @@
               v-for="(benefit, index) in benefits" 
               :key="benefit.title"
               class="flex items-start space-x-4 p-4 rounded-xl hover:bg-white hover:shadow-soft transition-all duration-300"
-              :class="`animation-delay-${index * 200}`"
+              data-aos="fade-up"
+              :data-aos-delay="100 + (index * 100)"
             >
               <div class="flex-shrink-0">
                 <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
@@ -41,20 +42,20 @@
           </div>
 
           <!-- Stats -->
-          <div class="grid grid-cols-2 gap-6 pt-8">
+          <div class="grid grid-cols-2 gap-6 pt-8" data-aos="fade-up" data-aos-delay="300">
             <div class="text-center p-6 rounded-xl bg-white shadow-soft">
-              <div class="text-3xl font-bold text-primary mb-2">5+</div>
+              <AnimatedCounter :target="5" suffix="+" class="text-3xl font-bold text-primary mb-2" />
               <p class="text-gray-600 text-sm">{{ $t('about.stats.experience') }}</p>
             </div>
             <div class="text-center p-6 rounded-xl bg-white shadow-soft">
-              <div class="text-3xl font-bold text-primary mb-2">100%</div>
+              <AnimatedCounter :target="100" suffix="%" class="text-3xl font-bold text-primary mb-2" />
               <p class="text-gray-600 text-sm">{{ $t('about.stats.satisfaction') }}</p>
             </div>
           </div>
         </div>
 
         <!-- Image/Visual -->
-        <div class="relative animate-fade-in-up animation-delay-400">
+        <div class="relative" data-aos="fade-left" data-aos-delay="200">
           <!-- Main card -->
           <div class="relative z-10 bg-white rounded-2xl shadow-large p-8">
             <div class="space-y-6">
@@ -116,7 +117,7 @@
       </div>
 
       <!-- Certifications/Trust Badges -->
-      <div class="mt-20 text-center">
+      <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="300">
         <p class="text-gray-500 text-sm mb-8">{{ $t('about.certifications') }}</p>
         <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
           <div class="text-gray-400 font-semibold text-lg">{{ $t('about.MicrosoftPartner') }}</div>
@@ -131,6 +132,7 @@
 
 <script setup lang="ts">
 import { h } from 'vue'
+import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
 
 const ShieldIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
   h('path', { 

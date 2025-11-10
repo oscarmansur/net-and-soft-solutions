@@ -1,5 +1,5 @@
 <template>
-  <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-white to-secondary/5" data-aos="fade-in">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
       <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23022B3A&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
@@ -8,23 +8,23 @@
     <div class="container-custom relative z-10 py-20">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Content -->
-        <div class="space-y-8 animate-fade-in-up">
-          <div class="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <div class="space-y-8" data-aos="fade-up" data-aos-duration="1000">
+          <div class="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium" data-aos="fade-up" data-aos-delay="100">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span>{{ $t('hero.badge') }}</span>
           </div>
 
-          <h1 class="font-heading font-bold text-gray-900 leading-tight">
+          <h1 class="font-heading font-bold text-gray-900 leading-tight" data-aos="fade-up" data-aos-delay="200">
             {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
           </h1>
 
-          <p class="text-xl text-gray-600 leading-relaxed">
+          <p class="text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
             {{ $t('hero.description') }}
           </p>
             <!-- Features -->
-          <div class="grid sm:grid-cols-2 gap-4">
+          <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="400">
             <div v-for="feature in features" :key="feature.text" class="flex items-start space-x-3">
               <div class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-1">
                 <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -36,7 +36,7 @@
           </div>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <div class="flex flex-col sm:flex-row gap-4 pt-4" data-aos="fade-up" data-aos-delay="500">
             <a 
               :href="whatsappLink" 
               target="_blank"
@@ -73,13 +73,28 @@
           </div>
         </div>
 
-        <!-- Image/Illustration -->
-        <div class="relative animate-fade-in-up animation-delay-200">
+        <!-- Image/Illustration with 3D hover effect -->
+        <div class="relative" data-aos="fade-left" data-aos-delay="600">
           <div class="relative z-10">
-            <!-- Tech illustration -->
-            <div class="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-8 shadow-large overflow-hidden flex items-center justify-center">
+             <!-- <div class="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-8 shadow-large overflow-hidden flex items-center justify-center">
               <img
-                src="/hero-tech.svg"
+                src="/hero.png"
+                alt="Net & Soft Solutions - Desarrollo de software, redes, CCTV y soporte técnico"
+                class="w-full h-full object-contain"
+                loading="lazy"
+              />
+            </div> -->
+            <!-- Tech illustration with 3D hover effect -->
+            <div 
+              ref="card"
+              class="card aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-8 shadow-large overflow-hidden flex items-center justify-center"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
+              @mouseover="handleMouseOver"
+            >
+              <div class="reflection" ref="refl"></div>
+              <img
+                src="/hero.png"
                 alt="Net & Soft Solutions - Desarrollo de software, redes, CCTV y soporte técnico"
                 class="w-full h-full object-contain"
                 loading="lazy"
@@ -104,15 +119,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-
 const titleFull = computed(() => String(t('hero.title') || ''))
 const titleHighlight = computed(() => String(t('hero.titleHighlight') || ''))
-
 
 const titleBefore = computed(() => {
   const full = titleFull.value
@@ -152,4 +165,97 @@ const whatsappLink = computed(() => {
   const message = encodeURIComponent(String(t('contact.whatsapp.description') || 'Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions'))
   return `https://wa.me/${phone}?text=${message}`
 })
+
+const card = ref(null)
+const refl = ref(null)
+
+const scale = (val, inMin, inMax, outMin, outMax) => 
+  outMin + (val - inMin) * (outMax - outMin) / (inMax - inMin);
+
+const handleMouseOver = () => {
+  if (refl.value) {
+    refl.value.style.opacity = '1';
+  }
+};
+
+const handleMouseLeave = () => {
+  if (card.value) {
+    card.value.style.transform = 'perspective(500px) scale(1)';
+  }
+  if (refl.value) {
+    refl.value.style.opacity = '0';
+  }
+};
+
+const handleMouseMove = (event) => {
+  if (!card.value || !refl.value) return;
+
+  const rect = card.value.getBoundingClientRect();
+  const relX = (event.clientX - rect.left) / rect.width;
+  const relY = (event.clientY - rect.top) / rect.height;
+  
+  const rotY = `rotateY(${(relX - 0.5) * 20}deg)`;
+  const rotX = `rotateX(${(relY - 0.5) * -20}deg)`;
+  card.value.style.transform = `perspective(500px) scale(1.05) ${rotY} ${rotX}`;
+
+  const lightX = scale(relX, 0, 1, 150, -50);
+  const lightY = scale(relY, 0, 1, 30, -100);
+  const lightConstrain = Math.min(Math.max(relY, 0.3), 0.7);
+  const lightOpacity = scale(lightConstrain, 0.3, 1, 1, 0) * 255;
+  const lightShade = `rgba(${lightOpacity}, ${lightOpacity}, ${lightOpacity}, 1)`;
+  const lightShadeBlack = `rgba(0, 0, 0, 1)`;
+  refl.value.style.backgroundImage = `radial-gradient(circle at ${lightX}% ${lightY}%, ${lightShade} 20%, ${lightShadeBlack})`;
+};
 </script>
+
+<style scoped>
+.section {
+  @apply py-20 md:py-28 lg:py-36;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+}
+
+/* 3D Card Effect Styles */
+.card {
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  transform: perspective(500px) scale(1.05);
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.reflection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+</style>

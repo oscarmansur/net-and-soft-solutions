@@ -7,10 +7,11 @@
 <script setup lang="ts">
 // Global CSS import
 import '~/assets/css/main.css'
+import 'aos/dist/aos.css'
 
 // Default SEO Configuration for the entire app
 useHead({
-  titleTemplate: (titleChunk) => {
+  titleTemplate: (titleChunk: string | undefined) => {
     return titleChunk ? `${titleChunk}` : 'Net And Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico'
   },
   meta: [

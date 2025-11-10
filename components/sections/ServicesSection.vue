@@ -1,8 +1,8 @@
 <template>
-  <section id="servicios" class="section bg-white">
+  <section id="servicios" class="section bg-white" data-aos="fade-up">
     <div class="container-custom">
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+      <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
         <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
           {{ $t('services.badge') }}
         </span>
@@ -19,9 +19,9 @@
         <div 
           v-for="(service, index) in services" 
           :key="service.title"
-          class="card group hover:scale-105 cursor-pointer animate-fade-in-up"
-          :class="`animation-delay-${index * 200}`"
-        >
+          class="card group hover:scale-105 cursor-pointer"
+          data-aos="fade-up"
+          :data-aos-delay="(index % 4) * 100">
           <!-- Icon -->
           <div class="mb-6">
             <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -72,15 +72,15 @@
       <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
         <div class="grid md:grid-cols-3 gap-8 text-center">
           <div class="space-y-2">
-            <div class="text-4xl font-bold text-primary">24/7</div>
+            <AnimatedCounter :target="24" suffix="/7" />
             <p class="text-gray-600">{{$t('services.stats.support')}}</p>
           </div>
           <div class="space-y-2">
-            <div class="text-4xl font-bold text-primary">+100</div>
+            <AnimatedCounter :target="100" prefix="+" />
             <p class="text-gray-600">{{$t('services.stats.projects')}}</p>
           </div>
           <div class="space-y-2">
-            <div class="text-4xl font-bold text-primary">100%</div>
+            <AnimatedCounter :target="100" suffix="%" />
             <p class="text-gray-600">{{$t('services.stats.satisfaction')}}</p>
           </div>
         </div>
@@ -92,6 +92,7 @@
 <script setup lang="ts">
 import { h } from 'vue'
 import { useI18n } from 'vue-i18n'
+import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
 const { t } = useI18n()
 
 // Service icons as functional components
