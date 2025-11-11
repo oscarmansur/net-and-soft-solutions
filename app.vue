@@ -1,8 +1,15 @@
 <template>
-  <div>
+  <div class="overflow-x-hidden">
     <NuxtPage />
   </div>
 </template>
+
+<style>
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+</style>
 
 <script setup lang="ts">
 // Global CSS import
