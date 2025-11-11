@@ -103,7 +103,7 @@
           <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 relative">
             <!-- Using Google Maps embed centered on Bogotá, Colombia (lat: 4.7110, lng: -74.0721) -->
             <iframe
-              src="https://www.google.com/maps?q=7.8943617629525225, -67.47137226395206&z=13&output=embed"
+              src="https://www.google.com/maps?q=7.8921750877067645, -67.46952135309213&z=13&output=embed"
               class="w-full h-full border-0"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"

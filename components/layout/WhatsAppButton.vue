@@ -3,7 +3,7 @@
     :href="whatsappLink" 
     target="_blank"
     rel="noopener noreferrer"
-    class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 whatsapp-pulse group"
+    class="fixed bottom-6 right-0 md:right-6 z-50 bg-[#25D366] text-white p-4 rounded-l-full md:rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 whatsapp-pulse group"
     :aria-label="$t('header.contactWhatsApp')"
   >
     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -11,7 +11,7 @@
     </svg>
     
     <!-- Tooltip -->
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+    <span class="hidden md:block absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
       {{ $t('whatsapp.tooltip') }}
     </span>
   </a>
