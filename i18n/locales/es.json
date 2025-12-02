@@ -150,7 +150,7 @@
       {
         "title": "Email",
         "description": "Envíanos un correo electrónico",
-  "value": "info[at]netandsoft.com.ve",
+        "value": "info[at]netandsoft.com.ve",
         "linkText": "Enviar email"
       },
       {
@@ -194,6 +194,11 @@
     "whatsappMessage": "Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions",
     "Schedule": "Lun - Vie: 8:00 AM - 6:00 PM",
     "Phone": "+58 414-478-5215"
+  },
+  "networkCanvas": {
+    "title": "NET & SOFT",
+    "subtitle": "Inteligencia Computacional & Redes",
+    "statusText": "Tu Solución Tecnológica."
   },
   "whatsapp": {
     "tooltip": "Contáctanos por WhatsApp"

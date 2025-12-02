@@ -78,7 +78,6 @@
     "IBMCertified": "IBM Certified",
     "ISO9001": "ISO 9001",
     "WhyChooseUs": "Why Choose Us?"
-    
   },
   "services": {
     "badge": "Our Services",
@@ -134,7 +133,6 @@
       "projects": "Projects Completed",
       "satisfaction": "Satisfaction"
     },
-   
     "whatsappMessage": "Hello, I would like to get more information about Net & Soft Solutions services"
   },
   "ServiceRequest": "Hello, I would like to request information about the service of",
@@ -153,7 +151,7 @@
       {
         "title": "Email",
         "description": "Send us an email",
-  "value": "info[at]netandsoft.com.ve",
+        "value": "info[at]netandsoft.com.ve",
         "linkText": "Send email"
       },
       {
@@ -197,6 +195,11 @@
     "Phone": "+58 414-478-5215",
     "copyright": "Net & Soft Solutions. All rights reserved.",
     "whatsappMessage": "Hello, I would like to request information about Net & Soft Solutions services"
+  },
+  "networkCanvas": {
+    "title": "NET & SOFT",
+    "subtitle": "Computational Intelligence & Networks",
+    "statusText": "Your Technological Solution."
   },
   "whatsapp": {
     "tooltip": "Contact via WhatsApp"

@@ -117,13 +117,52 @@
       </div>
 
       <!-- Certifications/Trust Badges -->
-      <div class="mt-20 text-center" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-gray-500 text-sm mb-8">{{ $t('about.certifications') }}</p>
-        <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
-          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.MicrosoftPartner') }}</div>
-          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.CiscoCertified') }}</div>
-          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.IBMCertified') }}</div>
-          <div class="text-gray-400 font-semibold text-lg">{{ $t('about.ISO9001') }}</div>         
+      <div class="mt-20" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-center mb-12">
+          <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
+            {{ $t('about.certifications') }}
+          </span>
+          <h3 class="font-heading font-bold text-2xl text-gray-900">
+            Certificaciones y <span class="text-gradient">Reconocimientos</span>
+          </h3>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div 
+            v-for="(cert, index) in certifications" 
+            :key="cert.name"
+            class="group relative bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 hover:-translate-y-2"
+            data-aos="fade-up"
+            :data-aos-delay="100 + (index * 100)"
+          >
+            <!-- Glow effect on hover -->
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col items-center text-center space-y-4">
+              <!-- Logo -->
+              <div class="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <img 
+                  :src="cert.logo" 
+                  :alt="cert.name"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              
+              <!-- Name -->
+              <h4 class="font-heading font-semibold text-gray-900 text-sm leading-tight">
+                {{ cert.name }}
+              </h4>
+              
+              <!-- Badge/Label -->
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                {{ cert.label }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -188,5 +227,28 @@ const values = [
   $t('about.values.list[3]'),
   $t('about.values.list[4]'),
   $t('about.values.list[5]')
+]
+
+const certifications = [
+  {
+    name: $t('about.MicrosoftPartner'),
+    label: 'Certificado',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg'
+  },
+  {
+    name: $t('about.CiscoCertified'),
+    label: 'Certificado',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg'
+  },
+  {
+    name: $t('about.IBMCertified'),
+    label: 'Certificado',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg'
+  },
+  {
+    name: $t('about.ISO9001'),
+    label: 'Certificado',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png'
+  }
 ]
 </script>

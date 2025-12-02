@@ -19,52 +19,64 @@
         <div 
           v-for="(service, index) in services" 
           :key="service.title"
-          class="card group hover:scale-105 cursor-pointer"
+          class="card group hover:scale-105 cursor-pointer overflow-hidden p-0"
           data-aos="fade-up"
           :data-aos-delay="(index % 4) * 100">
-          <!-- Icon -->
-          <div class="mb-6">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <component :is="service.icon" class="w-8 h-8 text-primary" />
+          
+          <!-- Image Header -->
+          <div class="relative h-48 overflow-hidden">
+            <img 
+              :src="service.image" 
+              :alt="service.title"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            
+            <!-- Icon Overlay -->
+            <div class="absolute bottom-4 left-4">
+              <div class="w-14 h-14 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <component :is="service.icon" class="w-7 h-7 text-primary" />
+              </div>
             </div>
           </div>
 
           <!-- Content -->
-          <h3 class="font-heading font-semibold text-xl text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
-            {{ service.title }}
-          </h3>
-          
-          <p class="text-gray-600 mb-6 leading-relaxed text-sm">
-            {{ service.description }}
-          </p>
+          <div class="p-6">
+            <h3 class="font-heading font-semibold text-xl text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+              {{ service.title }}
+            </h3>
+            
+            <p class="text-gray-600 mb-4 leading-relaxed text-sm">
+              {{ service.description }}
+            </p>
 
-          <!-- Features List -->
+            <!-- Features List -->
             <ul class="space-y-2 mb-6">
-            <li 
-              v-for="feature in service.features" 
-              :key="feature"
-              class="flex items-start text-xs text-gray-700"
+              <li 
+                v-for="feature in service.features" 
+                :key="feature"
+                class="flex items-start text-xs text-gray-700"
+              >
+                <svg class="w-4 h-4 text-accent mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>{{ feature }}</span>
+              </li>
+            </ul>
+
+            <!-- CTA -->
+            <a 
+              :href="getWhatsAppLink(service.title)" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-primary font-medium group-hover:text-secondary transition-colors duration-300 text-sm"
             >
-              <svg class="w-4 h-4 text-accent mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              {{$t('services.cta')}}
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-              <span>{{ feature }}</span>
-            </li>
-          </ul>
-
-
-          <!-- CTA -->
-          <a 
-            :href="getWhatsAppLink(service.title)" 
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center text-primary font-medium group-hover:text-secondary transition-colors duration-300 text-sm"
-          >
-            {{$t('services.cta')}}
-            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -129,6 +141,7 @@ const services = [
     title: $t('services.list.0.title'),
     description: $t('services.list.0.description'),
     icon: CodeIcon,
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     features: [
       $t('services.list.0.features.0'),
       $t('services.list.0.features.1'),
@@ -140,6 +153,7 @@ const services = [
     title: $t('services.list.1.title'),
     description: $t('services.list.1.description'),
     icon: NetworkIcon,
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80',
     features: [
       $t('services.list.1.features.0'),
       $t('services.list.1.features.1'),
@@ -151,6 +165,7 @@ const services = [
     title: $t('services.list.2.title'),
     description: $t('services.list.2.description'),
     icon: CameraIcon,
+    image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80',
     features: [
       $t('services.list.2.features.0'),
       $t('services.list.2.features.1'),
@@ -162,6 +177,7 @@ const services = [
     title: $t('services.list.3.title'),
     description: $t('services.list.3.description'),
     icon: SupportIcon,
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80',
     features: [
       $t('services.list.3.features.0'),
       $t('services.list.3.features.1'),

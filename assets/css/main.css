@@ -13,7 +13,12 @@
     @apply font-sans text-gray-800 antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading font-semibold;
   }
 
@@ -96,6 +101,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -106,15 +112,19 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -137,9 +147,11 @@
   0% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }

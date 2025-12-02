@@ -1,6 +1,9 @@
 <template>
   <div class="overflow-x-hidden">
     <NuxtPage />
+    <ClientOnly>
+      <BackToTopButton />
+    </ClientOnly>
   </div>
 </template>
 
@@ -15,6 +18,7 @@ html, body {
 // Global CSS import
 import '~/assets/css/main.css'
 import 'aos/dist/aos.css'
+import BackToTopButton from '~/components/layout/BackToTopButton.vue'
 
 // Default SEO Configuration for the entire app
 useHead({
