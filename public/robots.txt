@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://netandsoft.com.ve/sitemap.xml
