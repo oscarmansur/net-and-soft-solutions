@@ -248,7 +248,7 @@ const certifications = [
   {
     name: $t('about.ISO9001'),
     label: 'Certificado',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png'
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/ISO_9001-2015.svg'
   }
 ]
 </script>
