@@ -1,23 +1,32 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300" :class="{ 'shadow-md': scrolled }">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800/80 shadow-sm transition-all duration-300" :class="{ 'shadow-md dark:shadow-slate-900/50': scrolled }">
     <nav class="container-custom">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center space-x-3 group">
-          <img src="/logo.svg" alt="Net & Soft Solutions Logo" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+        <NuxtLink :to="localePath('/')" class="flex items-center space-x-3 group">
+          <img src="/logo.svg" alt="Net & Soft Solutions Logo" class="h-12 w-auto transition-all duration-300 group-hover:scale-105 dark:brightness-0 dark:invert" />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
-           <NuxtLink
-             v-for="item in navItems"
-             :key="item.nameKey"
-             :to="item.href"
-             class="text-gray-700 hover:text-primary font-medium transition-colors duration-300 relative group"
-           >
-             {{ $t(item.nameKey) }}
-             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-           </NuxtLink>
+        <div class="hidden md:flex items-center space-x-6">
+           <template v-for="item in navItems" :key="item.nameKey">
+             <!-- Services with Mega Dropdown -->
+             <ServicesDropdown
+               v-if="item.nameKey === 'header.navItems.services'"
+               :services-href="item.href"
+               :whatsapp-link="whatsappLink"
+             />
+
+             <!-- Regular Nav Links -->
+             <NuxtLink
+               v-else
+               :to="item.href"
+               class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-cyan-400 font-medium transition-colors duration-300 relative group py-1 text-sm"
+             >
+               {{ $t(item.nameKey) }}
+               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+             </NuxtLink>
+           </template>
 
            <a
              :href="whatsappLink"
@@ -31,30 +40,30 @@
              {{ $t('header.contact') }}
            </a>
 
-           <!-- Language Switcher -->
-           <select
-             :value="locale"
-             @change="$event => navigateTo(switchLocalePath(($event.target as HTMLSelectElement).value as 'es' | 'en'))"
-             class="ml-4 px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white"
-           >
-             <option value="es">ES</option>
-             <option value="en">EN</option>
-           </select>
+           <!-- Language Selector Dropdown -->
+           <LanguageSelector />
+
+           <!-- Theme Toggle Button -->
+           <ThemeToggle />
          </div>
 
-        <!-- Mobile Menu Button -->
-        <button 
-          @click="mobileMenuOpen = !mobileMenuOpen"
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-          aria-label="Toggle menu"
-        >
-          <svg v-if="!mobileMenuOpen" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg v-else class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <!-- Mobile Menu Controls (Toggle + Menu Button) -->
+        <div class="flex items-center space-x-2 md:hidden">
+          <ThemeToggle />
+
+          <button 
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors duration-300"
+            aria-label="Toggle menu"
+          >
+            <svg v-if="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Menu -->
@@ -66,27 +75,77 @@
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
       >
-        <div v-if="mobileMenuOpen" class="md:hidden py-4 border-t border-gray-100">
-           <div class="flex flex-col space-y-4">
-             <NuxtLink
-               v-for="item in navItems"
-               :key="item.nameKey"
-               :to="item.href"
-               @click="mobileMenuOpen = false"
-               class="text-gray-700 hover:text-primary font-medium transition-colors duration-300 py-2"
-             >
-               {{ $t(item.nameKey) }}
-             </NuxtLink>
+        <div v-if="mobileMenuOpen" class="md:hidden py-4 border-t border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-950">
+           <div class="flex flex-col space-y-3">
+             <template v-for="item in navItems" :key="item.nameKey">
+               <!-- Mobile Services with expandable list -->
+               <div v-if="item.nameKey === 'header.navItems.services'" class="flex flex-col">
+                 <div class="flex items-center justify-between py-2">
+                   <NuxtLink
+                     :to="item.href"
+                     @click="mobileMenuOpen = false"
+                     class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-cyan-400 font-medium transition-colors duration-300"
+                   >
+                     {{ $t(item.nameKey) }}
+                   </NuxtLink>
+                   <button
+                     type="button"
+                     @click="mobileServicesExpanded = !mobileServicesExpanded"
+                     class="p-1.5 text-gray-500 hover:text-primary dark:hover:text-cyan-400 transition-colors"
+                     aria-label="Expandir servicios"
+                   >
+                     <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': mobileServicesExpanded }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                     </svg>
+                   </button>
+                 </div>
+                 <!-- Mobile services list -->
+                 <div v-if="mobileServicesExpanded" class="pl-4 pb-2 space-y-2 border-l-2 border-primary/20 dark:border-cyan-500/20 ml-2">
+                   <NuxtLink
+                     :to="localePath('/#services')"
+                     @click="mobileMenuOpen = false"
+                     class="block text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-cyan-400 py-1"
+                   >
+                     • {{ $t('services.list.0.title') }}
+                   </NuxtLink>
+                   <NuxtLink
+                     :to="localePath('/#services')"
+                     @click="mobileMenuOpen = false"
+                     class="block text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-cyan-400 py-1"
+                   >
+                     • {{ $t('services.list.1.title') }}
+                   </NuxtLink>
+                   <NuxtLink
+                     :to="localePath('/#services')"
+                     @click="mobileMenuOpen = false"
+                     class="block text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-cyan-400 py-1"
+                   >
+                     • {{ $t('services.list.2.title') }}
+                   </NuxtLink>
+                   <NuxtLink
+                     :to="localePath('/#services')"
+                     @click="mobileMenuOpen = false"
+                     class="block text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-cyan-400 py-1"
+                   >
+                     • {{ $t('services.list.3.title') }}
+                   </NuxtLink>
+                 </div>
+               </div>
+
+               <NuxtLink
+                 v-else
+                 :to="item.href"
+                 @click="mobileMenuOpen = false"
+                 class="text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-cyan-400 font-medium transition-colors duration-300 py-2"
+               >
+                 {{ $t(item.nameKey) }}
+               </NuxtLink>
+             </template>
 
              <!-- Mobile Language Switcher -->
-             <select
-               :value="locale"
-               @change="$event => { navigateTo(switchLocalePath(($event.target as HTMLSelectElement).value as 'es' | 'en')); mobileMenuOpen = false; }"
-               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white text-center"
-             >
-               <option value="es">ES</option>
-               <option value="en">EN</option>
-             </select>
+             <div class="pt-1">
+               <LanguageSelector :full-width="true" @change="mobileMenuOpen = false" />
+             </div>
 
              <a
                :href="whatsappLink"
@@ -108,20 +167,24 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import ThemeToggle from '~/components/ui/ThemeToggle.vue'
+import LanguageSelector from '~/components/ui/LanguageSelector.vue'
+import ServicesDropdown from '~/components/layout/ServicesDropdown.vue'
 
 const { locale } = useI18n()
 
 const mobileMenuOpen = ref(false)
+const mobileServicesExpanded = ref(false)
 const scrolled = ref(false)
 
-const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 
-const navItems = [
-  { nameKey: 'header.navItems.home', href: '#inicio' },
-  { nameKey: 'header.navItems.services', href: '#servicios' },
-  { nameKey: 'header.navItems.about', href: '#nosotros' },
-  { nameKey: 'header.navItems.contact', href: '#contacto' }
-]
+const navItems = computed(() => [
+  { nameKey: 'header.navItems.home', href: localePath('/#home') },
+  { nameKey: 'header.navItems.services', href: localePath('/#services') },
+  { nameKey: 'header.navItems.about', href: localePath('/#about') },
+  { nameKey: 'header.navItems.contact', href: localePath('/#contact') }
+])
 
 const whatsappLink = computed(() => {
   const phone = '584144785215'

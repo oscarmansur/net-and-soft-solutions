@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gradient-to-br from-primary to-primary-700 text-white">
+  <footer class="bg-gradient-to-br from-primary to-primary-700 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white dark:border-t dark:border-slate-800 transition-colors duration-300">
     <div class="container-custom py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Company Info -->
@@ -12,7 +12,7 @@
 
         <!-- Quick Links -->
         <div>
-          <h3 class="font-heading font-semibold text-lg mb-4">{{ $t('footer.quickLinks') }}</h3>
+          <h3 class="font-heading font-semibold text-lg mb-4 text-white">{{ $t('footer.quickLinks') }}</h3>
           <ul class="space-y-2">
             <li v-for="item in quickLinks" :key="item.name">
               <NuxtLink 
@@ -27,7 +27,7 @@
 
         <!-- Services -->
         <div>
-          <h3 class="font-heading font-semibold text-lg mb-4">Servicios</h3>
+          <h3 class="font-heading font-semibold text-lg mb-4 text-white">{{ $t('footer.services') }}</h3>
           <ul class="space-y-2">
             <li v-for="service in services" :key="service">
               <span class="text-white/80 text-sm flex items-start">
@@ -42,7 +42,7 @@
 
         <!-- Contact Info -->
         <div>
-          <h3 class="font-heading font-semibold text-lg mb-4">{{ $t('footer.contact') }}</h3>
+          <h3 class="font-heading font-semibold text-lg mb-4 text-white">{{ $t('footer.contact') }}</h3>
           <ul class="space-y-3">
             <li class="flex items-start text-white/80 text-sm">
               <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,11 +67,36 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <p class="text-white/60 text-sm">
+      <div class="border-t border-white/20 dark:border-slate-800/80 mt-8 pt-8 flex flex-col lg:flex-row justify-between items-center gap-4">
+        <p class="text-white/60 text-sm order-2 lg:order-1 text-center lg:text-left">
           © {{ currentYear }} {{ $t('footer.copyright') }}
         </p>
-        <div class="flex space-x-6">
+
+        <!-- Legal & Sitemap Links -->
+        <div class="flex items-center space-x-4 text-xs text-white/70 order-1 lg:order-2">
+          <NuxtLink
+            :to="localePath('/privacy')"
+            class="hover:text-white transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            {{ $t('footer.privacyPolicy') }}
+          </NuxtLink>
+          <span class="text-white/30">•</span>
+          <NuxtLink
+            :to="localePath('/terms')"
+            class="hover:text-white transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            {{ $t('footer.termsConditions') }}
+          </NuxtLink>
+          <span class="text-white/30">•</span>
+          <NuxtLink
+            :to="localePath('/sitemap')"
+            class="hover:text-white transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            {{ $t('footer.sitemap') }}
+          </NuxtLink>
+        </div>
+
+        <div class="flex space-x-6 order-3">
           <a href="#" class="text-white/60 hover:text-white transition-colors duration-300" aria-label="Facebook">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -97,13 +122,14 @@
 import { computed } from 'vue'
 
 const currentYear = new Date().getFullYear()
+const localePath = useLocalePath()
 
-const quickLinks = [
-  { name: $t('footer.quickLinks'), href: '#inicio' },
-  { name: $t('footer.services'), href: '#servicios' },
-  { name: $t('footer.about'), href: '#nosotros' },
-  { name: $t('footer.contact'), href: '#contacto' }
-]
+const quickLinks = computed(() => [
+  { name: $t('footer.quickLinks'), href: localePath('/#home') },
+  { name: $t('footer.services'), href: localePath('/#services') },
+  { name: $t('footer.about'), href: localePath('/#about') },
+  { name: $t('footer.contact'), href: localePath('/#contact') }
+])
 
 const services = [
   $t('services.list[0].title'),

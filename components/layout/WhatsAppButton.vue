@@ -11,7 +11,7 @@
     </svg>
     
     <!-- Tooltip -->
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 dark:bg-slate-800 text-white border border-transparent dark:border-slate-700 shadow-md text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
       {{ $t('whatsapp.tooltip') }}
     </span>
   </a>

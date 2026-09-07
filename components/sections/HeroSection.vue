@@ -1,7 +1,7 @@
 <template>
-  <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-white to-secondary/5" data-aos="fade-in">
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300" data-aos="fade-in">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 opacity-5 dark:opacity-[0.02]">
       <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23022B3A&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
     </div>
 
@@ -9,29 +9,29 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Content -->
         <div class="space-y-8" data-aos="fade-up" data-aos-duration="1000">
-          <div class="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium" data-aos="fade-up" data-aos-delay="100">
+          <div class="inline-flex items-center space-x-2 bg-primary/10 dark:bg-cyan-500/10 text-primary dark:text-cyan-400 border border-transparent dark:border-cyan-500/20 px-4 py-2 rounded-full text-sm font-medium" data-aos="fade-up" data-aos-delay="100">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span>{{ $t('hero.badge') }}</span>
           </div>
 
-          <h1 class="font-heading font-bold text-gray-900 leading-tight" data-aos="fade-up" data-aos-delay="200">
+          <h1 class="font-heading font-bold text-gray-900 dark:text-white leading-tight" data-aos="fade-up" data-aos-delay="200">
             {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
           </h1>
 
-          <p class="text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
             {{ $t('hero.description') }}
           </p>
             <!-- Features -->
           <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="400">
             <div v-for="feature in features" :key="feature.text" class="flex items-start space-x-3">
-              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-1">
-                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 dark:bg-cyan-500/20 flex items-center justify-center mt-1">
+                <svg class="w-4 h-4 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <span class="text-gray-700">{{ feature.text }}</span>
+              <span class="text-gray-700 dark:text-gray-300">{{ feature.text }}</span>
             </div>
           </div>
 
@@ -49,7 +49,7 @@
               {{ $t('hero.ctaQuote') }}
             </a>
             <NuxtLink 
-              to="#servicios"
+              to="#services"
               class="btn btn-outline text-lg px-8 py-4"
             >
               {{ $t('hero.ctaServices') }}
@@ -57,15 +57,15 @@
           </div>
 
           <!-- Trust Indicators -->
-          <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-gray-200">
-            <div class="flex items-center space-x-2 text-gray-600">
-              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-gray-200 dark:border-slate-800">
+            <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+              <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
               </svg>
               <span class="text-sm font-medium">{{$t('hero.projectsCompleted')}}</span>
             </div>
-            <div class="flex items-center space-x-2 text-gray-600">
-              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+              <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
               </svg>
               <span class="text-sm font-medium">{{ $t('hero.support247') }}</span>
@@ -76,29 +76,7 @@
         <!-- Image/Illustration with 3D hover effect -->
         <div class="relative" data-aos="fade-left" data-aos-delay="600">
           <div class="relative z-10">
-             <!-- <div class="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-8 shadow-large overflow-hidden flex items-center justify-center">
-              <img
-                src="/hero.png"
-                alt="Net & Soft Solutions - Desarrollo de software, redes, CCTV y soporte técnico"
-                class="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div> -->
-             <!-- ============================================ -->
-            <!-- OPTION 1: 3D Hover Card with Image -->
-            <!-- ============================================ -->
-            <!-- <HoverCard3D 
-              image-src="/hero.png"
-              image-alt="Net & Soft Solutions - Desarrollo de software, redes, CCTV y soporte técnico"
-            /> -->
-            
-            <!-- ============================================ -->
-            <!-- OPTION 2: Interactive Network Canvas -->
-            <!-- ============================================ -->
-            <!-- Uncomment to use NetworkCanvas instead of HoverCard3D -->
-            <!-- Also uncomment the import in the script section below -->
-            
-            <div class="aspect-square rounded-2xl overflow-hidden shadow-large bg-slate-900">
+            <div class="aspect-square rounded-2xl overflow-hidden shadow-large bg-slate-900 border border-slate-800/80">
               <NetworkCanvas 
                 :show-overlay="true"
                 :particle-density="8000"
@@ -106,19 +84,18 @@
                 :mouse-distance="200"
               />
             </div>
-           
           </div>
           
           <!-- Decorative elements -->
-          <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
-          <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 dark:bg-cyan-500/10 rounded-full blur-2xl"></div>
+          <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/10 dark:bg-blue-500/10 rounded-full blur-2xl"></div>
         </div>
       </div>
     </div>
 
     <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6 text-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>

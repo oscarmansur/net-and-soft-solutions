@@ -33,7 +33,25 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    strictNuxtContentPaths: true
+    strictNuxtContentPaths: true,
+    autoLastmod: true,
+    xslColumns: [
+      { label: 'URL', width: '50%' },
+      { label: 'Priority', select: 'sitemap:priority', width: '12.5%' },
+      { label: 'Change Frequency', select: 'sitemap:changefreq', width: '12.5%' },
+      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' }
+    ],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8
+    }
+  },
+
+  routeRules: {
+    '/': { sitemap: { priority: 1.0, changefreq: 'weekly' } },
+    '/privacy': { sitemap: { priority: 0.5, changefreq: 'monthly' } },
+    '/terms': { sitemap: { priority: 0.5, changefreq: 'monthly' } },
+    '/sitemap': { sitemap: { priority: 0.7, changefreq: 'monthly' } }
   },
 
   robots: {

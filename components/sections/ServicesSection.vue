@@ -1,15 +1,15 @@
 <template>
-  <section id="servicios" class="section bg-white" data-aos="fade-up">
+  <section id="services" class="section bg-white dark:bg-slate-950 transition-colors duration-300" data-aos="fade-up">
     <div class="container-custom">
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+        <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4">
           {{ $t('services.badge') }}
         </span>
-        <h2 class="font-heading font-bold text-gray-900 mb-6">
+        <h2 class="font-heading font-bold text-gray-900 dark:text-white mb-6">
           {{ $t('services.title') }} <span class="text-gradient">{{ $t('services.titleHighlight') }}</span> {{ $t('services.titleEnd') }}
         </h2>
-        <p class="text-lg text-gray-600">
+        <p class="text-lg text-gray-600 dark:text-gray-300">
           {{ $t('services.description') }}
         </p>
       </div>
@@ -19,7 +19,7 @@
         <div 
           v-for="(service, index) in services" 
           :key="service.title"
-          class="card group hover:scale-105 cursor-pointer overflow-hidden p-0"
+          class="card group hover:scale-105 cursor-pointer overflow-hidden p-0 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800/80 hover:border-primary/20 dark:hover:border-cyan-500/40 hover:shadow-xl dark:hover:shadow-cyan-950/30 transition-all duration-300"
           data-aos="fade-up"
           :data-aos-delay="(index % 4) * 100">
           
@@ -34,19 +34,19 @@
             
             <!-- Icon Overlay -->
             <div class="absolute bottom-4 left-4">
-              <div class="w-14 h-14 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <component :is="service.icon" class="w-7 h-7 text-primary" />
+              <div class="w-14 h-14 rounded-xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 border border-transparent dark:border-slate-700">
+                <component :is="service.icon" class="w-7 h-7 text-primary dark:text-cyan-400" />
               </div>
             </div>
           </div>
 
           <!-- Content -->
           <div class="p-6">
-            <h3 class="font-heading font-semibold text-xl text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+            <h3 class="font-heading font-semibold text-xl text-gray-900 dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors duration-300">
               {{ service.title }}
             </h3>
             
-            <p class="text-gray-600 mb-4 leading-relaxed text-sm">
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
               {{ service.description }}
             </p>
 
@@ -55,9 +55,9 @@
               <li 
                 v-for="feature in service.features" 
                 :key="feature"
-                class="flex items-start text-xs text-gray-700"
+                class="flex items-start text-xs text-gray-700 dark:text-gray-300"
               >
-                <svg class="w-4 h-4 text-accent mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-4 h-4 text-accent dark:text-cyan-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
                 <span>{{ feature }}</span>
@@ -69,7 +69,7 @@
               :href="getWhatsAppLink(service.title)" 
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center text-primary font-medium group-hover:text-secondary transition-colors duration-300 text-sm"
+              class="inline-flex items-center text-primary dark:text-cyan-400 font-medium group-hover:text-secondary dark:group-hover:text-cyan-300 transition-colors duration-300 text-sm"
             >
               {{$t('services.cta')}}
               <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,19 +81,19 @@
       </div>
 
       <!-- Additional Info -->
-      <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
+      <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-slate-900 dark:to-slate-850 border border-primary/10 dark:border-slate-800">
         <div class="grid md:grid-cols-3 gap-8 text-center">
           <div class="space-y-2">
             <AnimatedCounter :target="24" suffix="/7" />
-            <p class="text-gray-600">{{$t('services.stats.support')}}</p>
+            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.support')}}</p>
           </div>
           <div class="space-y-2">
             <AnimatedCounter :target="100" prefix="+" />
-            <p class="text-gray-600">{{$t('services.stats.projects')}}</p>
+            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.projects')}}</p>
           </div>
           <div class="space-y-2">
             <AnimatedCounter :target="100" suffix="%" />
-            <p class="text-gray-600">{{$t('services.stats.satisfaction')}}</p>
+            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.satisfaction')}}</p>
           </div>
         </div>
       </div>

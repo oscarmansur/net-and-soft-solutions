@@ -1,15 +1,15 @@
 <template>
-  <section id="contacto" class="section bg-white">
+  <section id="contact" class="section bg-white dark:bg-slate-950 transition-colors duration-300">
     <div class="container-custom">
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+        <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4">
           {{ $t('contact.badge') }}
         </span>
-        <h2 class="font-heading font-bold text-gray-900 mb-6">
+        <h2 class="font-heading font-bold text-gray-900 dark:text-white mb-6">
           {{ $t('contact.title') }} <span class="text-gradient">{{ $t('contact.titleHighlight') }}</span>
         </h2>
-        <p class="text-lg text-gray-600">
+        <p class="text-lg text-gray-600 dark:text-gray-300">
           {{ $t('contact.description') }}
         </p>
       </div>
@@ -22,19 +22,19 @@
             <div 
               v-for="contact in contactInfo" 
               :key="contact.title"
-              class="card group hover:border-primary/20 border border-transparent transition-all duration-300"
+              class="card group hover:border-primary/20 dark:hover:border-cyan-500/40 border border-transparent dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300"
             >
               <div class="flex items-start space-x-4">
                 <div class="flex-shrink-0">
-                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <component :is="contact.icon" class="w-6 h-6 text-primary" />
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-cyan-500/20 dark:to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <component :is="contact.icon" class="w-6 h-6 text-primary dark:text-cyan-400" />
                   </div>
                 </div>
                 <div class="flex-1">
-                  <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">
+                  <h3 class="font-heading font-semibold text-lg text-gray-900 dark:text-white mb-2">
                     {{ contact.title }}
                   </h3>
-                  <p class="text-gray-600 mb-3">
+                  <p class="text-gray-600 dark:text-gray-300 mb-3">
                     {{ contact.description }}
                   </p>
                   <a 
@@ -42,14 +42,14 @@
                     :href="contact.link" 
                     :target="contact.external ? '_blank' : '_self'"
                     :rel="contact.external ? 'noopener noreferrer' : ''"
-                    class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors duration-300"
+                    class="inline-flex items-center text-primary dark:text-cyan-400 font-medium hover:text-secondary dark:hover:text-cyan-300 transition-colors duration-300"
                   >
                     {{ contact.linkText }}
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
-                  <p v-else class="text-primary font-medium">
+                  <p v-else class="text-primary dark:text-cyan-400 font-medium">
                     {{ contact.value }}
                   </p>
                 </div>
@@ -58,7 +58,7 @@
           </div>
 
           <!-- WhatsApp CTA -->
-          <div class="p-8 rounded-2xl bg-gradient-to-br from-[#25D366]/10 to-[#25D366]/5 border border-[#25D366]/20">
+          <div class="p-8 rounded-2xl bg-gradient-to-br from-[#25D366]/10 to-[#25D366]/5 dark:from-[#25D366]/20 dark:to-[#25D366]/10 border border-[#25D366]/20 dark:border-[#25D366]/30">
             <div class="flex items-start space-x-4">
               <div class="flex-shrink-0">
                 <div class="w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center">
@@ -68,10 +68,10 @@
                 </div>
               </div>
               <div class="flex-1">
-                <h3 class="font-heading font-semibold text-xl text-gray-900 mb-2">
+                <h3 class="font-heading font-semibold text-xl text-gray-900 dark:text-white mb-2">
                   {{ $t('contact.whatsapp.title') }}
                 </h3>
-                <p class="text-gray-600 mb-4">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
                   {{ $t('contact.whatsapp.description') }}
                 </p>
                 <a 
@@ -89,19 +89,8 @@
             </div>
           </div>
 
-          <!-- Map placeholder -->
-          <!-- <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 flex items-center justify-center">
-            <div class="text-center text-gray-400">
-              <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <p class="text-sm">Área de Cobertura Nacional</p>
-            </div>
-          </div> -->
           <!-- Coverage Map (embedded) -->
-          <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 relative">
-            <!-- Using Google Maps embed centered on Bogotá, Colombia (lat: 4.7110, lng: -74.0721) -->
+          <div class="rounded-2xl overflow-hidden shadow-medium h-64 bg-gray-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 relative">
             <iframe
               src="https://www.google.com/maps?q=7.8921750877067645, -67.46952135309213&z=13&output=embed"
               class="w-full h-full border-0"
@@ -111,15 +100,15 @@
               aria-label="Mapa mostrando ubicación en Apure, Venezuela"
             ></iframe>
 
-            <!-- Informative badge (visually indicates coverage area) -->
-            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center space-x-2 text-sm font-medium z-10">
-              <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- Informative badge -->
+            <div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 text-gray-900 dark:text-white border border-transparent dark:border-slate-700 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center space-x-2 text-sm font-medium z-10">
+              <svg class="w-4 h-4 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
               </svg>
               <span>{{ $t('contact.OurLocation') }}</span>
             </div>
 
-            <!-- Non-interactive visual marker centered over the map (pointer-events-none lets clicks reach the iframe) -->
+            <!-- Non-interactive visual marker centered over the map -->
             <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
               <svg class="w-8 h-8 text-red-500 drop-shadow-md" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" fill="currentColor"/>
@@ -131,14 +120,14 @@
 
         <!-- Quick Contact Form -->
         <div class="animate-fade-in-up animation-delay-200">
-          <div class="card">
-            <h3 class="font-heading font-semibold text-2xl text-gray-900 mb-6">
+          <div class="card bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800">
+            <h3 class="font-heading font-semibold text-2xl text-gray-900 dark:text-white mb-6">
               {{ $t('contact.form.title') }}
             </h3>
             
             <form @submit.prevent="handleSubmit" class="space-y-6">
               <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {{ $t('contact.form.name') }} *
                 </label>
                 <input 
@@ -146,13 +135,13 @@
                   v-model="form.name"
                   type="text" 
                   required
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
                   placeholder="Tu nombre"
                 />
               </div>
 
               <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {{ $t('contact.form.phone') }} *
                 </label>
                 <input 
@@ -160,19 +149,19 @@
                   v-model="form.phone"
                   type="tel" 
                   required
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
                   placeholder="+58 321-849-7687"
                 />
               </div>
 
               <div>
-                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">
+                <label for="service" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {{ $t('contact.form.service') }}
                 </label>
                 <select 
                   id="service"
                   v-model="form.service"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
                 >
                   <option value="">{{ $t('contact.form.servicePlaceholder') }}</option>
                   <option :value="$t('services.list[0].title')">{{ $t('services.list[0].title') }}</option>
@@ -183,7 +172,7 @@
               </div>
 
               <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {{ $t('contact.form.message') }} *
                 </label>
                 <textarea 
@@ -191,7 +180,7 @@
                   v-model="form.message"
                   required
                   rows="4"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Cuéntanos sobre tu proyecto..."
                 ></textarea>
               </div>
@@ -203,8 +192,15 @@
                 {{ $t('contact.form.submit') }}
               </button>
 
-              <p class="text-xs text-gray-500 text-center">
-                {{ $t('contact.form.policy') }}
+              <p class="text-xs text-gray-500 dark:text-gray-400 text-center leading-relaxed">
+                {{ $t('contact.form.policyPrefix') }}
+                <NuxtLink :to="localePath('/privacy')" class="text-primary dark:text-cyan-400 underline hover:text-primary-600 dark:hover:text-cyan-300 font-medium transition-colors">
+                  {{ $t('footer.privacyPolicy') }}
+                </NuxtLink>
+                {{ $t('contact.form.policyAnd') }}
+                <NuxtLink :to="localePath('/terms')" class="text-primary dark:text-cyan-400 underline hover:text-primary-600 dark:hover:text-cyan-300 font-medium transition-colors">
+                  {{ $t('footer.termsConditions') }}
+                </NuxtLink>.
               </p>
             </form>
           </div>
@@ -216,6 +212,8 @@
 
 <script setup lang="ts">
 import { ref, computed, h } from 'vue'
+
+const localePath = useLocalePath()
 
 const PhoneIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [
   h('path', { 

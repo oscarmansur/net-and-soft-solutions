@@ -47,6 +47,26 @@ useHead({
       content: 'https://netandsoft.com.ve/og-image.jpg'
     },
     {
+      property: 'og:image:secure_url',
+      content: 'https://netandsoft.com.ve/og-image.jpg'
+    },
+    {
+      property: 'og:image:width',
+      content: '1200'
+    },
+    {
+      property: 'og:image:height',
+      content: '630'
+    },
+    {
+      property: 'og:image:type',
+      content: 'image/jpeg'
+    },
+    {
+      property: 'og:image:alt',
+      content: 'Net & Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico'
+    },
+    {
       property: 'og:locale',
       content: 'es_VE'
     },

@@ -1,17 +1,17 @@
 <template>
-  <section id="nosotros" class="section bg-gradient-to-br from-gray-50 to-white" data-aos="fade-up">
+  <section id="about" class="section bg-gradient-to-br from-gray-50 to-white dark:from-slate-900/60 dark:to-slate-950 transition-colors duration-300" data-aos="fade-up">
     <div class="container-custom">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Content -->
         <div class="space-y-8" data-aos="fade-up">
           <div>
-            <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+            <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4">
               {{ $t('about.WhyChooseUs') }}
             </span>
-            <h2 class="font-heading font-bold text-gray-900 mb-6">
+            <h2 class="font-heading font-bold text-gray-900 dark:text-white mb-6">
               {{ $t('about.title').replace($t('about.titleHighlight'), '') }}<span class="text-gradient">{{ $t('about.titleHighlight') }}</span>{{ $t('about.title').includes($t('about.titleHighlight')) ? $t('about.title').substring($t('about.title').indexOf($t('about.titleHighlight')) + $t('about.titleHighlight').length) : '' }}
             </h2>
-            <p class="text-lg text-gray-600 leading-relaxed">
+            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               {{ $t('about.description') }}
             </p>
           </div>
@@ -21,20 +21,20 @@
             <div 
               v-for="(benefit, index) in benefits" 
               :key="benefit.title"
-              class="flex items-start space-x-4 p-4 rounded-xl hover:bg-white hover:shadow-soft transition-all duration-300"
+              class="flex items-start space-x-4 p-4 rounded-xl hover:bg-white dark:hover:bg-slate-900/90 hover:shadow-soft dark:hover:shadow-cyan-950/20 transition-all duration-300 border border-transparent dark:hover:border-slate-800"
               data-aos="fade-up"
               :data-aos-delay="100 + (index * 100)"
             >
               <div class="flex-shrink-0">
-                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                  <component :is="benefit.icon" class="w-6 h-6 text-primary" />
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-cyan-500/20 dark:to-blue-500/20 flex items-center justify-center">
+                  <component :is="benefit.icon" class="w-6 h-6 text-primary dark:text-cyan-400" />
                 </div>
               </div>
               <div>
-                <h3 class="font-heading font-semibold text-lg text-gray-900 mb-2">
+                <h3 class="font-heading font-semibold text-lg text-gray-900 dark:text-white mb-2">
                   {{ benefit.title }}
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-300">
                   {{ benefit.description }}
                 </p>
               </div>
@@ -43,13 +43,13 @@
 
           <!-- Stats -->
           <div class="grid grid-cols-2 gap-6 pt-8" data-aos="fade-up" data-aos-delay="300">
-            <div class="text-center p-6 rounded-xl bg-white shadow-soft">
+            <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
               <AnimatedCounter :target="5" suffix="+" class="text-3xl font-bold text-primary mb-2" />
-              <p class="text-gray-600 text-sm">{{ $t('about.stats.experience') }}</p>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.experience') }}</p>
             </div>
-            <div class="text-center p-6 rounded-xl bg-white shadow-soft">
+            <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
               <AnimatedCounter :target="100" suffix="%" class="text-3xl font-bold text-primary mb-2" />
-              <p class="text-gray-600 text-sm">{{ $t('about.stats.satisfaction') }}</p>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.satisfaction') }}</p>
             </div>
           </div>
         </div>
@@ -57,19 +57,19 @@
         <!-- Image/Visual -->
         <div class="relative" data-aos="fade-left" data-aos-delay="200">
           <!-- Main card -->
-          <div class="relative z-10 bg-white rounded-2xl shadow-large p-8">
+          <div class="relative z-10 bg-white dark:bg-slate-900 rounded-2xl shadow-large dark:shadow-slate-950/60 border border-transparent dark:border-slate-800 p-8">
             <div class="space-y-6">
               <!-- Mission -->
               <div class="space-y-3">
                 <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 rounded-lg bg-primary/10 dark:bg-cyan-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.mission.title') }}</h4>
+                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.mission.title') }}</h4>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed pl-13">
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed pl-13">
                   {{ $t('about.mission.description') }}
                 </p>
               </div>
@@ -77,15 +77,15 @@
               <!-- Vision -->
               <div class="space-y-3">
                 <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 rounded-lg bg-secondary/10 dark:bg-blue-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-secondary dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                       <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.vision.title') }}</h4>
+                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.vision.title') }}</h4>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed pl-13">
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed pl-13">
                   {{ $t('about.vision.description') }}
                 </p>
               </div>
@@ -93,16 +93,16 @@
               <!-- Values -->
               <div class="space-y-3">
                 <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 rounded-lg bg-accent/20 dark:bg-cyan-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900">{{ $t('about.values.title') }}</h4>
+                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.values.title') }}</h4>
                 </div>
                 <div class="grid grid-cols-2 gap-2 pl-13">
-                  <span v-for="value in values" :key="value" class="text-gray-600 text-sm flex items-center">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary mr-2"></span>
+                  <span v-for="value in values" :key="value" class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary dark:bg-cyan-400 mr-2"></span>
                     {{ value }}
                   </span>
                 </div>
@@ -111,18 +111,18 @@
           </div>
 
           <!-- Decorative elements -->
-          <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
-          <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-secondary/5 rounded-full blur-3xl"></div>
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 dark:bg-cyan-500/10 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-secondary/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
       </div>
 
       <!-- Certifications/Trust Badges -->
       <div class="mt-20" data-aos="fade-up" data-aos-delay="300">
         <div class="text-center mb-12">
-          <span class="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
+          <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-3">
             {{ $t('about.certifications') }}
           </span>
-          <h3 class="font-heading font-bold text-2xl text-gray-900">
+          <h3 class="font-heading font-bold text-2xl text-gray-900 dark:text-white">
             Certificaciones y <span class="text-gradient">Reconocimientos</span>
           </h3>
         </div>
@@ -131,17 +131,17 @@
           <div 
             v-for="(cert, index) in certifications" 
             :key="cert.name"
-            class="group relative bg-white rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-300 hover:-translate-y-2"
+            class="group relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800 hover:shadow-large dark:hover:shadow-cyan-950/20 hover:border-transparent dark:hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-2"
             data-aos="fade-up"
             :data-aos-delay="100 + (index * 100)"
           >
             <!-- Glow effect on hover -->
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-cyan-500/10 dark:to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             
             <!-- Content -->
             <div class="relative z-10 flex flex-col items-center text-center space-y-4">
-              <!-- Logo -->
-              <div class="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <!-- Logo with protective clean backdrop for dark mode visibility -->
+              <div class="w-20 h-20 p-2 rounded-xl bg-white/90 dark:bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-none">
                 <img 
                   :src="cert.logo" 
                   :alt="cert.name"
@@ -150,12 +150,12 @@
               </div>
               
               <!-- Name -->
-              <h4 class="font-heading font-semibold text-gray-900 text-sm leading-tight">
+              <h4 class="font-heading font-semibold text-gray-900 dark:text-white text-sm leading-tight">
                 {{ cert.name }}
               </h4>
               
               <!-- Badge/Label -->
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 dark:bg-cyan-500/20 text-primary dark:text-cyan-400">
                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>

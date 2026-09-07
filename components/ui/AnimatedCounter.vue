@@ -1,5 +1,5 @@
 <template>
-  <div class="text-4xl font-bold text-primary">
+  <div class="text-4xl font-bold text-primary dark:text-cyan-400 transition-colors duration-300">
     <span v-if="prefix" class="mr-1">{{ prefix }}</span>
     <span ref="counterElement">{{ initialValue }}</span>
     <span v-if="suffix">{{ suffix }}</span>
