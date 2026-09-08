@@ -163,7 +163,7 @@ const props = defineProps<{
   isErrorPage?: boolean
 }>()
 
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
 const router = useRouter()
 
@@ -174,8 +174,13 @@ interface SuggestedServiceItem {
 }
 
 const suggestedServices = computed<SuggestedServiceItem[]>(() => {
-  const raw = t('notFound.services', { returnObjects: true })
-  return Array.isArray(raw) ? raw : []
+  const raw = tm('notFound.services') as any[]
+  if (!Array.isArray(raw)) return []
+  return raw.map((service: any) => ({
+    title: typeof service.title === 'string' ? service.title : rt(service.title),
+    desc: typeof service.desc === 'string' ? service.desc : rt(service.desc),
+    href: typeof service.href === 'string' ? service.href : rt(service.href)
+  }))
 })
 
 const whatsappUrl = computed(() => {

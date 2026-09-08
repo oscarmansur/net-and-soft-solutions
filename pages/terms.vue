@@ -109,12 +109,23 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
 
-const termsSections = computed(() => {
-  const raw = t('legal.terms.sections', { returnObjects: true })
-  return Array.isArray(raw) ? raw : []
+interface TermsSectionItem {
+  number: string
+  title: string
+  content: string
+}
+
+const termsSections = computed<TermsSectionItem[]>(() => {
+  const raw = tm('legal.terms.sections') as any[]
+  if (!Array.isArray(raw)) return []
+  return raw.map((section: any) => ({
+    number: typeof section.number === 'string' ? section.number : rt(section.number),
+    title: typeof section.title === 'string' ? section.title : rt(section.title),
+    content: typeof section.content === 'string' ? section.content : rt(section.content)
+  }))
 })
 
 useHead({
