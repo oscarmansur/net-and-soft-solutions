@@ -16,35 +16,31 @@
         </nav>
 
         <!-- Hero Header -->
-        <header class="relative rounded-3xl p-8 sm:p-12 mb-10 overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent dark:from-cyan-950/30 dark:via-slate-900 dark:to-slate-950 border border-primary/20 dark:border-cyan-500/20 shadow-sm">
-          <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/15 dark:bg-cyan-500/20 text-primary dark:text-cyan-300 mb-5 border border-primary/20 dark:border-cyan-500/30">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-              </svg>
+        <header class="relative rounded-3xl p-8 sm:p-12 mb-10 overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent dark:from-cyan-950/30 dark:via-slate-900 dark:to-slate-950 border border-slate-200/80 dark:border-white/10 shadow-lg specular-rim">
+          <div class="max-w-3xl relative z-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary/15 dark:bg-cyan-500/20 text-primary dark:text-cyan-300 mb-5 border border-primary/20 dark:border-cyan-500/30 shadow-sm backdrop-blur-md">
+              <QueueListIcon class="w-4 h-4" />
               <span>{{ $t('sitemapPage.badge') }}</span>
             </div>
 
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-gray-900 dark:text-white tracking-tight mb-4 text-balance">
               {{ $t('sitemapPage.title') }}
             </h1>
 
-            <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-normal">
               {{ $t('sitemapPage.subtitle') }}
             </p>
 
-            <div class="inline-flex flex-wrap items-center gap-3 text-xs font-medium text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/80 px-4 py-2 rounded-xl border border-gray-200 dark:border-slate-800 shadow-sm">
+            <div class="inline-flex flex-wrap items-center gap-3 text-xs font-semibold text-gray-600 dark:text-gray-300 bg-white/90 dark:bg-slate-900/90 px-4 py-2 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm backdrop-blur-md">
               <span>{{ $t('sitemapPage.xmlNotice') }}</span>
               <a
                 href="/sitemap.xml"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-primary dark:text-cyan-400 hover:underline font-semibold"
+                class="inline-flex items-center gap-1.5 text-primary dark:text-cyan-400 hover:underline font-bold"
               >
                 <span>{{ $t('sitemapPage.xmlLink') }}</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+                <ArrowTopRightOnSquareIcon class="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
@@ -53,19 +49,17 @@
         <!-- Sitemap Categories Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <!-- Category 1: Main Pages -->
-          <div class="card p-6 sm:p-8 bg-white dark:bg-slate-900 border border-gray-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl flex flex-col justify-between">
+          <div class="p-6 sm:p-8 bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-cyan-950/20 hover:border-primary/30 dark:hover:border-cyan-500/30 transition-all duration-300 rounded-2xl flex flex-col justify-between specular-rim backdrop-blur-xl">
             <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-cyan-950/40 text-blue-600 dark:text-cyan-400 flex items-center justify-center shadow-sm">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-cyan-950/40 text-blue-600 dark:text-cyan-400 border border-blue-200/60 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                  <HomeIcon class="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white">
+                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white tracking-tight">
                     {{ $t('sitemapPage.categories.main.title') }}
                   </h2>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-normal">
                     {{ $t('sitemapPage.categories.main.description') }}
                   </p>
                 </div>
@@ -81,11 +75,11 @@
                       <span class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors">
                         {{ link.name }}
                       </span>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-normal">
                         {{ link.desc }}
                       </p>
                     </div>
-                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5">
+                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform duration-200">
                       {{ link.path }} &rarr;
                     </span>
                   </NuxtLink>
@@ -95,19 +89,17 @@
           </div>
 
           <!-- Category 2: Specialized Services -->
-          <div class="card p-6 sm:p-8 bg-white dark:bg-slate-900 border border-gray-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl flex flex-col justify-between">
+          <div class="p-6 sm:p-8 bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-cyan-950/20 hover:border-primary/30 dark:hover:border-cyan-500/30 transition-all duration-300 rounded-2xl flex flex-col justify-between specular-rim backdrop-blur-xl">
             <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shadow-sm">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-500/30 flex items-center justify-center shadow-sm">
+                  <CodeBracketIcon class="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white">
+                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white tracking-tight">
                     {{ $t('sitemapPage.categories.services.title') }}
                   </h2>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-normal">
                     {{ $t('sitemapPage.categories.services.description') }}
                   </p>
                 </div>
@@ -123,11 +115,11 @@
                       <span class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors">
                         {{ link.name }}
                       </span>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-normal">
                         {{ link.desc }}
                       </p>
                     </div>
-                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5">
+                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform duration-200">
                       {{ link.path }} &rarr;
                     </span>
                   </NuxtLink>
@@ -137,19 +129,17 @@
           </div>
 
           <!-- Category 3: Legal & Policies -->
-          <div class="card p-6 sm:p-8 bg-white dark:bg-slate-900 border border-gray-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl flex flex-col justify-between">
+          <div class="p-6 sm:p-8 bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-cyan-950/20 hover:border-primary/30 dark:hover:border-cyan-500/30 transition-all duration-300 rounded-2xl flex flex-col justify-between specular-rim backdrop-blur-xl">
             <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-sm">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-500/30 flex items-center justify-center shadow-sm">
+                  <ShieldCheckIcon class="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white">
+                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white tracking-tight">
                     {{ $t('sitemapPage.categories.legal.title') }}
                   </h2>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-normal">
                     {{ $t('sitemapPage.categories.legal.description') }}
                   </p>
                 </div>
@@ -165,11 +155,11 @@
                       <span class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors">
                         {{ link.name }}
                       </span>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-normal">
                         {{ link.desc }}
                       </p>
                     </div>
-                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5">
+                    <span class="text-xs text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 font-mono flex-shrink-0 mt-0.5 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform duration-200">
                       {{ link.path }} &rarr;
                     </span>
                   </NuxtLink>
@@ -179,19 +169,17 @@
           </div>
 
           <!-- Category 4: Direct Channels & Assistance -->
-          <div class="card p-6 sm:p-8 bg-white dark:bg-slate-900 border border-gray-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl flex flex-col justify-between">
+          <div class="p-6 sm:p-8 bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:shadow-cyan-950/20 hover:border-primary/30 dark:hover:border-cyan-500/30 transition-all duration-300 rounded-2xl flex flex-col justify-between specular-rim backdrop-blur-xl">
             <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shadow-sm">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-11 h-11 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-500/30 flex items-center justify-center shadow-sm">
+                  <ChatBubbleLeftRightIcon class="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white">
+                  <h2 class="text-xl font-heading font-bold text-gray-900 dark:text-white tracking-tight">
                     {{ $t('sitemapPage.categories.contact.title') }}
                   </h2>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-normal">
                     {{ $t('sitemapPage.categories.contact.description') }}
                   </p>
                 </div>
@@ -209,13 +197,11 @@
                       <span class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors">
                         {{ link.name }}
                       </span>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-normal">
                         {{ link.desc }}
                       </p>
                     </div>
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
+                    <ArrowTopRightOnSquareIcon class="w-4 h-4 text-gray-400 group-hover:text-primary dark:group-hover:text-cyan-400 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                   </a>
                 </li>
               </ul>
@@ -224,12 +210,12 @@
         </div>
 
         <!-- Help & Support Call to Action -->
-        <div class="rounded-2xl p-8 sm:p-10 bg-gradient-to-r from-primary to-primary-700 dark:from-slate-900 dark:to-slate-800 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10 dark:border-slate-700">
+        <div class="mt-14 rounded-3xl p-8 sm:p-10 bg-gradient-to-r from-primary via-primary-700 to-secondary-800 dark:from-slate-900 dark:via-slate-850 dark:to-slate-900 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10 specular-rim">
           <div class="max-w-xl text-center sm:text-left">
-            <h3 class="text-xl sm:text-2xl font-heading font-bold mb-2 text-white">
+            <h3 class="text-xl sm:text-2xl font-heading font-extrabold mb-2 text-white">
               {{ $t('legal.common.needHelp') }}
             </h3>
-            <p class="text-white/80 text-sm leading-relaxed">
+            <p class="text-white/80 text-sm leading-relaxed font-normal">
               {{ $t('legal.common.needHelpDesc') }}
             </p>
           </div>
@@ -237,13 +223,13 @@
           <div class="flex flex-wrap items-center gap-3">
             <NuxtLink
               :to="localePath('/#contact')"
-              class="px-5 py-3 rounded-xl bg-white text-primary hover:bg-gray-100 font-semibold text-sm transition-all duration-300 shadow-md"
+              class="btn btn-primary h-12 px-5 text-sm shadow-md"
             >
               {{ $t('legal.common.contactUs') }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/')"
-              class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all duration-300 border border-white/20"
+              class="h-12 inline-flex items-center px-5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all duration-200 border border-white/20"
             >
               {{ $t('legal.common.backToHome') }}
             </NuxtLink>
@@ -259,6 +245,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import {
+  QueueListIcon,
+  ArrowTopRightOnSquareIcon,
+  HomeIcon,
+  CodeBracketIcon,
+  ShieldCheckIcon,
+  ChatBubbleLeftRightIcon
+} from '@heroicons/vue/24/outline'
 
 const { t } = useI18n()
 const localePath = useLocalePath()

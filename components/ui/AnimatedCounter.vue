@@ -1,8 +1,8 @@
 <template>
-  <div :class="[sizeClass || 'text-4xl sm:text-5xl', 'font-bold text-primary dark:text-cyan-400 transition-colors duration-300']">
-    <span v-if="prefix" class="mr-1">{{ prefix }}</span>
+  <div :class="[sizeClass || 'text-4xl sm:text-5xl', 'font-heading font-extrabold tracking-tight tabular-nums inline-flex items-baseline text-primary dark:text-cyan-400 transition-colors duration-300']">
+    <span v-if="prefix" class="mr-0.5 select-none opacity-90">{{ prefix }}</span>
     <span ref="counterElement">{{ initialValue }}</span>
-    <span v-if="suffix">{{ suffix }}</span>
+    <span v-if="suffix" class="ml-0.5 select-none opacity-90">{{ suffix }}</span>
   </div>
 </template>
 

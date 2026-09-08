@@ -15,6 +15,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "@intlify/unplugin-vue-i18n": "^11.0.1",
     "@nuxtjs/i18n": "^10.1.0",
     "@pinia/nuxt": "^1.0.2",

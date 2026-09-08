@@ -1,125 +1,124 @@
 <template>
-  <section id="about" class="section bg-gradient-to-br from-gray-50 to-white dark:from-slate-900/60 dark:to-slate-950 transition-colors duration-300" data-aos="fade-up">
-    <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+  <section id="about" class="section bg-gradient-to-b from-white via-slate-50/70 to-white dark:from-slate-950 dark:via-slate-900/60 dark:to-slate-950 transition-colors duration-300" data-aos="fade-up">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="container-custom relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Content -->
         <div class="space-y-8" data-aos="fade-up">
           <div>
-            <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 px-3 py-1 rounded-full bg-primary/10 dark:bg-cyan-500/10 border border-primary/20 dark:border-cyan-500/20">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-primary/10 dark:bg-cyan-500/10 text-primary dark:text-cyan-400 border border-primary/20 dark:border-cyan-500/30 mb-4 shadow-sm backdrop-blur-md">
               {{ $t('about.WhyChooseUs') }}
             </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 text-balance leading-tight">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white mb-5 text-balance leading-tight">
               {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
             </h2>
-            <p class="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
+            <p class="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl font-normal">
               {{ $t('about.description') }}
             </p>
           </div>
 
-          <!-- Benefits -->
-          <div class="space-y-6">
+          <!-- Benefits (Luxury Micro-Cards) -->
+          <div class="space-y-3.5">
             <div 
               v-for="(benefit, index) in benefits" 
               :key="benefit.title"
-              class="flex items-start space-x-4 p-4 rounded-xl hover:bg-white dark:hover:bg-slate-900/90 hover:shadow-soft dark:hover:shadow-cyan-950/20 transition-all duration-300 border border-transparent dark:hover:border-slate-800"
+              class="flex items-start space-x-4 p-4 rounded-2xl bg-white/80 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 border border-slate-200/80 dark:border-white/[0.06] hover:border-primary/30 dark:hover:border-cyan-500/30 hover:shadow-md hover:translate-x-1.5 transition-all duration-300 ease-out group"
               data-aos="fade-up"
               :data-aos-delay="100 + (index * 100)"
             >
               <div class="flex-shrink-0">
-                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-cyan-500/20 dark:to-blue-500/20 flex items-center justify-center">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/15 dark:from-cyan-500/20 dark:to-blue-500/20 border border-primary/20 dark:border-cyan-500/30 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
                   <component :is="benefit.icon" class="w-6 h-6 text-primary dark:text-cyan-400" />
                 </div>
               </div>
               <div>
-                <h3 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white mb-2">
+                <h3 class="font-heading font-bold text-base sm:text-lg text-gray-900 dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors">
                   {{ benefit.title }}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                   {{ benefit.description }}
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-2 gap-6 pt-8" data-aos="fade-up" data-aos-delay="300">
-            <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
-              <AnimatedCounter :target="5" suffix="+" size-class="text-3xl sm:text-4xl" class="mb-2" />
-              <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.experience') }}</p>
+          <!-- Symmetrical Stats Cards -->
+          <div class="grid grid-cols-2 gap-4 pt-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-slate-200/80 dark:border-white/[0.08] specular-rim">
+              <AnimatedCounter :target="5" suffix="+" size-class="text-3xl sm:text-4xl" class="mb-1" />
+              <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{{ $t('about.stats.experience') }}</p>
             </div>
-            <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
-              <AnimatedCounter :target="100" suffix="%" size-class="text-3xl sm:text-4xl" class="mb-2" />
-              <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.satisfaction') }}</p>
+            <div class="text-center p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-slate-200/80 dark:border-white/[0.08] specular-rim">
+              <AnimatedCounter :target="100" suffix="%" size-class="text-3xl sm:text-4xl" class="mb-1" />
+              <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{{ $t('about.stats.satisfaction') }}</p>
             </div>
           </div>
         </div>
 
-        <!-- Image/Visual -->
+        <!-- Right Side: Mission, Vision, Values Command Center Card -->
         <div class="relative" data-aos="fade-left" data-aos-delay="200">
-          <!-- Main card -->
-          <div class="relative z-10 bg-white dark:bg-slate-900 rounded-2xl shadow-large dark:shadow-slate-950/60 border border-transparent dark:border-slate-800 p-8">
-            <div class="space-y-6">
+          <div class="relative z-10 bg-white/90 dark:bg-slate-900/90 rounded-3xl shadow-2xl dark:shadow-black/70 border border-slate-200/80 dark:border-white/[0.08] p-8 sm:p-10 backdrop-blur-2xl specular-rim">
+            <div class="space-y-8 divide-y divide-slate-100 dark:divide-slate-800/80">
               <!-- Mission -->
               <div class="space-y-3">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 dark:bg-cyan-500/20 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
+                <div class="flex items-center space-x-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-primary/10 dark:bg-cyan-500/20 border border-primary/20 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                    <RocketLaunchIcon class="w-5 h-5 text-primary dark:text-cyan-400" />
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.mission.title') }}</h4>
+                  <h4 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white">{{ $t('about.mission.title') }}</h4>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed pl-13">
+                <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed pl-1">
                   {{ $t('about.mission.description') }}
                 </p>
               </div>
 
               <!-- Vision -->
-              <div class="space-y-3">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-secondary/10 dark:bg-blue-500/20 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-secondary dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                    </svg>
+              <div class="space-y-3 pt-6">
+                <div class="flex items-center space-x-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-primary/10 dark:bg-cyan-500/20 border border-primary/20 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                    <EyeIcon class="w-5 h-5 text-primary dark:text-cyan-400" />
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.vision.title') }}</h4>
+                  <h4 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white">{{ $t('about.vision.title') }}</h4>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed pl-13">
+                <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed pl-1">
                   {{ $t('about.vision.description') }}
                 </p>
               </div>
 
-              <!-- Values -->
-              <div class="space-y-3">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-accent/20 dark:bg-cyan-500/20 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-primary dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                    </svg>
+              <!-- Values (Interactive Pill Grid) -->
+              <div class="space-y-3 pt-6">
+                <div class="flex items-center space-x-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-primary/10 dark:bg-cyan-500/20 border border-primary/20 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                    <SparklesIcon class="w-5 h-5 text-primary dark:text-cyan-400" />
                   </div>
-                  <h4 class="font-heading font-semibold text-gray-900 dark:text-white">{{ $t('about.values.title') }}</h4>
+                  <h4 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white">{{ $t('about.values.title') }}</h4>
                 </div>
-                <div class="grid grid-cols-2 gap-2 pl-13">
-                  <span v-for="value in values" :key="value" class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary dark:bg-cyan-400 mr-2"></span>
-                    {{ value }}
-                  </span>
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                  <div 
+                    v-for="value in values" 
+                    :key="value" 
+                    class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-200 transition-colors"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-primary dark:bg-cyan-400 flex-shrink-0"></span>
+                    <span class="truncate">{{ value }}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Decorative elements -->
-          <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 dark:bg-cyan-500/10 rounded-full blur-3xl"></div>
-          <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-secondary/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+          <!-- Decorative ambient glows behind card -->
+          <div class="absolute -top-8 -left-8 w-40 h-40 bg-primary/10 dark:bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/10 dark:bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
         </div>
       </div>
 
-      <!-- Certifications/Trust Badges -->
-      <div class="mt-20" data-aos="fade-up" data-aos-delay="300">
-        <div class="text-center mb-12">
-          <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 px-3 py-1 rounded-full bg-primary/10 dark:bg-cyan-500/10 border border-primary/20 dark:border-cyan-500/20">
+      <!-- Certifications/Trust Badges (Equal-height Symmetric Grid) -->
+      <div class="mt-24" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-center mb-14">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-primary/10 dark:bg-cyan-500/10 text-primary dark:text-cyan-400 border border-primary/20 dark:border-cyan-500/30 mb-4 shadow-sm backdrop-blur-md">
             {{ $t('about.certifications') }}
           </span>
           <h3 class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white text-balance">
@@ -127,45 +126,37 @@
           </h3>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-stretch">
           <div 
             v-for="(cert, index) in certifications" 
             :key="cert.name"
-            class="group relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800 hover:shadow-large dark:hover:shadow-cyan-950/20 hover:border-transparent dark:hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-2"
+            class="group relative bg-white dark:bg-slate-900 rounded-2xl p-7 shadow-soft dark:shadow-none border border-slate-200/80 dark:border-white/[0.08] hover:shadow-2xl dark:hover:shadow-cyan-950/30 hover:border-primary/30 dark:hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center specular-rim h-full"
             data-aos="fade-up"
             :data-aos-delay="100 + (index * 100)"
           >
-            <!-- Glow effect on hover -->
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-cyan-500/10 dark:to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <!-- Content -->
-            <div class="relative z-10 flex flex-col items-center text-center space-y-4">
-              <!-- Logo with protective clean backdrop for dark mode visibility -->
-              <div class="w-20 h-20 p-2 rounded-xl bg-white/90 dark:bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-none">
-                <img 
-                  :src="cert.logo" 
-                  :alt="cert.name"
-                  width="64"
-                  height="64"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-contain"
-                />
-              </div>
-              
-              <!-- Name -->
-              <h4 class="font-heading font-semibold text-gray-900 dark:text-white text-sm leading-tight">
-                {{ cert.name }}
-              </h4>
-              
-              <!-- Badge/Label -->
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 dark:bg-cyan-500/20 text-primary dark:text-cyan-400">
-                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                {{ cert.label }}
-              </span>
+            <!-- Logo with protective clean backdrop for dark mode visibility -->
+            <div class="w-20 h-20 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 mb-4">
+              <img 
+                :src="cert.logo" 
+                :alt="cert.name"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-contain"
+              />
             </div>
+            
+            <!-- Name -->
+            <h4 class="font-heading font-bold text-gray-900 dark:text-white text-sm leading-snug mb-3 flex-1 flex items-center">
+              {{ cert.name }}
+            </h4>
+            
+            <!-- Badge/Label -->
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 dark:bg-cyan-500/15 text-primary dark:text-cyan-400 border border-primary/20 dark:border-cyan-500/30">
+              <CheckBadgeIcon class="w-3.5 h-3.5 mr-1.5 text-primary dark:text-cyan-400" />
+              {{ cert.label }}
+            </span>
           </div>
         </div>
       </div>
@@ -174,7 +165,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h } from 'vue'
+import { computed } from 'vue'
+import {
+  RocketLaunchIcon,
+  EyeIcon,
+  SparklesIcon,
+  ShieldCheckIcon,
+  ClockIcon,
+  UserGroupIcon,
+  StarIcon
+} from '@heroicons/vue/24/outline'
+import { CheckBadgeIcon } from '@heroicons/vue/20/solid'
 import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
 
 const { t } = useI18n()
@@ -198,35 +199,11 @@ const titleAfter = computed(() => {
   return idx === -1 ? '' : full.substring(idx + h.length)
 })
 
-const ShieldIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { 
-    'fill-rule': 'evenodd',
-    d: 'M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z',
-    'clip-rule': 'evenodd'
-  })
-])
-
-const ClockIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { 
-    'fill-rule': 'evenodd',
-    d: 'M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z',
-    'clip-rule': 'evenodd'
-  })
-])
-
-const UserGroupIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { d: 'M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z' })
-])
-
-const StarIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { d: 'M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' })
-])
-
 const benefits = computed(() => [
   {
     title: t('about.benefits[0].title'),
     description: t('about.benefits[0].description'),
-    icon: ShieldIcon
+    icon: ShieldCheckIcon
   },
   {
     title: t('about.benefits[1].title'),

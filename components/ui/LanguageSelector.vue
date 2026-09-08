@@ -9,12 +9,12 @@
     <button
       type="button"
       @click="toggleDropdown"
-      class="inline-flex items-center justify-between gap-2 px-3 py-2 rounded-xl border text-xs font-semibold tracking-wide transition-all duration-300 focus:outline-none select-none"
+      class="inline-flex items-center justify-between gap-2.5 px-3 rounded-xl border text-xs font-semibold tracking-wide transition-all duration-200 ease-out focus:outline-none select-none cursor-pointer active:scale-[0.98]"
       :class="[
         fullWidth ? 'w-full justify-between py-2.5 px-4 text-sm' : 'h-10',
         isOpen
-          ? 'border-primary dark:border-cyan-500 ring-2 ring-primary/20 dark:ring-cyan-500/20 bg-primary/5 dark:bg-cyan-950/30 text-primary dark:text-cyan-400 shadow-sm'
-          : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 text-gray-700 dark:text-gray-200 hover:border-gray-300 dark:hover:border-slate-600 hover:text-primary dark:hover:text-cyan-400 shadow-sm hover:shadow'
+          ? 'border-primary dark:border-cyan-400 ring-2 ring-primary/20 dark:ring-cyan-500/20 bg-primary/5 dark:bg-cyan-950/40 text-primary dark:text-cyan-300 shadow-sm'
+          : 'border-slate-200/80 dark:border-white/10 bg-white/90 dark:bg-slate-900/80 text-gray-700 dark:text-gray-200 hover:border-primary/30 dark:hover:border-cyan-500/40 hover:text-primary dark:hover:text-cyan-400 shadow-sm hover:shadow'
       ]"
       role="combobox"
       aria-haspopup="listbox"
@@ -23,7 +23,7 @@
     >
       <div class="flex items-center gap-2">
         <!-- Current Flag -->
-        <div class="w-5 h-3.5 rounded-[3px] overflow-hidden shadow-sm flex-shrink-0 border border-black/10 flex items-center justify-center">
+        <div class="w-5 h-3.5 rounded-[3px] overflow-hidden shadow-sm flex-shrink-0 border border-black/10 dark:border-white/10">
           <svg v-if="currentLanguage.code === 'es'" class="w-full h-full object-cover" viewBox="0 0 640 480">
             <rect width="640" height="480" fill="#c60b1e" />
             <rect width="640" height="240" y="120" fill="#ffc400" />
@@ -58,15 +58,10 @@
       </div>
 
       <!-- Dropdown Chevron Icon -->
-      <svg
-        class="w-3.5 h-3.5 transition-transform duration-300 text-gray-400 group-hover:text-primary dark:text-gray-400"
+      <ChevronDownIcon
+        class="w-3.5 h-3.5 transition-transform duration-300 text-gray-400 group-hover:text-primary dark:text-gray-400 stroke-[2.5]"
         :class="{ 'rotate-180 text-primary dark:text-cyan-400': isOpen }"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-      </svg>
+      />
     </button>
 
     <!-- Dropdown Menu -->
@@ -80,10 +75,10 @@
     >
       <div
         v-show="isOpen"
-        class="absolute mt-2 py-1.5 rounded-2xl border shadow-2xl backdrop-blur-xl z-50 focus:outline-none overflow-hidden"
+        class="absolute mt-2 py-2 rounded-2xl border shadow-2xl backdrop-blur-2xl z-50 focus:outline-none overflow-hidden specular-rim"
         :class="[
           fullWidth ? 'left-0 right-0 w-full' : 'right-0 w-52',
-          'bg-white/95 dark:bg-slate-900/95 border-gray-100 dark:border-slate-800 shadow-slate-900/10 dark:shadow-slate-950/80'
+          'bg-white/95 dark:bg-slate-900/95 border-slate-200/80 dark:border-white/10 shadow-slate-900/10 dark:shadow-black/70'
         ]"
         role="listbox"
         :aria-label="$t('header.languageSelector.ariaLabel')"
@@ -94,18 +89,18 @@
           :key="lang.code"
           type="button"
           @click="changeLanguage(lang.code)"
-          class="w-full flex items-center justify-between px-3.5 py-2.5 text-xs transition-colors duration-150 group/item select-none text-left"
+          class="w-[calc(100%-0.75rem)] mx-1.5 flex items-center justify-between px-3.5 py-2.5 text-xs rounded-xl transition-all duration-150 group/item select-none text-left cursor-pointer"
           :class="[
             locale === lang.code
-              ? 'bg-primary/10 dark:bg-cyan-500/15 text-primary dark:text-cyan-400 font-semibold'
-              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800/70 hover:text-gray-900 dark:hover:text-white'
+              ? 'bg-primary/10 dark:bg-cyan-500/15 text-primary dark:text-cyan-400 font-semibold shadow-sm'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/70 hover:text-gray-900 dark:hover:text-white'
           ]"
           role="option"
           :aria-selected="locale === lang.code"
         >
           <div class="flex items-center gap-3">
             <!-- Flag SVG -->
-            <div class="w-5 h-3.5 rounded-[3px] overflow-hidden shadow-sm flex-shrink-0 border border-black/10">
+            <div class="w-5 h-3.5 rounded-[3px] overflow-hidden shadow-sm flex-shrink-0 border border-black/10 dark:border-white/10">
               <svg v-if="lang.code === 'es'" class="w-full h-full object-cover" viewBox="0 0 640 480">
                 <rect width="640" height="480" fill="#c60b1e" />
                 <rect width="640" height="240" y="120" fill="#ffc400" />
@@ -142,9 +137,7 @@
 
           <!-- Active Checkmark Indicator -->
           <div v-if="locale === lang.code" class="text-primary dark:text-cyan-400 pl-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
+            <CheckIcon class="w-4 h-4 stroke-[2.5]" />
           </div>
         </button>
       </div>
@@ -154,6 +147,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ChevronDownIcon, CheckIcon } from '@heroicons/vue/24/outline'
 
 const props = withDefaults(
   defineProps<{

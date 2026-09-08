@@ -71,9 +71,12 @@ export default {
                 heading: ['Poppins', 'system-ui', 'sans-serif']
             },
             boxShadow: {
-                'soft': '0 2px 15px -3px rgba(2, 43, 58, 0.1), 0 10px 20px -2px rgba(2, 43, 58, 0.05)',
-                'medium': '0 4px 25px -5px rgba(2, 43, 58, 0.15), 0 10px 30px -5px rgba(2, 43, 58, 0.1)',
-                'large': '0 10px 40px -10px rgba(2, 43, 58, 0.2), 0 20px 50px -10px rgba(2, 43, 58, 0.15)'
+                'soft': '0 2px 15px -3px rgba(2, 43, 58, 0.06), 0 8px 20px -2px rgba(2, 43, 58, 0.03)',
+                'medium': '0 4px 25px -5px rgba(2, 43, 58, 0.1), 0 10px 30px -5px rgba(2, 43, 58, 0.06)',
+                'large': '0 10px 40px -10px rgba(2, 43, 58, 0.16), 0 20px 50px -10px rgba(2, 43, 58, 0.12)',
+                'glow': '0 0 25px -5px rgba(31, 122, 140, 0.35)',
+                'glow-cyan': '0 0 30px -5px rgba(34, 211, 238, 0.35)',
+                'glow-primary': '0 0 30px -5px rgba(2, 43, 58, 0.4)'
             }
         }
     },

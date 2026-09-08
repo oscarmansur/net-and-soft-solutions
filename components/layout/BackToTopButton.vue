@@ -3,19 +3,22 @@
     <button
       v-if="isVisible"
       @click="scrollToTop"
-      class="fixed bottom-24 right-8 z-40 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-cyan-600 dark:to-primary-600 hover:from-primary-600 hover:to-primary-700 dark:hover:from-cyan-500 dark:hover:to-primary-500 text-white rounded-full shadow-glow dark:shadow-cyan-900/40 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+      class="fixed bottom-24 right-6 z-40 w-14 h-14 bg-gradient-to-r from-primary via-primary-600 to-secondary dark:from-cyan-600 dark:via-cyan-500 dark:to-blue-600 hover:shadow-xl hover:shadow-primary/30 dark:hover:shadow-cyan-500/30 text-white rounded-full border border-white/20 dark:border-white/15 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer group shadow-lg shadow-primary/20 dark:shadow-cyan-950/40"
       :aria-label="$t('backToTop.label')"
-      :title="$t('backToTop.tooltip')"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-      </svg>
+      <ArrowUpIcon class="w-5 h-5 transform transition-transform duration-300 group-hover:-translate-y-0.5 stroke-[2.5]" />
+
+      <!-- Tooltip -->
+      <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900/90 dark:bg-slate-800/90 backdrop-blur-md text-white border border-white/10 shadow-xl text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+        {{ $t('backToTop.tooltip') }}
+      </span>
     </button>
   </transition>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { ArrowUpIcon } from '@heroicons/vue/24/outline'
 
 const isVisible = ref(false)
 

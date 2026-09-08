@@ -1,30 +1,34 @@
 <template>
-  <section id="services" class="section bg-white dark:bg-slate-950 transition-colors duration-300" data-aos="fade-up">
-    <div class="container-custom">
+  <section id="services" class="section bg-slate-50/50 dark:bg-slate-950 transition-colors duration-300" data-aos="fade-up">
+    <!-- Ambient glow behind section -->
+    <div class="absolute top-1/3 left-0 w-80 h-80 bg-primary/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/3 right-0 w-80 h-80 bg-secondary/5 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="container-custom relative z-10">
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 px-3 py-1 rounded-full bg-primary/10 dark:bg-cyan-500/10 border border-primary/20 dark:border-cyan-500/20">
+      <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20" data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-primary/10 dark:bg-cyan-500/10 text-primary dark:text-cyan-400 border border-primary/20 dark:border-cyan-500/30 mb-4 shadow-sm backdrop-blur-md">
           {{ $t('services.badge') }}
         </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 text-balance leading-tight">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white mb-5 text-balance leading-tight">
           {{ $t('services.title') }} <span class="text-gradient">{{ $t('services.titleHighlight') }}</span> {{ $t('services.titleEnd') }}
         </h2>
-        <p class="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto font-normal">
           {{ $t('services.description') }}
         </p>
       </div>
 
-      <!-- Services Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Services Grid (Strict Height Symmetry) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
         <div 
           v-for="(service, index) in services" 
           :key="service.title"
-          class="card group hover:scale-105 cursor-pointer overflow-hidden p-0 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800/80 hover:border-primary/20 dark:hover:border-cyan-500/40 hover:shadow-xl dark:hover:shadow-cyan-950/30 transition-all duration-300"
+          class="group rounded-2xl overflow-hidden bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] hover:border-primary/40 dark:hover:border-cyan-500/40 shadow-sm hover:shadow-2xl dark:hover:shadow-cyan-950/30 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between specular-rim"
           data-aos="fade-up"
           :data-aos-delay="(index % 4) * 100">
           
-          <!-- Image Header -->
-          <div class="relative h-48 overflow-hidden">
+          <!-- Top: Image Header -->
+          <div class="relative h-48 sm:h-52 overflow-hidden flex-shrink-0">
             <img 
               :src="service.image" 
               :alt="service.title"
@@ -32,72 +36,72 @@
               height="225"
               loading="lazy"
               decoding="async"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent"></div>
             
-            <!-- Icon Overlay -->
-            <div class="absolute bottom-4 left-4">
-              <div class="w-14 h-14 rounded-xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 border border-transparent dark:border-slate-700">
-                <component :is="service.icon" class="w-7 h-7 text-primary dark:text-cyan-400" />
+            <!-- Icon Overlay Badge -->
+            <div class="absolute bottom-3.5 left-4">
+              <div class="w-12 h-12 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 border border-white/40 dark:border-white/10">
+                <component :is="service.icon" class="w-6 h-6 text-primary dark:text-cyan-400" />
               </div>
             </div>
           </div>
 
-          <!-- Content -->
-          <div class="p-6">
-            <h3 class="font-heading font-bold text-xl sm:text-2xl text-gray-900 dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors duration-300">
-              {{ service.title }}
-            </h3>
-            
-            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
-              {{ service.description }}
-            </p>
+          <!-- Bottom: Content with Flex Equalizer -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white mb-2.5 group-hover:text-primary dark:group-hover:text-cyan-400 transition-colors duration-200 leading-snug">
+                {{ service.title }}
+              </h3>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-5 leading-relaxed text-xs sm:text-sm">
+                {{ service.description }}
+              </p>
 
-            <!-- Features List -->
-            <ul class="space-y-2 mb-6">
-              <li 
-                v-for="feature in service.features" 
-                :key="feature"
-                class="flex items-start text-xs text-gray-700 dark:text-gray-300"
+              <!-- Features List -->
+              <ul class="space-y-2 mb-6">
+                <li 
+                  v-for="feature in service.features" 
+                  :key="feature"
+                  class="flex items-start text-xs text-gray-700 dark:text-gray-300 leading-tight"
+                >
+                  <CheckIcon class="w-4 h-4 text-secondary dark:text-cyan-400 mr-2 flex-shrink-0 mt-0.5 stroke-[2.5]" />
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Horizontally Levelled Bottom Action -->
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 mt-auto">
+              <a 
+                :href="getWhatsAppLink(service.title)" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center text-primary dark:text-cyan-400 font-semibold group-hover:text-secondary dark:group-hover:text-cyan-300 transition-colors duration-200 text-xs sm:text-sm gap-1.5"
               >
-                <svg class="w-4 h-4 text-accent dark:text-cyan-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>{{ feature }}</span>
-              </li>
-            </ul>
-
-            <!-- CTA -->
-            <a 
-              :href="getWhatsAppLink(service.title)" 
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center text-primary dark:text-cyan-400 font-medium group-hover:text-secondary dark:group-hover:text-cyan-300 transition-colors duration-300 text-sm"
-            >
-              {{$t('services.cta')}}
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+                <span>{{$t('services.cta')}}</span>
+                <ArrowRightIcon class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200 stroke-[2.5]" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Additional Info -->
-      <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-slate-900 dark:to-slate-850 border border-primary/10 dark:border-slate-800">
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-          <div class="space-y-2">
-            <AnimatedCounter :target="24" suffix="/7" />
-            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.support')}}</p>
+      <!-- Luxury Bento Stats Bar -->
+      <div class="mt-16 sm:mt-20 p-8 sm:p-10 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/[0.08] shadow-xl shadow-slate-900/5 dark:shadow-black/50 backdrop-blur-xl specular-rim">
+        <div class="grid md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800/80">
+          <div class="space-y-2 py-3 md:py-0">
+            <AnimatedCounter :target="24" suffix="/7" size-class="text-3xl sm:text-4xl lg:text-5xl" />
+            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{{$t('services.stats.support')}}</p>
           </div>
-          <div class="space-y-2">
-            <AnimatedCounter :target="100" prefix="+" />
-            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.projects')}}</p>
+          <div class="space-y-2 py-3 md:py-0">
+            <AnimatedCounter :target="100" prefix="+" size-class="text-3xl sm:text-4xl lg:text-5xl" />
+            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{{$t('services.stats.projects')}}</p>
           </div>
-          <div class="space-y-2">
-            <AnimatedCounter :target="100" suffix="%" />
-            <p class="text-gray-600 dark:text-gray-400">{{$t('services.stats.satisfaction')}}</p>
+          <div class="space-y-2 py-3 md:py-0">
+            <AnimatedCounter :target="100" suffix="%" size-class="text-3xl sm:text-4xl lg:text-5xl" />
+            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{{$t('services.stats.satisfaction')}}</p>
           </div>
         </div>
       </div>
@@ -106,45 +110,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h } from 'vue'
+import { computed } from 'vue'
+import {
+  CodeBracketIcon,
+  ServerStackIcon,
+  VideoCameraIcon,
+  WrenchScrewdriverIcon,
+  CheckIcon,
+  ArrowRightIcon
+} from '@heroicons/vue/24/outline'
 import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
 
 const { t } = useI18n()
-
-// Service icons as functional components
-const CodeIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { 
-    'fill-rule': 'evenodd',
-    d: 'M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z',
-    'clip-rule': 'evenodd'
-  })
-])
-
-const NetworkIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { d: 'M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z' })
-])
-
-const CameraIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { 
-    'fill-rule': 'evenodd',
-    d: 'M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z',
-    'clip-rule': 'evenodd'
-  })
-])
-
-const SupportIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
-  h('path', { 
-    'fill-rule': 'evenodd',
-    d: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z',
-    'clip-rule': 'evenodd'
-  })
-])
 
 const services = computed(() => [
   {
     title: t('services.list.0.title'),
     description: t('services.list.0.description'),
-    icon: CodeIcon,
+    icon: CodeBracketIcon,
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     features: [
       t('services.list.0.features.0'),
@@ -156,7 +139,7 @@ const services = computed(() => [
   {
     title: t('services.list.1.title'),
     description: t('services.list.1.description'),
-    icon: NetworkIcon,
+    icon: ServerStackIcon,
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80',
     features: [
       t('services.list.1.features.0'),
@@ -168,7 +151,7 @@ const services = computed(() => [
   {
     title: t('services.list.2.title'),
     description: t('services.list.2.description'),
-    icon: CameraIcon,
+    icon: VideoCameraIcon,
     image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80',
     features: [
       t('services.list.2.features.0'),
@@ -180,7 +163,7 @@ const services = computed(() => [
   {
     title: t('services.list.3.title'),
     description: t('services.list.3.description'),
-    icon: SupportIcon,
+    icon: WrenchScrewdriverIcon,
     image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80',
     features: [
       t('services.list.3.features.0'),
