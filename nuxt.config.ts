@@ -9,8 +9,21 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt'
+    'pinia-plugin-persistedstate/nuxt'
   ],
+
+  css: [
+    '~/assets/css/main.css',
+    'aos/dist/aos.css'
+  ],
+
+  typescript: {
+    strict: true
+  },
+
+  piniaPluginPersistedstate: {
+    storage: 'localStorage'
+  },
 
   runtimeConfig: {
     public: {
@@ -21,19 +34,23 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1'
-    }
-  },
-  vite: {
-    server: {
-      allowedHosts: ['better-kiwis-shine.loca.lt'],
+      viewport: 'width=device-width, initial-scale=1',
+      link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'manifest', href: '/site.webmanifest' }
+      ],
+      meta: [
+        { name: 'theme-color', content: '#022B3A', media: '(prefers-color-scheme: light)' },
+        { name: 'theme-color', content: '#020617', media: '(prefers-color-scheme: dark)' }
+      ]
     }
   },
   site: {
     url: 'https://netandsoft.com.ve',
     name: 'Net And Soft Solutions',
     description: 'Soluciones tecnológicas integrales en Venezuela. Desarrollo de software a medida, instalación y mantenimiento de redes, sistemas de videovigilancia CCTV y soporte técnico profesional 24/7.',
-    defaultLocale: 'En'
+    defaultLocale: 'en'
   },
 
   seo: {

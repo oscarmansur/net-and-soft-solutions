@@ -11,9 +11,9 @@
       class="absolute inset-0 z-2 pointer-events-none flex flex-col justify-center items-center p-4"
       style="background: radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.3) 100%);"
     >
-      <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2 tracking-wider brand-text text-center">
+      <p class="text-2xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-2 tracking-wider brand-text text-center">
         {{ displayTitle }}
-      </h1>
+      </p>
       <p class="text-cyan-300 text-xs md:text-sm lg:text-base tracking-[0.2em] uppercase font-light text-center">
         {{ displaySubtitle }}
       </p>
@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
@@ -304,7 +303,10 @@ function animate() {
     p.draw()
   })
 
-  animationId = requestAnimationFrame(animate)
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (!prefersReducedMotion) {
+    animationId = requestAnimationFrame(animate)
+  }
 }
 
 function handleMouseMove(e: MouseEvent) {

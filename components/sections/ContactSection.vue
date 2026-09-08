@@ -136,7 +136,7 @@
                   type="text" 
                   required
                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                  placeholder="Tu nombre"
+                  :placeholder="$t('contact.form.namePlaceholder')"
                 />
               </div>
 
@@ -150,7 +150,7 @@
                   type="tel" 
                   required
                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                  placeholder="+58 321-849-7687"
+                  :placeholder="$t('contact.form.phonePlaceholder')"
                 />
               </div>
 
@@ -181,7 +181,7 @@
                   required
                   rows="4"
                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary dark:focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Cuéntanos sobre tu proyecto..."
+                  :placeholder="$t('contact.form.messagePlaceholder')"
                 ></textarea>
               </div>
 
@@ -213,6 +213,7 @@
 <script setup lang="ts">
 import { ref, computed, h } from 'vue'
 
+const { t } = useI18n()
 const localePath = useLocalePath()
 
 const PhoneIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -242,32 +243,35 @@ const ClockIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox
   })
 ])
 
-const contactInfo = [
+const contactInfo = computed(() => [
   {
-    title: `${$t('contact.info[0].title')}`,
-    description: `${$t('contact.info[0].description')}`,
+    title: t('contact.info[0].title'),
+    description: t('contact.info[0].description'),
     icon: PhoneIcon,
-    value: `${$t('contact.info[0].value')}`,
+    value: t('contact.info[0].value'),
     link: 'tel:+584144785215',
-    linkText: `${$t('contact.info[0].linkText')}`,
+    linkText: t('contact.info[0].linkText'),
     external: false
   },
   {
-    title: `${$t('contact.info[1].title')}`,
-    description: `${$t('contact.info[1].description')}`,
+    title: t('contact.info[1].title'),
+    description: t('contact.info[1].description'),
     icon: EmailIcon,
     value: 'info@netandsoft.com.ve',
     link: 'mailto:info@netandsoft.com.ve',
-    linkText: `${$t('contact.info[1].linkText')}`,
+    linkText: t('contact.info[1].linkText'),
     external: false
   },
   {
-    title: `${$t('contact.info[2].title')}`,
-    description: `${$t('contact.info[2].description')}`,
+    title: t('contact.info[2].title'),
+    description: t('contact.info[2].description'),
     icon: ClockIcon,
-    value: `${$t('contact.info[2].value')}`
+    value: t('contact.info[2].value'),
+    link: '',
+    linkText: '',
+    external: false
   }
-]
+])
 
 const form = ref({
   name: '',
@@ -278,16 +282,15 @@ const form = ref({
 
 const whatsappLink = computed(() => {
   const phone = '584144785215'
-  const message = encodeURIComponent($t('contact.whatsappMessage'))
+  const message = encodeURIComponent(String(t('contact.whatsappMessage') || ''))
   return `https://wa.me/${phone}?text=${message}`
 })
 
 const handleSubmit = () => {
-  // In a real application, this would send the form data to a backend
-  const message = `${$t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${$t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${$t('contact.imInterestedIn')} ${form.value.service}.` : ''}`
+  const message = `${t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${t('contact.imInterestedIn')} ${form.value.service}.` : ''}`
   const phone = '584144785215'
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
-  window.open(whatsappUrl, '_blank')
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
   
   // Reset form
   form.value = {

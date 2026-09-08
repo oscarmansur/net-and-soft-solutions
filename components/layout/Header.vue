@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center space-x-3 group">
-          <img src="/logo.svg" alt="Net & Soft Solutions Logo" class="h-12 w-auto transition-all duration-300 group-hover:scale-105 dark:brightness-0 dark:invert" />
+          <img src="/logo.svg" alt="Net & Soft Solutions Logo" width="160" height="48" decoding="async" class="h-12 w-auto transition-all duration-300 group-hover:scale-105 dark:brightness-0 dark:invert" />
         </NuxtLink>
 
         <!-- Desktop Navigation -->

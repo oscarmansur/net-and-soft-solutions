@@ -90,7 +90,8 @@
     "MicrosoftPartner": "Socio Microsoft",
     "CiscoCertified": "Certificado Cisco",
     "IBMCertified": "Certificado IBM",
-    "ISO9001": "ISO 9001"
+    "ISO9001": "ISO 9001",
+    "certified": "Certificado"
   },
   "services": {
     "badge": "Nuestros Servicios",
@@ -145,7 +146,8 @@
       "support": "Soporte Técnico",
       "projects": "Proyectos Completados",
       "satisfaction": "Satisfacción"
-    }
+    },
+    "whatsappMessage": "Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions"
   },
   "ServiceRequest": "Hola me gustaría solicitar información sobre el servicio de",
   "contact": {
@@ -421,5 +423,9 @@
         "href": "/#services"
       }
     ]
+  },
+  "backToTop": {
+    "label": "Volver arriba",
+    "tooltip": "Desplazarse hacia arriba"
   }
 }

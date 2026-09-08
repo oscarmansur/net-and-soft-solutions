@@ -9,7 +9,7 @@
               {{ $t('about.WhyChooseUs') }}
             </span>
             <h2 class="font-heading font-bold text-gray-900 dark:text-white mb-6">
-              {{ $t('about.title').replace($t('about.titleHighlight'), '') }}<span class="text-gradient">{{ $t('about.titleHighlight') }}</span>{{ $t('about.title').includes($t('about.titleHighlight')) ? $t('about.title').substring($t('about.title').indexOf($t('about.titleHighlight')) + $t('about.titleHighlight').length) : '' }}
+              {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
             </h2>
             <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               {{ $t('about.description') }}
@@ -145,6 +145,10 @@
                 <img 
                   :src="cert.logo" 
                   :alt="cert.name"
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-contain"
                 />
               </div>
@@ -170,8 +174,29 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue'
+import { computed, h } from 'vue'
 import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
+
+const { t } = useI18n()
+
+const titleFull = computed(() => String(t('about.title') || ''))
+const titleHighlight = computed(() => String(t('about.titleHighlight') || ''))
+
+const titleBefore = computed(() => {
+  const full = titleFull.value
+  const h = titleHighlight.value
+  if (!h) return full
+  const idx = full.indexOf(h)
+  return idx === -1 ? full : full.substring(0, idx)
+})
+
+const titleAfter = computed(() => {
+  const full = titleFull.value
+  const h = titleHighlight.value
+  if (!h) return ''
+  const idx = full.indexOf(h)
+  return idx === -1 ? '' : full.substring(idx + h.length)
+})
 
 const ShieldIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, [
   h('path', { 
@@ -197,58 +222,58 @@ const StarIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' }, 
   h('path', { d: 'M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' })
 ])
 
-const benefits = [
+const benefits = computed(() => [
   {
-    title: $t('about.benefits[0].title'),
-    description: $t('about.benefits[0].description'),
+    title: t('about.benefits[0].title'),
+    description: t('about.benefits[0].description'),
     icon: ShieldIcon
   },
   {
-    title: $t('about.benefits[1].title'),
-    description: $t('about.benefits[1].description'),
+    title: t('about.benefits[1].title'),
+    description: t('about.benefits[1].description'),
     icon: ClockIcon
   },
   {
-    title: $t('about.benefits[2].title'),
-    description: $t('about.benefits[2].description'),
+    title: t('about.benefits[2].title'),
+    description: t('about.benefits[2].description'),
     icon: UserGroupIcon
   },
   {
-    title: $t('about.benefits[3].title'),
-    description: $t('about.benefits[3].description'),
+    title: t('about.benefits[3].title'),
+    description: t('about.benefits[3].description'),
     icon: StarIcon
   }
-]
+])
 
-const values = [
-  $t('about.values.list[0]'),
-  $t('about.values.list[1]'),
-  $t('about.values.list[2]'),
-  $t('about.values.list[3]'),
-  $t('about.values.list[4]'),
-  $t('about.values.list[5]')
-]
+const values = computed(() => [
+  t('about.values.list[0]'),
+  t('about.values.list[1]'),
+  t('about.values.list[2]'),
+  t('about.values.list[3]'),
+  t('about.values.list[4]'),
+  t('about.values.list[5]')
+])
 
-const certifications = [
+const certifications = computed(() => [
   {
-    name: $t('about.MicrosoftPartner'),
-    label: 'Certificado',
+    name: t('about.MicrosoftPartner'),
+    label: t('about.certified'),
     logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg'
   },
   {
-    name: $t('about.CiscoCertified'),
-    label: 'Certificado',
+    name: t('about.CiscoCertified'),
+    label: t('about.certified'),
     logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg'
   },
   {
-    name: $t('about.IBMCertified'),
-    label: 'Certificado',
+    name: t('about.IBMCertified'),
+    label: t('about.certified'),
     logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg'
   },
   {
-    name: $t('about.ISO9001'),
-    label: 'Certificado',
+    name: t('about.ISO9001'),
+    label: t('about.certified'),
     logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/ISO_9001-2015.svg'
   }
-]
+])
 </script>

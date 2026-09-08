@@ -90,7 +90,8 @@
     "CiscoCertified": "Cisco Certified",
     "IBMCertified": "IBM Certified",
     "ISO9001": "ISO 9001",
-    "WhyChooseUs": "Why Choose Us?"
+    "WhyChooseUs": "Why Choose Us?",
+    "certified": "Certified"
   },
   "services": {
     "badge": "Our Services",
@@ -422,5 +423,9 @@
         "href": "/#services"
       }
     ]
+  },
+  "backToTop": {
+    "label": "Back to top",
+    "tooltip": "Scroll to top"
   }
 }

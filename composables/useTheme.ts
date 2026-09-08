@@ -6,12 +6,12 @@ let initialized = false
 
 export function useTheme() {
   const initTheme = () => {
-    if (process.client && !initialized) {
+    if (import.meta.client && !initialized) {
       initialized = true
       const stored = localStorage.getItem('theme') || localStorage.getItem('vueuse-color-scheme')
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       
-      const shouldBeDark = stored === 'dark' || (!stored && prefersDark)
+      const shouldBeDark = stored === 'dark' || (!stored && prefersDark) || document.documentElement.classList.contains('dark')
       isDark.value = shouldBeDark
       
       if (shouldBeDark) {
@@ -23,7 +23,7 @@ export function useTheme() {
   }
 
   const toggleTheme = () => {
-    if (process.client) {
+    if (import.meta.client) {
       isDark.value = !isDark.value
       
       if (isDark.value) {

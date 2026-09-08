@@ -28,6 +28,10 @@
             <img 
               :src="service.image" 
               :alt="service.title"
+              width="400"
+              height="225"
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
@@ -102,9 +106,9 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { computed, h } from 'vue'
 import AnimatedCounter from '~/components/ui/AnimatedCounter.vue'
+
 const { t } = useI18n()
 
 // Service icons as functional components
@@ -136,60 +140,60 @@ const SupportIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20' 
   })
 ])
 
-const services = [
+const services = computed(() => [
   {
-    title: $t('services.list.0.title'),
-    description: $t('services.list.0.description'),
+    title: t('services.list.0.title'),
+    description: t('services.list.0.description'),
     icon: CodeIcon,
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     features: [
-      $t('services.list.0.features.0'),
-      $t('services.list.0.features.1'),
-      $t('services.list.0.features.2'),
-      $t('services.list.0.features.3')
+      t('services.list.0.features.0'),
+      t('services.list.0.features.1'),
+      t('services.list.0.features.2'),
+      t('services.list.0.features.3')
     ]
   },
   {
-    title: $t('services.list.1.title'),
-    description: $t('services.list.1.description'),
+    title: t('services.list.1.title'),
+    description: t('services.list.1.description'),
     icon: NetworkIcon,
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80',
     features: [
-      $t('services.list.1.features.0'),
-      $t('services.list.1.features.1'),
-      $t('services.list.1.features.2'),
-      $t('services.list.1.features.3')
+      t('services.list.1.features.0'),
+      t('services.list.1.features.1'),
+      t('services.list.1.features.2'),
+      t('services.list.1.features.3')
     ]
   },
   {
-    title: $t('services.list.2.title'),
-    description: $t('services.list.2.description'),
+    title: t('services.list.2.title'),
+    description: t('services.list.2.description'),
     icon: CameraIcon,
     image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80',
     features: [
-      $t('services.list.2.features.0'),
-      $t('services.list.2.features.1'),
-      $t('services.list.2.features.2'),
-      $t('services.list.2.features.3')
+      t('services.list.2.features.0'),
+      t('services.list.2.features.1'),
+      t('services.list.2.features.2'),
+      t('services.list.2.features.3')
     ]
   },
   {
-    title: $t('services.list.3.title'),
-    description: $t('services.list.3.description'),
+    title: t('services.list.3.title'),
+    description: t('services.list.3.description'),
     icon: SupportIcon,
     image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80',
     features: [
-      $t('services.list.3.features.0'),
-      $t('services.list.3.features.1'),
-      $t('services.list.3.features.2'),
-      $t('services.list.3.features.3')
+      t('services.list.3.features.0'),
+      t('services.list.3.features.1'),
+      t('services.list.3.features.2'),
+      t('services.list.3.features.3')
     ]
   }
-]
+])
 
 const getWhatsAppLink = (serviceName: string) => {
   const phone = '584144785215'
-  const message = encodeURIComponent(`${$t('ServiceRequest')} ${serviceName}`)
+  const message = encodeURIComponent(`${t('ServiceRequest')} ${serviceName}`)
   return `https://wa.me/${phone}?text=${message}`
 }
 </script>

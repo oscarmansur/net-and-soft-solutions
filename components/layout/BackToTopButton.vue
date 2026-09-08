@@ -4,7 +4,8 @@
       v-if="isVisible"
       @click="scrollToTop"
       class="fixed bottom-24 right-8 z-40 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-cyan-600 dark:to-primary-600 hover:from-primary-600 hover:to-primary-700 dark:hover:from-cyan-500 dark:hover:to-primary-500 text-white rounded-full shadow-glow dark:shadow-cyan-900/40 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-      aria-label="Scroll to top"
+      :aria-label="$t('backToTop.label')"
+      :title="$t('backToTop.tooltip')"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -13,7 +14,7 @@
   </transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isVisible = ref(false)

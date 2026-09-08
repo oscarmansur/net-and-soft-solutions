@@ -19,10 +19,10 @@ html.dark {
 </style>
 
 <script setup lang="ts">
-// Global CSS import
-import '~/assets/css/main.css'
-import 'aos/dist/aos.css'
+import { computed, onMounted } from 'vue'
 import BackToTopButton from '~/components/layout/BackToTopButton.vue'
+
+const { locale } = useI18n()
 
 // Default SEO Configuration for the entire app
 useHead({
@@ -49,7 +49,7 @@ useHead({
   ],
   script: [
     {
-      children: `(function() {
+      innerHTML: `(function() {
         try {
           var stored = localStorage.getItem('theme') || localStorage.getItem('vueuse-color-scheme');
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -64,7 +64,7 @@ useHead({
     }
   ],
   htmlAttrs: {
-    lang: 'es'
+    lang: computed(() => locale.value)
   }
 })
 

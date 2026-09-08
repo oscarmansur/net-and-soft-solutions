@@ -45,13 +45,13 @@ export const useApi = () => {
     }
 
     try {
-      return await $fetch<T>(endpoint, {
+      return (await $fetch<T>(endpoint, {
         baseURL,
         method,
         headers: requestHeaders,
         params,
         body
-      })
+      })) as T
     } catch (error: any) {
       // Standardize error payload
       const status = error?.response?.status || error?.statusCode || 500

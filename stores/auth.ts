@@ -91,9 +91,9 @@ export const useAuthStore = defineStore('auth', {
    * Uses cookies to maintain SSR session consistency and avoid hydration mismatches
    */
   persist: {
-    storage: persistedState.cookiesWithOptions({
+    storage: piniaPluginPersistedstate.cookies({
       sameSite: 'lax'
     }),
-    paths: ['token', 'user']
+    pick: ['token', 'user']
   }
 })

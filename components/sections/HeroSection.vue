@@ -103,19 +103,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-
-// ============================================
-// Visualization Components (choose one)
-// ============================================
-// OPTION 1: 3D Hover Card (currently commented)
-// import HoverCard3D from '~/components/ui/HoverCard3D.vue'
-
-// OPTION 2: Network Canvas (currently active)
+import { computed } from 'vue'
 import NetworkCanvas from '~/components/ui/NetworkCanvas.vue'
 
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
 
 const titleFull = computed(() => String(t('hero.title') || ''))
 const titleHighlight = computed(() => String(t('hero.titleHighlight') || ''))
@@ -136,29 +127,26 @@ const titleAfter = computed(() => {
   return idx === -1 ? '' : full.substring(idx + h.length)
 })
 
-const hasHighlight = computed(() => {
-  const h = titleHighlight.value
-  return !!h && titleFull.value.includes(h)
+const features = computed(() => {
+  const raw = tm('hero.features') as any[]
+  if (Array.isArray(raw)) {
+    return raw.map((item: any) => ({
+      text: typeof item === 'string' ? item : rt(item)
+    }))
+  }
+  return [
+    { text: t('hero.features.0') },
+    { text: t('hero.features.1') },
+    { text: t('hero.features.2') },
+    { text: t('hero.features.3') }
+  ]
 })
-
-const features2 = computed(() => {
-  const list = t('hero.features')
-  return Array.isArray(list) ? (list as string[]) : []
-})
-
-const features = [
-  { text: t('hero.features.0') || 'Desarrollo personalizado' },
-  { text: t('hero.features.1') || 'Infraestructura moderna' },
-  { text: t('hero.features.2') || 'Soporte especializado' },
-  { text: t('hero.features.3') || 'Precios competitivos' }
-]
 
 const whatsappLink = computed(() => {
   const phone = '584144785215'
   const message = encodeURIComponent(String(t('contact.whatsapp.description') || 'Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions'))
   return `https://wa.me/${phone}?text=${message}`
 })
-
 </script>
 
 <style scoped>

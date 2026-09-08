@@ -102,7 +102,7 @@ export const useServicesStore = defineStore('services', {
    * Cache fetched services in localStorage for instant offline/re-visit access
    */
   persist: {
-    storage: persistedState.localStorage(),
-    paths: ['services', 'lastFetched']
+    storage: piniaPluginPersistedstate.localStorage(),
+    pick: ['services', 'lastFetched']
   }
 })

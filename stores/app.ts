@@ -109,7 +109,7 @@ export const useAppStore = defineStore('app', {
    * Client-side UI preferences persisted in localStorage
    */
   persist: {
-    storage: persistedState.localStorage(),
-    paths: ['preferences']
+    storage: piniaPluginPersistedstate.localStorage(),
+    pick: ['preferences']
   }
 })

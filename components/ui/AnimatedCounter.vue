@@ -6,43 +6,34 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const props = defineProps({
-  target: {
-    type: Number,
-    required: true
-  },
-  duration: {
-    type: Number,
-    default: 2000
-  },
-  prefix: {
-    type: String,
-    default: ''
-  },
-  suffix: {
-    type: String,
-    default: ''
-  },
-  startOnView: {
-    type: Boolean,
-    default: true
-  }
+interface Props {
+  target: number
+  duration?: number
+  prefix?: string
+  suffix?: string
+  startOnView?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  duration: 2000,
+  prefix: '',
+  suffix: '',
+  startOnView: true
 })
 
-const counterElement = ref(null)
+const counterElement = ref<HTMLElement | null>(null)
 const initialValue = ref(0)
-let observer = null
+let observer: IntersectionObserver | null = null
 
 const startCounter = () => {
   const startTime = performance.now()
-  const endTime = startTime + props.duration
   const startValue = 0
   const endValue = props.target
 
-  function updateCounter(currentTime) {
+  function updateCounter(currentTime: number) {
     const progress = Math.min((currentTime - startTime) / props.duration, 1)
     const currentValue = Math.floor(progress * (endValue - startValue) + startValue)
     initialValue.value = currentValue
@@ -75,14 +66,15 @@ onMounted(() => {
     threshold: 0.5
   })
 
-  if (counterElement.value) {
+  if (counterElement.value?.parentElement) {
     observer.observe(counterElement.value.parentElement)
   }
+})
 
-  return () => {
-    if (observer) {
-      observer.disconnect()
-    }
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+    observer = null
   }
 })
 </script>
