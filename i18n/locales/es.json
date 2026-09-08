@@ -387,5 +387,39 @@
         ]
       }
     }
+  },
+  "notFound": {
+    "badge": "Error 404 • Ruta no encontrada",
+    "title": "¿Te has perdido en la red?",
+    "subtitle": "La página que buscas no existe, ha sido trasladada o la dirección ingresada no es válida.",
+    "backHome": "Volver al Inicio",
+    "viewServices": "Ver Servicios",
+    "viewSitemap": "Mapa del Sitio",
+    "needHelp": "¿Buscabas algo específico?",
+    "needHelpDesc": "Explora nuestras 4 divisiones de ingeniería tecnológica o contáctanos de inmediato para orientarte.",
+    "contactWhatsApp": "Atención Inmediata por WhatsApp",
+    "suggestedTitle": "Secciones Recomendadas",
+    "services": [
+      {
+        "title": "Desarrollo de Software",
+        "desc": "Aplicaciones web, móviles y sistemas corporativos a medida",
+        "href": "/#services"
+      },
+      {
+        "title": "Redes e Infraestructura IT",
+        "desc": "Cableado estructurado, fibra óptica y switches de alto rendimiento",
+        "href": "/#services"
+      },
+      {
+        "title": "Sistemas CCTV",
+        "desc": "Cámaras de seguridad de alta resolución y monitoreo 24/7",
+        "href": "/#services"
+      },
+      {
+        "title": "Soporte Técnico Especializado",
+        "desc": "Mantenimiento preventivo, correctivo y asistencia IT continua",
+        "href": "/#services"
+      }
+    ]
   }
 }

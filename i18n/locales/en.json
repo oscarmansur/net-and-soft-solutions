@@ -388,5 +388,39 @@
         ]
       }
     }
+  },
+  "notFound": {
+    "badge": "Error 404 • Link Unavailable",
+    "title": "Lost in the Network?",
+    "subtitle": "The page you are looking for does not exist, has been moved, or the entered URL is invalid.",
+    "backHome": "Back to Home",
+    "viewServices": "View Services",
+    "viewSitemap": "Sitemap",
+    "needHelp": "Looking for something specific?",
+    "needHelpDesc": "Explore our 4 technology engineering divisions or reach out directly to our team.",
+    "contactWhatsApp": "Immediate WhatsApp Assistance",
+    "suggestedTitle": "Recommended Sections",
+    "services": [
+      {
+        "title": "Software Development",
+        "desc": "Custom web, mobile applications, and enterprise systems",
+        "href": "/#services"
+      },
+      {
+        "title": "Networking & IT Infrastructure",
+        "desc": "Structured cabling, optical fiber, and high-performance switches",
+        "href": "/#services"
+      },
+      {
+        "title": "CCTV Systems",
+        "desc": "High-definition security cameras and 24/7 video surveillance",
+        "href": "/#services"
+      },
+      {
+        "title": "Specialized Technical Support",
+        "desc": "Preventive, corrective maintenance and continuous IT support",
+        "href": "/#services"
+      }
+    ]
   }
 }
