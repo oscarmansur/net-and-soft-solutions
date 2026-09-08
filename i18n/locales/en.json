@@ -86,6 +86,8 @@
       ]
     },
     "certifications": "Technologies and Certifications",
+    "certificationsTitle": "Certifications &",
+    "certificationsHighlight": "Recognitions",
     "MicrosoftPartner": "Microsoft Partner",
     "CiscoCertified": "Cisco Certified",
     "IBMCertified": "IBM Certified",
@@ -152,8 +154,8 @@
   "ServiceRequest": "Hello, I would like to request information about the service of",
   "contact": {
     "badge": "Contact Us",
-    "title": "We Are Here to Help You",
-    "titleHighlight": "Help You",
+    "title": "We Are Here to",
+    "titleHighlight": "Help You Grow",
     "description": "Do you have a project in mind or need technological advice? Contact us and we will respond as soon as possible.",
     "info": [
       {

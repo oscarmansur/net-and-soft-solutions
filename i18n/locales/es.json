@@ -86,6 +86,8 @@
       ]
     },
     "certifications": "Tecnologías y Certificaciones",
+    "certificationsTitle": "Certificaciones y",
+    "certificationsHighlight": "Reconocimientos",
     "WhyChooseUs": "¿Por Qué Elegirnos?",
     "MicrosoftPartner": "Socio Microsoft",
     "CiscoCertified": "Certificado Cisco",
@@ -152,8 +154,8 @@
   "ServiceRequest": "Hola me gustaría solicitar información sobre el servicio de",
   "contact": {
     "badge": "Contáctanos",
-    "title": "Estamos Aquí para Ayudarte",
-    "titleHighlight": "Ayudarte",
+    "title": "Estamos Aquí para",
+    "titleHighlight": "Ayudarte a Crecer",
     "description": "¿Tienes un proyecto en mente o necesitas asesoría tecnológica? Contáctanos y te responderemos lo antes posible.",
     "info": [
       {

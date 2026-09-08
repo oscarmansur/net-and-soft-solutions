@@ -16,11 +16,11 @@
             <span>{{ $t('hero.badge') }}</span>
           </div>
 
-          <h1 class="font-heading font-bold text-gray-900 dark:text-white leading-tight" data-aos="fade-up" data-aos-delay="200">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.15] text-balance" data-aos="fade-up" data-aos-delay="200">
             {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
           </h1>
 
-          <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl" data-aos="fade-up" data-aos-delay="300">
             {{ $t('hero.description') }}
           </p>
             <!-- Features -->

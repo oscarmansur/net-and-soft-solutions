@@ -5,13 +5,13 @@
         <!-- Content -->
         <div class="space-y-8" data-aos="fade-up">
           <div>
-            <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4">
+            <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 px-3 py-1 rounded-full bg-primary/10 dark:bg-cyan-500/10 border border-primary/20 dark:border-cyan-500/20">
               {{ $t('about.WhyChooseUs') }}
             </span>
-            <h2 class="font-heading font-bold text-gray-900 dark:text-white mb-6">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 text-balance leading-tight">
               {{ titleBefore }}<span class="text-gradient">{{ titleHighlight }}</span>{{ titleAfter }}
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p class="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
               {{ $t('about.description') }}
             </p>
           </div>
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-heading font-semibold text-lg text-gray-900 dark:text-white mb-2">
+                <h3 class="font-heading font-bold text-lg sm:text-xl text-gray-900 dark:text-white mb-2">
                   {{ benefit.title }}
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300">
@@ -44,11 +44,11 @@
           <!-- Stats -->
           <div class="grid grid-cols-2 gap-6 pt-8" data-aos="fade-up" data-aos-delay="300">
             <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
-              <AnimatedCounter :target="5" suffix="+" class="text-3xl font-bold text-primary mb-2" />
+              <AnimatedCounter :target="5" suffix="+" size-class="text-3xl sm:text-4xl" class="mb-2" />
               <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.experience') }}</p>
             </div>
             <div class="text-center p-6 rounded-xl bg-white dark:bg-slate-900 shadow-soft dark:shadow-none border border-transparent dark:border-slate-800">
-              <AnimatedCounter :target="100" suffix="%" class="text-3xl font-bold text-primary mb-2" />
+              <AnimatedCounter :target="100" suffix="%" size-class="text-3xl sm:text-4xl" class="mb-2" />
               <p class="text-gray-600 dark:text-gray-400 text-sm">{{ $t('about.stats.satisfaction') }}</p>
             </div>
           </div>
@@ -119,11 +119,11 @@
       <!-- Certifications/Trust Badges -->
       <div class="mt-20" data-aos="fade-up" data-aos-delay="300">
         <div class="text-center mb-12">
-          <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-3">
+          <span class="inline-block text-primary dark:text-cyan-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 px-3 py-1 rounded-full bg-primary/10 dark:bg-cyan-500/10 border border-primary/20 dark:border-cyan-500/20">
             {{ $t('about.certifications') }}
           </span>
-          <h3 class="font-heading font-bold text-2xl text-gray-900 dark:text-white">
-            Certificaciones y <span class="text-gradient">Reconocimientos</span>
+          <h3 class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold tracking-tight text-gray-900 dark:text-white text-balance">
+            {{ $t('about.certificationsTitle') }} <span class="text-gradient">{{ $t('about.certificationsHighlight') }}</span>
           </h3>
         </div>
         

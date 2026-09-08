@@ -1,5 +1,5 @@
 <template>
-  <div class="text-4xl font-bold text-primary dark:text-cyan-400 transition-colors duration-300">
+  <div :class="[sizeClass || 'text-4xl sm:text-5xl', 'font-bold text-primary dark:text-cyan-400 transition-colors duration-300']">
     <span v-if="prefix" class="mr-1">{{ prefix }}</span>
     <span ref="counterElement">{{ initialValue }}</span>
     <span v-if="suffix">{{ suffix }}</span>
@@ -15,13 +15,15 @@ interface Props {
   prefix?: string
   suffix?: string
   startOnView?: boolean
+  sizeClass?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   duration: 2000,
   prefix: '',
   suffix: '',
-  startOnView: true
+  startOnView: true,
+  sizeClass: ''
 })
 
 const counterElement = ref<HTMLElement | null>(null)
