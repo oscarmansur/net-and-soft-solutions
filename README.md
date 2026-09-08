@@ -1,6 +1,6 @@
-# 🏥 Net And Soft Solutions - Landing Page
+# Net And Soft Solutions
 
-Landing page profesional para servicios médicos a domicilio, desarrollada con Nuxt.js 3, TypeScript y Tailwind CSS.
+Landing page profesional para soluciones en tecnología para empresas, desarrollada con Nuxt.js 3, TypeScript y Tailwind CSS.
 
 ## 🎨 Características
 
