@@ -174,10 +174,10 @@ const suggestedServices = computed<SuggestedServiceItem[]>(() => {
   }))
 })
 
+const { getWhatsAppLink } = useContact()
+
 const whatsappUrl = computed(() => {
-  const phone = '584144785215'
-  const message = encodeURIComponent(t('footer.whatsappMessage'))
-  return `https://wa.me/${phone}?text=${message}`
+  return getWhatsAppLink(t('footer.whatsappMessage'))
 })
 
 const handleNavigate = (path: string) => {

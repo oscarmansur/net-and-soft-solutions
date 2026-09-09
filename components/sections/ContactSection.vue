@@ -93,18 +93,18 @@
           <!-- Coverage Map Frame -->
           <div class="rounded-2xl overflow-hidden shadow-lg h-64 sm:h-72 bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 relative specular-rim">
             <iframe
-              src="https://www.google.com/maps?q=7.8921750877067645, -67.46952135309213&z=13&output=embed"
+              :src="contact.mapUrl.value"
               class="w-full h-full border-0"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de cobertura - Apure, Venezuela"
-              aria-label="Mapa mostrando ubicación en Apure, Venezuela"
+              :title="`Mapa de ubicación - ${contact.address.value}`"
+              :aria-label="`Mapa mostrando ubicación: ${contact.address.value}`"
             ></iframe>
 
             <!-- Informative badge -->
             <div class="absolute top-3.5 left-3.5 bg-white/95 dark:bg-slate-900/95 text-gray-900 dark:text-white border border-slate-200/80 dark:border-slate-700 backdrop-blur-md px-3 py-1 rounded-full shadow-md flex items-center space-x-2 text-xs font-semibold z-10">
               <MapPinIcon class="w-3.5 h-3.5 text-primary dark:text-cyan-400" />
-              <span>{{ $t('contact.OurLocation') }}</span>
+              <span>{{ contact.address.value }}</span>
             </div>
 
             <!-- Visual pin marker centered over map -->
@@ -220,14 +220,15 @@ import {
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const contact = useContact()
 
 const contactInfo = computed(() => [
   {
     title: t('contact.info[0].title'),
     description: t('contact.info[0].description'),
     icon: PhoneIcon,
-    value: t('contact.info[0].value'),
-    link: 'tel:+584144785215',
+    value: contact.phone.value,
+    link: contact.telLink.value,
     linkText: t('contact.info[0].linkText'),
     external: false
   },
@@ -235,8 +236,8 @@ const contactInfo = computed(() => [
     title: t('contact.info[1].title'),
     description: t('contact.info[1].description'),
     icon: EnvelopeIcon,
-    value: 'info@netandsoft.com.ve',
-    link: 'mailto:info@netandsoft.com.ve',
+    value: contact.email.value,
+    link: contact.mailtoLink.value,
     linkText: t('contact.info[1].linkText'),
     external: false
   },
@@ -259,15 +260,12 @@ const form = ref({
 })
 
 const whatsappLink = computed(() => {
-  const phone = '584144785215'
-  const message = encodeURIComponent(String(t('contact.whatsappMessage') || ''))
-  return `https://wa.me/${phone}?text=${message}`
+  return contact.getWhatsAppLink(String(t('contact.whatsappMessage') || ''))
 })
 
 const handleSubmit = () => {
   const message = `${t('contact.HelloIAm')} ${form.value.name}. ${form.value.message}. ${t('contact.myPhone')} ${form.value.phone}${form.value.service ? `. ${t('contact.imInterestedIn')} ${form.value.service}.` : ''}`
-  const phone = '584144785215'
-  const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+  const whatsappUrl = contact.getWhatsAppLink(message)
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
   
   // Reset form

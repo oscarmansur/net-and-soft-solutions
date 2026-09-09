@@ -22,10 +22,10 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const { getWhatsAppLink } = useContact()
 
 const whatsappLink = computed(() => {
-  const phone = '584144785215'
-  const message = encodeURIComponent(String(t('contact.whatsapp.description') || 'Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions'))
-  return `https://wa.me/${phone}?text=${message}`
+  const message = String(t('contact.whatsapp.description') || 'Hola, me gustaría solicitar información sobre los servicios de Net & Soft Solutions')
+  return getWhatsAppLink(message)
 })
 </script>

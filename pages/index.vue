@@ -16,6 +16,7 @@
 import { computed } from 'vue'
 
 const { locale } = useI18n()
+const contact = useContact()
 
 const pageTitle = computed(() => 
   locale.value === 'en'
@@ -142,10 +143,11 @@ useSchemaOrg([
     url: 'https://netandsoft.com.ve',
     logo: 'https://netandsoft.com.ve/logo.svg',
     image: 'https://netandsoft.com.ve/og-image.jpg',
-    telephone: '+58-414-478-5215',
-    email: 'info@netandsoft.com.ve',
+    telephone: contact.phone.value,
+    email: contact.email.value,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: contact.address.value,
       addressCountry: 'VE',
       addressLocality: 'Venezuela'
     },
@@ -236,7 +238,7 @@ useSchemaOrg([
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+58-414-478-5215',
+      telephone: contact.phone.value,
       contactType: 'customer service',
       availableLanguage: ['Spanish'],
       areaServed: 'VE'

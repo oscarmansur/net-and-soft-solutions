@@ -108,6 +108,7 @@ import { ShieldCheckIcon, CalendarDaysIcon } from '@heroicons/vue/24/outline'
 
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
+const contact = useContact()
 
 interface PrivacySectionItem {
   number: string
@@ -118,11 +119,26 @@ interface PrivacySectionItem {
 const privacySections = computed<PrivacySectionItem[]>(() => {
   const raw = tm('legal.privacy.sections') as any[]
   if (!Array.isArray(raw)) return []
-  return raw.map((section: any) => ({
-    number: typeof section.number === 'string' ? section.number : rt(section.number),
-    title: typeof section.title === 'string' ? section.title : rt(section.title),
-    content: typeof section.content === 'string' ? section.content : rt(section.content)
-  }))
+  return raw.map((section: any) => {
+    let content = typeof section.content === 'string'
+      ? section.content
+      : rt(section.content, {
+          email: contact.email.value,
+          phone: contact.phone.value
+        })
+
+    content = content
+      .replace(/\{email\}/g, contact.email.value)
+      .replace(/\{phone\}/g, contact.phone.value)
+      .replace(/info\{'@'\}netandsoft\.com\.ve/g, contact.email.value)
+      .replace(/info@netandsoft\.com\.ve/g, contact.email.value)
+      .replace(/\+58\s*414-478-5215/g, contact.phone.value)
+    return {
+      number: typeof section.number === 'string' ? section.number : rt(section.number),
+      title: typeof section.title === 'string' ? section.title : rt(section.title),
+      content
+    }
+  })
 })
 
 useHead({

@@ -2,39 +2,42 @@
 
 Esta guía te ayudará a personalizar la landing page según tus necesidades específicas.
 
-## 📱 Actualizar Número de WhatsApp
+## 📱 Configurar Contacto (Teléfono, WhatsApp y Correo)
 
-El número de WhatsApp aparece en múltiples lugares. Busca y reemplaza `584241234567` con tu número real (sin espacios ni guiones):
+Toda la información de contacto se administra centralmente a través de **variables de entorno** en tu archivo `.env`. Ya no necesitas modificar manualmente el código fuente.
 
-### Archivos a modificar:
-1. [`components/layout/Header.vue`](components/layout/Header.vue:100)
-2. [`components/layout/WhatsAppButton.vue`](components/layout/WhatsAppButton.vue:23)
-3. [`components/layout/Footer.vue`](components/layout/Footer.vue:118)
-4. [`components/sections/HeroSection.vue`](components/sections/HeroSection.vue:103)
-5. [`components/sections/ServicesSection.vue`](components/sections/ServicesSection.vue:148)
-6. [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue:219)
+### Variables en `.env`:
+```env
+# Correo electrónico de contacto principal
+NUXT_PUBLIC_CONTACT_EMAIL=info@netandsoft.com.ve
 
-**Formato correcto:** `58XXXXXXXXXX` (código de país + número sin espacios)
+# Teléfono con formato visible para llamadas
+NUXT_PUBLIC_CONTACT_PHONE=+58 414-478-5215
+
+# Número de WhatsApp (código de país + número, solo dígitos sin espacios ni guiones)
+NUXT_PUBLIC_WHATSAPP_NUMBER=584144785215
+
+# Dirección física mostrada en el badge sobre el mapa y Schema SEO
+NUXT_PUBLIC_LOCATION_ADDRESS=27 C. Muñoz, San Fernando de Apure 7001, Apure.
+
+# Coordenadas y zoom para el mapa interactivo de Google Maps
+NUXT_PUBLIC_MAP_LATITUDE=7.8921750877067645
+NUXT_PUBLIC_MAP_LONGITUDE=-67.46952135309213
+NUXT_PUBLIC_MAP_ZOOM=13
+# Opcional: coordenadas combinadas (anula latitud y longitud individuales si está definida)
+# NUXT_PUBLIC_MAP_COORDINATES=7.8921750877067645,-67.46952135309213
+```
+
+Todos los componentes ([Header](components/layout/Header.vue), [Footer](components/layout/Footer.vue), [WhatsAppButton](components/layout/WhatsAppButton.vue), [ContactSection](components/sections/ContactSection.vue), [HeroSection](components/sections/HeroSection.vue), [ServicesSection](components/sections/ServicesSection.vue), y las páginas [index](pages/index.vue), [sitemap](pages/sitemap.vue) y [privacy](pages/privacy.vue)) leen estos valores dinámicamente mediante el composable `useContact()`.
 
 ---
 
-## 📧 Actualizar Información de Contacto
+## ⏰ Actualizar Horarios de Atención
 
-### Email
-Busca y reemplaza `info@netandsoft.com.ve` en:
-- [`components/layout/Footer.vue`](components/layout/Footer.vue:67)
-- [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue:179)
-- [`pages/index.vue`](pages/index.vue:96)
-
-### Teléfono
-Actualiza el número de teléfono en:
-- [`components/layout/Footer.vue`](components/layout/Footer.vue:60)
-- [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue:171)
-
-### Horarios
 Modifica los horarios en:
-- [`components/layout/Footer.vue`](components/layout/Footer.vue:74)
-- [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue:187)
+- [`components/layout/Footer.vue`](components/layout/Footer.vue)
+- [`components/sections/ContactSection.vue`](components/sections/ContactSection.vue)
+- O en los archivos de traducción [`i18n/locales/es.json`](i18n/locales/es.json) y [`i18n/locales/en.json`](i18n/locales/en.json) bajo `contact.info` y `footer.Schedule`.
 
 ---
 

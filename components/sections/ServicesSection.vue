@@ -174,9 +174,9 @@ const services = computed(() => [
   }
 ])
 
+const { getWhatsAppLink: contactWhatsAppLink } = useContact()
+
 const getWhatsAppLink = (serviceName: string) => {
-  const phone = '584144785215'
-  const message = encodeURIComponent(`${t('ServiceRequest')} ${serviceName}`)
-  return `https://wa.me/${phone}?text=${message}`
+  return contactWhatsAppLink(`${t('ServiceRequest')} ${serviceName}`)
 }
 </script>

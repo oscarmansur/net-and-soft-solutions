@@ -189,10 +189,9 @@ const navItems = computed(() => [
   { nameKey: 'header.navItems.contact', href: localePath('/#contact') }
 ])
 
+const { getWhatsAppLink } = useContact()
 const whatsappLink = computed(() => {
-  const phone = '584144785215'
-  const message = encodeURIComponent($t('header.whatsappMessage'))
-  return `https://wa.me/${phone}?text=${message}`
+  return getWhatsAppLink($t('header.whatsappMessage'))
 })
 
 // Handle scroll effect

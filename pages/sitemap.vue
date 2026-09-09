@@ -257,6 +257,8 @@ import {
 const { t } = useI18n()
 const localePath = useLocalePath()
 
+const contact = useContact()
+
 interface SitemapLinkItem {
   name: string
   path: string
@@ -281,7 +283,23 @@ const legalLinks = computed<SitemapLinkItem[]>(() => {
 
 const contactLinks = computed<SitemapLinkItem[]>(() => {
   const raw = t('sitemapPage.categories.contact.links', { returnObjects: true })
-  return Array.isArray(raw) ? raw : []
+  if (!Array.isArray(raw)) return []
+  return (raw as SitemapLinkItem[]).map((item, index) => {
+    if (index === 0) {
+      return {
+        ...item,
+        path: contact.getWhatsAppLink()
+      }
+    }
+    if (index === 1) {
+      return {
+        ...item,
+        path: contact.mailtoLink.value,
+        desc: contact.email.value
+      }
+    }
+    return item
+  })
 })
 
 useHead({

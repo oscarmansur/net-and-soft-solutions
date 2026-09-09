@@ -161,13 +161,13 @@
       {
         "title": "Phone",
         "description": "Call us to discuss your project",
-        "value": "+58 414-478-5215",
+        "value": "{phone}",
         "linkText": "Call now"
       },
       {
         "title": "Email",
         "description": "Send us an email",
-        "value": "info[at]netandsoft.com.ve",
+        "value": "{email}",
         "linkText": "Send email"
       },
       {
@@ -201,7 +201,7 @@
     "HelloIAm": "Hello, I am",
     "myPhone": "My phone is",
     "imInterestedIn": "I am interested in",
-    "OurLocation": "27 C. Muñoz, San Fernando de Apure 7001, Apure."
+    "OurLocation": "{address}"
   },
   "footer": {
     "description": "Comprehensive technological solutions: software development, networks, CCTV and specialized technical support.",
@@ -213,7 +213,7 @@
     "termsConditions": "Terms & Conditions",
     "sitemap": "Sitemap",
     "Schedule": "Mon - Fri: 8:00 AM - 6:00 PM",
-    "Phone": "+58 414-478-5215",
+    "Phone": "{phone}",
     "copyright": "Net & Soft Solutions. All rights reserved.",
     "whatsappMessage": "Hello, I would like to request information about Net & Soft Solutions services"
   },
@@ -244,7 +244,7 @@
         {
           "number": "01",
           "title": "Data Controller",
-          "content": "The controller responsible for processing personal data gathered through this platform is Net & Soft Solutions, domiciled in San Fernando de Apure, Apure State, Venezuela. You may contact our privacy and technical support desk via email at info{'@'}netandsoft.com.ve or by phone at +58 414-478-5215."
+          "content": "The controller responsible for processing personal data gathered through this platform is Net & Soft Solutions, domiciled in San Fernando de Apure, Apure State, Venezuela. You may contact our privacy and technical support desk via email at {email} or by phone at {phone}."
         },
         {
           "number": "02",
@@ -274,7 +274,7 @@
         {
           "number": "07",
           "title": "Data Subject Rights",
-          "content": "As a data subject, you have the right to request access, correction, update, or deletion of your personal data from our contact registries at any time. To exercise these rights, please submit a formal request to info{'@'}netandsoft.com.ve; we will respond within a maximum of 5 business days."
+          "content": "As a data subject, you have the right to request access, correction, update, or deletion of your personal data from our contact registries at any time. To exercise these rights, please submit a formal request to {email}; we will respond within a maximum of 5 business days."
         },
         {
           "number": "08",
@@ -386,8 +386,8 @@
         "title": "Direct Assistance Channels",
         "description": "Connect directly with our engineering team in real time",
         "links": [
-          { "name": "WhatsApp Assistance", "path": "https://wa.me/584144785215", "desc": "Immediate response for quotes and technical emergencies", "external": true },
-          { "name": "Official Email", "path": "mailto:info{'@'}netandsoft.com.ve", "desc": "info{'@'}netandsoft.com.ve", "external": true }
+          { "name": "WhatsApp Assistance", "path": "{whatsappLink}", "desc": "Immediate response for quotes and technical emergencies", "external": true },
+          { "name": "Official Email", "path": "{emailLink}", "desc": "{email}", "external": true }
         ]
       }
     }

@@ -27,7 +27,15 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      contactEmail: process.env.NUXT_PUBLIC_CONTACT_EMAIL || 'info@netandsoft.com.ve',
+      contactPhone: process.env.NUXT_PUBLIC_CONTACT_PHONE || '+58 414-478-5215',
+      whatsappNumber: process.env.NUXT_PUBLIC_WHATSAPP_NUMBER || '584144785215',
+      locationAddress: process.env.NUXT_PUBLIC_LOCATION_ADDRESS || '27 C. Muñoz, San Fernando de Apure 7001, Apure.',
+      mapLatitude: process.env.NUXT_PUBLIC_MAP_LATITUDE || '7.8921750877067645',
+      mapLongitude: process.env.NUXT_PUBLIC_MAP_LONGITUDE || '-67.46952135309213',
+      mapCoordinates: process.env.NUXT_PUBLIC_MAP_COORDINATES || '',
+      mapZoom: process.env.NUXT_PUBLIC_MAP_ZOOM || '13'
     }
   },
 

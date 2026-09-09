@@ -60,13 +60,13 @@
               <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center mr-3 flex-shrink-0 border border-white/10 group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 transition-colors">
                 <PhoneIcon class="w-4 h-4 text-cyan-400" />
               </div>
-              <span class="mt-1 font-mono text-xs sm:text-sm">+58 414-478-5215</span>
+              <a :href="contact.telLink.value" class="mt-1 font-mono text-xs sm:text-sm hover:text-cyan-400 transition-colors">{{ contact.phone.value }}</a>
             </li>
             <li class="flex items-start text-slate-300 dark:text-slate-400 text-sm group">
               <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center mr-3 flex-shrink-0 border border-white/10 group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 transition-colors">
                 <EnvelopeIcon class="w-4 h-4 text-cyan-400" />
               </div>
-              <span class="mt-1 break-all text-xs sm:text-sm">info@netandsoft.com.ve</span>
+              <a :href="contact.mailtoLink.value" class="mt-1 break-all text-xs sm:text-sm hover:text-cyan-400 transition-colors">{{ contact.email.value }}</a>
             </li>
             <li class="flex items-start text-slate-300 dark:text-slate-400 text-sm group">
               <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center mr-3 flex-shrink-0 border border-white/10 group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 transition-colors">
@@ -153,9 +153,9 @@ const services = computed(() => [
   t('services.list[3].title')
 ])
 
+const contact = useContact()
+
 const whatsappLink = computed(() => {
-  const phone = '584144785215'
-  const message = encodeURIComponent(String(t('footer.whatsappMessage') || ''))
-  return `https://wa.me/${phone}?text=${message}`
+  return contact.getWhatsAppLink(String(t('footer.whatsappMessage') || ''))
 })
 </script>
