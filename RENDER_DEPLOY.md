@@ -90,6 +90,8 @@ Si necesitas agregar variables de entorno:
    ```
    NUXT_PUBLIC_SITE_URL=https://tu-dominio.com
    NUXT_PUBLIC_WHATSAPP_NUMBER=584144785215
+   NUXT_PUBLIC_CONTACT_PHONE=+58 414-478-5215
+   NUXT_PUBLIC_CONTACT_EMAIL=info@netandsoft.com.ve
    ```
 
 ### Dominio Personalizado

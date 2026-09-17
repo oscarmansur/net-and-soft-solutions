@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Net & Soft Proposal Builder API
+  description: API interna y pública para la creación, administración, publicación y aceptación de propuestas comerciales de Net & Soft Solutions.
+  version: 1.0.0
+servers:
+  - url: https://cotiza.netandsoft.com.ve
+    description: Servidor de Producción
+  - url: http://localhost:3000
+    description: Servidor Local de Desarrollo
+
+paths:
+  /api/public/proposals/{slug}:
+    get:
+      summary: Obtener datos de la propuesta pública
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: version
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Propuesta encontrada y snapshot de versión activa.
+        '404':
+          description: Propuesta no encontrada o no publicada.
+
+  /api/public/proposals/{slug}/nonce:
+    get:
+      summary: Generar token firmado HMAC para envío de formulario
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Token criptográfico firmado retornado.
+        '429':
+          description: Demasiadas solicitudes (Rate limit excedido).
+
+  /api/public/proposals/{slug}/submit:
+    post:
+      summary: Enviar respuesta pública del cliente (Aceptación, cambios o rechazo)
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - representativeName
+                - companyName
+                - email
+                - phone
+                - actionType
+                - token
+              properties:
+                representativeName:
+                  type: string
+                companyName:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                actionType:
+                  type: string
+                  enum: [ACCEPT, REQUEST_CHANGES, REJECT]
+                comments:
+                  type: string
+                signatureData:
+                  type: string
+                token:
+                  type: string
+                company_website:
+                  type: string
+                  description: Campo Honeypot (debe estar vacío)
+      responses:
+        '200':
+          description: Solicitud recibida y procesada.
+        '400':
+          description: Datos inválidos, token alterado o envío demasiado rápido (< 3s).
+        '429':
+          description: Rate limit excedido. Retorna cabecera Retry-After.
+
+  /api/public/proposals/{slug}/export:
+    get:
+      summary: Exportar propuesta como HTML autónomo o JSON
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [html, json]
+      responses:
+        '200':
+          description: Archivo retornado para descarga directa.
+
+  /api/internal/auth/login:
+    post:
+      summary: Iniciar sesión administrativa con Argon2id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Inicio de sesión exitoso. Cookie HttpOnly ns_session emitida.
+        '401':
+          description: Credenciales incorrectas.
+        '423':
+          description: Cuenta temporalmente bloqueada por reiterados intentos fallidos.
+
+  /api/internal/clients:
+    get:
+      summary: Listar clientes del CRM (Requiere sesión)
+      responses:
+        '200':
+          description: Lista paginada de clientes.
+    post:
+      summary: Crear cliente con deduplicación por RIF/Email/Teléfono (Requiere SALES o ADMIN)
+      responses:
+        '201':
+          description: Cliente creado exitosamente.
+        '400':
+          description: Datos duplicados o incompletos.
+
+  /api/internal/proposals:
+    get:
+      summary: Listar propuestas comerciales (Requiere sesión)
+      responses:
+        '200':
+          description: Lista paginada de propuestas.
+    post:
+      summary: Guardar borrador de propuesta con autoguardado (Requiere SALES o ADMIN)
+      responses:
+        '200':
+          description: Borrador guardado exitosamente.
+
+  /api/internal/proposals/{id}/publish:
+    post:
+      summary: Publicar propuesta creando versión inmutable en JSON (Requiere SALES o ADMIN)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Propuesta publicada exitosamente con nueva versión.

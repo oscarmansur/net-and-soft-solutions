@@ -1,48 +1,41 @@
 <template>
-  <div class="text-4xl font-bold text-primary">
-    <span v-if="prefix" class="mr-1">{{ prefix }}</span>
+  <div :class="[sizeClass || 'text-4xl sm:text-5xl', 'font-heading font-extrabold tracking-tight tabular-nums inline-flex items-baseline text-primary dark:text-cyan-400 transition-colors duration-300']">
+    <span v-if="prefix" class="mr-0.5 select-none opacity-90">{{ prefix }}</span>
     <span ref="counterElement">{{ initialValue }}</span>
-    <span v-if="suffix">{{ suffix }}</span>
+    <span v-if="suffix" class="ml-0.5 select-none opacity-90">{{ suffix }}</span>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const props = defineProps({
-  target: {
-    type: Number,
-    required: true
-  },
-  duration: {
-    type: Number,
-    default: 2000
-  },
-  prefix: {
-    type: String,
-    default: ''
-  },
-  suffix: {
-    type: String,
-    default: ''
-  },
-  startOnView: {
-    type: Boolean,
-    default: true
-  }
+interface Props {
+  target: number
+  duration?: number
+  prefix?: string
+  suffix?: string
+  startOnView?: boolean
+  sizeClass?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  duration: 2000,
+  prefix: '',
+  suffix: '',
+  startOnView: true,
+  sizeClass: ''
 })
 
-const counterElement = ref(null)
+const counterElement = ref<HTMLElement | null>(null)
 const initialValue = ref(0)
-let observer = null
+let observer: IntersectionObserver | null = null
 
 const startCounter = () => {
   const startTime = performance.now()
-  const endTime = startTime + props.duration
   const startValue = 0
   const endValue = props.target
 
-  function updateCounter(currentTime) {
+  function updateCounter(currentTime: number) {
     const progress = Math.min((currentTime - startTime) / props.duration, 1)
     const currentValue = Math.floor(progress * (endValue - startValue) + startValue)
     initialValue.value = currentValue
@@ -75,14 +68,15 @@ onMounted(() => {
     threshold: 0.5
   })
 
-  if (counterElement.value) {
+  if (counterElement.value?.parentElement) {
     observer.observe(counterElement.value.parentElement)
   }
+})
 
-  return () => {
-    if (observer) {
-      observer.disconnect()
-    }
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+    observer = null
   }
 })
 </script>

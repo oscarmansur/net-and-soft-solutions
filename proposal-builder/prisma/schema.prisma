@@ -1,0 +1,423 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  SALES
+  VIEWER
+}
+
+enum ClientStatus {
+  LEAD
+  ACTIVE
+  INACTIVE
+}
+
+enum ProposalStatus {
+  DRAFT
+  PUBLISHED
+  VIEWED
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  ARCHIVED
+}
+
+enum AcceptanceAction {
+  ACCEPT
+  REQUEST_CHANGES
+  REJECT
+}
+
+enum IntegrationProvider {
+  GOHIGHLEVEL
+}
+
+enum DeliveryStatus {
+  PENDING
+  DELIVERED
+  FAILED
+}
+
+model User {
+  id                  String               @id @default(uuid())
+  email               String               @unique
+  name                String
+  passwordHash        String
+  role                Role                 @default(SALES)
+  failedLoginAttempts Int                  @default(0)
+  lockedUntil         DateTime?
+  lastLoginAt         DateTime?
+  lastLoginIp         String?
+  isActive            Boolean              @default(true)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+
+  accounts            Account[]
+  sessions            Session[]
+  passwordResetTokens PasswordResetToken[]
+  proposalsCreated    Proposal[]           @relation("ProposalCreator")
+  proposalsUpdated    Proposal[]           @relation("ProposalUpdater")
+  versionsCreated     ProposalVersion[]
+  templatesCreated    ProposalTemplate[]
+  auditLogs           AuditLog[]
+
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt    DateTime
+  ipHash       String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+
+  @@index([sessionToken])
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([tokenHash])
+}
+
+model Client {
+  id                String       @id @default(uuid())
+  legalName         String
+  tradeName         String
+  taxId             String       @unique
+  contactName       String
+  contactPosition   String?
+  email             String
+  phone             String
+  secondaryPhone    String?
+  country           String       @default("Venezuela")
+  state             String?
+  city              String?
+  address           String?
+  website           String?
+  instagram         String?
+  industry          String?
+  numberOfUsers     Int?
+  numberOfComputers Int?
+  notes             String?      @db.Text
+  status            ClientStatus @default(ACTIVE)
+  archivedAt        DateTime?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  proposals Proposal[]
+
+  @@index([taxId])
+  @@index([email])
+  @@index([phone])
+  @@index([tradeName])
+}
+
+model Proposal {
+  id               String         @id @default(uuid())
+  proposalCode     String         @unique
+  slug             String         @unique
+  title            String
+  clientId         String
+  client           Client         @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  status           ProposalStatus @default(DRAFT)
+  currentVersion   Int            @default(1)
+
+  monthlyPrice     Decimal        @db.Decimal(10, 2)
+  includedHours    Decimal        @db.Decimal(10, 2)
+  extraHourPrice   Decimal        @db.Decimal(10, 2)
+  alertPercentage  Int            @default(80)
+  usedHours        Decimal        @default(0) @db.Decimal(10, 2)
+  rolloverEnabled  Boolean        @default(false)
+  currency         String         @default("USD")
+  billingFrequency String         @default("Mensual")
+  paymentTerms     String         @default("Prepago los primeros 5 días")
+  validityDays     Int            @default(15)
+  scopeData        Json?
+
+  publishedAt DateTime?
+  expiresAt   DateTime?
+  acceptedAt  DateTime?
+  rejectedAt  DateTime?
+  archivedAt  DateTime?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  createdById String
+  createdBy   User    @relation("ProposalCreator", fields: [createdById], references: [id])
+  updatedById String?
+  updatedBy   User?   @relation("ProposalUpdater", fields: [updatedById], references: [id])
+
+  versions    ProposalVersion[]
+  tools       ProposalTool[]
+  activities  ProposalActivity[]
+  events      ProposalEvent[]
+  acceptances Acceptance[]
+  deliveries  IntegrationDelivery[]
+  nonces      FormNonce[]
+
+  @@index([slug])
+  @@index([proposalCode])
+  @@index([clientId])
+  @@index([status])
+}
+
+model ProposalVersion {
+  id            String   @id @default(uuid())
+  proposalId    String
+  proposal      Proposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  versionNumber Int
+  snapshotData  Json
+  changelog     String?  @db.Text
+  publishedAt   DateTime @default(now())
+  createdById   String
+  createdBy     User     @relation(fields: [createdById], references: [id])
+  createdAt     DateTime @default(now())
+
+  events      ProposalEvent[]
+  acceptances Acceptance[]
+  nonces      FormNonce[]
+
+  @@unique([proposalId, versionNumber])
+  @@index([proposalId])
+}
+
+model ProposalTemplate {
+  id           String   @id @default(uuid())
+  name         String
+  description  String?
+  category     String?
+  isDefault    Boolean  @default(false)
+  templateData Json
+  createdById  String
+  createdBy    User     @relation(fields: [createdById], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ToolDefinition {
+  id                     String   @id @default(uuid())
+  name                   String
+  category               String
+  description            String   @db.Text
+  supportLevel           String   @default("Estándar")
+  defaultIncluded        Boolean  @default(true)
+  defaultIncludedInHours Boolean  @default(true)
+  requiresApproval       Boolean  @default(false)
+  separateQuote          Boolean  @default(false)
+  licenseIncluded        Boolean  @default(false)
+  notes                  String?  @db.Text
+  displayOrder           Int      @default(0)
+  isCustom               Boolean  @default(false)
+  isActive               Boolean  @default(true)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  proposalTools ProposalTool[]
+}
+
+model ProposalTool {
+  id               String          @id @default(uuid())
+  proposalId       String
+  proposal         Proposal        @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  toolDefinitionId String?
+  toolDefinition   ToolDefinition? @relation(fields: [toolDefinitionId], references: [id], onDelete: SetNull)
+  name             String
+  category         String
+  description      String          @db.Text
+  supportLevel     String
+  included         Boolean         @default(true)
+  includedInHours  Boolean         @default(true)
+  requiresApproval Boolean         @default(false)
+  separateQuote    Boolean         @default(false)
+  licenseIncluded  Boolean         @default(false)
+  notes            String?         @db.Text
+  displayOrder     Int             @default(0)
+
+  @@index([proposalId])
+}
+
+model ActivityDefinition {
+  id               String   @id @default(uuid())
+  name             String
+  category         String
+  description      String   @db.Text
+  minMinutes       Int
+  maxMinutes       Int
+  consumesHours    Boolean  @default(true)
+  defaultIncluded  Boolean  @default(true)
+  requiresApproval Boolean  @default(false)
+  separateQuote    Boolean  @default(false)
+  displayOrder     Int      @default(0)
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  proposalActivities ProposalActivity[]
+}
+
+model ProposalActivity {
+  id                   String              @id @default(uuid())
+  proposalId           String
+  proposal             Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  activityDefinitionId String?
+  activityDefinition   ActivityDefinition? @relation(fields: [activityDefinitionId], references: [id], onDelete: SetNull)
+  name                 String
+  category             String
+  description          String              @db.Text
+  minMinutes           Int
+  maxMinutes           Int
+  consumesHours        Boolean             @default(true)
+  included             Boolean             @default(true)
+  requiresApproval     Boolean             @default(false)
+  separateQuote        Boolean             @default(false)
+  displayOrder         Int                 @default(0)
+
+  @@index([proposalId])
+}
+
+model ProposalEvent {
+  id                String           @id @default(uuid())
+  proposalId        String
+  proposal          Proposal         @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalVersionId String?
+  proposalVersion   ProposalVersion? @relation(fields: [proposalVersionId], references: [id], onDelete: SetNull)
+  eventType         String
+  timestamp         DateTime         @default(now())
+  sessionId         String?
+  userId            String?
+  contactId         String?
+  anonymousIpHash   String
+  userAgent         String?
+  landingUrl        String?
+  referrer          String?
+  utmSource         String?
+  utmMedium         String?
+  utmCampaign       String?
+  utmContent        String?
+  utmTerm           String?
+  gclid             String?
+  fbclid            String?
+  metadata          Json?
+
+  @@index([proposalId])
+  @@index([eventType])
+  @@index([timestamp])
+}
+
+model Acceptance {
+  id                 String           @id @default(uuid())
+  proposalId         String
+  proposal           Proposal         @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalVersionId  String
+  proposalVersion    ProposalVersion  @relation(fields: [proposalVersionId], references: [id], onDelete: Restrict)
+  representativeName String
+  companyName        String
+  email              String
+  phone              String
+  actionType         AcceptanceAction @default(ACCEPT)
+  acceptedTerms      Boolean          @default(true)
+  comments           String?          @db.Text
+  signatureData      String?          @db.Text
+  clientIpHash       String
+  userAgent          String?
+  submittedAt        DateTime         @default(now())
+
+  deliveries IntegrationDelivery[]
+
+  @@index([proposalId])
+  @@index([proposalVersionId])
+}
+
+model IntegrationDelivery {
+  id             String              @id @default(uuid())
+  proposalId     String
+  proposal       Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  acceptanceId   String?
+  acceptance     Acceptance?         @relation(fields: [acceptanceId], references: [id], onDelete: SetNull)
+  provider       IntegrationProvider @default(GOHIGHLEVEL)
+  status         DeliveryStatus      @default(PENDING)
+  idempotencyKey String              @unique
+  payload        Json
+  response       Json?
+  attempts       Int                 @default(0)
+  nextRetryAt    DateTime?
+  deliveredAt    DateTime?
+  lastError      String?             @db.Text
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  @@index([status])
+  @@index([idempotencyKey])
+}
+
+model AuditLog {
+  id              String   @id @default(uuid())
+  action          String
+  entityType      String
+  entityId        String?
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sessionId       String?
+  anonymousIpHash String
+  userAgent       String?
+  metadata        Json?
+  timestamp       DateTime @default(now())
+
+  @@index([action])
+  @@index([entityType])
+  @@index([userId])
+  @@index([timestamp])
+}
+
+model FormNonce {
+  id                String          @id @default(uuid())
+  proposalId        String
+  proposal          Proposal        @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalVersionId String
+  proposalVersion   ProposalVersion @relation(fields: [proposalVersionId], references: [id], onDelete: Cascade)
+  nonce             String          @unique
+  issuedAt          DateTime        @default(now())
+  expiresAt         DateTime
+  usedAt            DateTime?
+
+  @@index([nonce])
+  @@index([proposalId])
+}

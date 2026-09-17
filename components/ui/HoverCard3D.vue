@@ -1,7 +1,7 @@
 <template>
   <div 
     ref="card"
-    class="card aspect-square rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-8 shadow-large overflow-hidden flex items-center justify-center"
+    class="hover-card-3d aspect-square rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-white/10 p-8 shadow-large overflow-hidden flex items-center justify-center specular-rim"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseLeave"
     @mouseover="handleMouseOver"
@@ -74,7 +74,7 @@ const handleMouseMove = (event: MouseEvent) => {
 
 <style scoped>
 /* 3D Card Effect Styles */
-.card {
+.hover-card-3d {
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
@@ -85,13 +85,13 @@ const handleMouseMove = (event: MouseEvent) => {
   backface-visibility: hidden;
 }
 
-.card:hover {
+.hover-card-3d:hover {
   transform: perspective(500px) scale(1.05);
   z-index: 2;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card img {
+.hover-card-3d img {
   width: 100%;
   height: 100%;
   object-fit: contain;

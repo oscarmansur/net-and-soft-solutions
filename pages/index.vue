@@ -13,26 +13,43 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
+const { locale } = useI18n()
+const contact = useContact()
+
+const pageTitle = computed(() => 
+  locale.value === 'en'
+    ? 'Net And Soft Solutions | Software Development, Networks, CCTV & Technical Support'
+    : 'Net And Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico'
+)
+
+const pageDescription = computed(() =>
+  locale.value === 'en'
+    ? 'Comprehensive technology solutions in Venezuela. Custom software development, network installation, CCTV video surveillance, and 24/7 technical support.'
+    : 'Soluciones tecnológicas integrales en Venezuela. Desarrollo de software a medida, instalación y mantenimiento de redes, sistemas de videovigilancia CCTV y soporte técnico profesional 24/7.'
+)
+
 // SEO Configuration
 useHead({
-  title: 'Net And Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content: 'Soluciones tecnológicas integrales en Venezuela. Desarrollo de software a medida, instalación y mantenimiento de redes, sistemas de videovigilancia CCTV y soporte técnico profesional 24/7.'
+      content: pageDescription
     },
     {
       name: 'keywords',
-      content: 'desarrollo de software, desarrollo web, aplicaciones móviles, redes informáticas, instalación de redes, CCTV, cámaras de seguridad, videovigilancia, soporte técnico, mantenimiento informático, soluciones tecnológicas, infraestructura IT, seguridad informática, Net And Soft Solutions, Venezuela'
+      content: 'desarrollo de software, software development, web development, redes informáticas, IT infrastructure, CCTV, cámaras de seguridad, videovigilancia, soporte técnico, Net And Soft Solutions, Venezuela'
     },
     // Open Graph
     {
       property: 'og:title',
-      content: 'Net And Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico'
+      content: pageTitle
     },
     {
       property: 'og:description',
-      content: 'Soluciones tecnológicas integrales: desarrollo de software, redes, CCTV y soporte técnico profesional. Transformamos tu negocio con tecnología de vanguardia.'
+      content: pageDescription
     },
     {
       property: 'og:type',
@@ -47,8 +64,28 @@ useHead({
       content: 'https://netandsoft.com.ve/og-image.jpg'
     },
     {
+      property: 'og:image:secure_url',
+      content: 'https://netandsoft.com.ve/og-image.jpg'
+    },
+    {
+      property: 'og:image:width',
+      content: '1200'
+    },
+    {
+      property: 'og:image:height',
+      content: '630'
+    },
+    {
+      property: 'og:image:type',
+      content: 'image/jpeg'
+    },
+    {
+      property: 'og:image:alt',
+      content: 'Net & Soft Solutions | Soluciones Tecnológicas'
+    },
+    {
       property: 'og:locale',
-      content: 'es_VE'
+      content: computed(() => locale.value === 'en' ? 'en_US' : 'es_VE')
     },
     // Twitter Card
     {
@@ -57,11 +94,11 @@ useHead({
     },
     {
       name: 'twitter:title',
-      content: 'Net And Soft Solutions | Desarrollo de Software, Redes, CCTV y Soporte Técnico'
+      content: pageTitle
     },
     {
       name: 'twitter:description',
-      content: 'Soluciones tecnológicas integrales: desarrollo de software, redes, CCTV y soporte técnico profesional.'
+      content: pageDescription
     },
     {
       name: 'twitter:image',
@@ -75,10 +112,6 @@ useHead({
     {
       name: 'robots',
       content: 'index, follow'
-    },
-    {
-      name: 'language',
-      content: 'Spanish'
     },
     {
       name: 'geo.region',
@@ -96,7 +129,7 @@ useHead({
     }
   ],
   htmlAttrs: {
-    lang: 'es'
+    lang: computed(() => locale.value)
   }
 })
 
@@ -110,10 +143,11 @@ useSchemaOrg([
     url: 'https://netandsoft.com.ve',
     logo: 'https://netandsoft.com.ve/logo.svg',
     image: 'https://netandsoft.com.ve/og-image.jpg',
-    telephone: '+58-414-478-5215',
-    email: 'info@netandsoft.com.ve',
+    telephone: contact.phone.value,
+    email: contact.email.value,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: contact.address.value,
       addressCountry: 'VE',
       addressLocality: 'Venezuela'
     },
@@ -204,7 +238,7 @@ useSchemaOrg([
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+58-414-478-5215',
+      telephone: contact.phone.value,
       contactType: 'customer service',
       availableLanguage: ['Spanish'],
       areaServed: 'VE'

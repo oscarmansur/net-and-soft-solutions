@@ -1,0 +1,48 @@
+{
+  "name": "proposal-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Net & Soft Solutions - Enterprise Interactive Proposal Builder",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "prisma generate && next build",
+    "start": "node .next/standalone/server.js",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:seed": "tsx prisma/seed.ts",
+    "db:seed": "tsx prisma/seed.ts",
+    "prisma:studio": "prisma studio",
+    "init:admin": "tsx scripts/create-admin.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^2.2.1",
+    "@prisma/client": "^6.4.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
+    "isomorphic-dompurify": "^2.21.0",
+    "lucide-react": "^0.475.0",
+    "next": "^15.1.7",
+    "prisma": "^6.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1",
+    "tsx": "^4.19.3",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

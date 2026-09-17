@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 65% 4%;
+    --foreground: 210 40% 98%;
+    --card: 202 55% 10%;
+    --card-foreground: 210 40% 98%;
+    --border: 200 45% 20%;
+    --input: 200 45% 20%;
+    --primary: 196 93% 12%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 190 64% 33%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --radius: 0.75rem;
+  }
+}
+
+body {
+  background-color: #030A0E;
+  color: #F1F5F9;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   HONEYPOT CSS OBLIGATORIO
+   Completamente invisible para humanos, dentro del DOM para bots
+   ========================================================= */
+.form-trap {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
+/* Estilos de impresión para PDF / Browser Print */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #022B3A !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .card-print {
+    border: 1px solid #CBD5E1 !important;
+    background-color: #FFFFFF !important;
+    color: #022B3A !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06131A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #133E50;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1F7A8C;
+}

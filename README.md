@@ -1,6 +1,6 @@
-# 🏥 Net And Soft Solutions - Landing Page
+# Net And Soft Solutions
 
-Landing page profesional para servicios médicos a domicilio, desarrollada con Nuxt.js 3, TypeScript y Tailwind CSS.
+Landing page profesional para soluciones en tecnología para empresas, desarrollada con Nuxt.js 3, TypeScript y Tailwind CSS.
 
 ## 🎨 Características
 
@@ -14,26 +14,30 @@ Landing page profesional para servicios médicos a domicilio, desarrollada con N
 
 ## 🎯 Servicios Destacados
 
-1. **Procedimientos Médicos** - Curaciones, suturas, inyecciones
-2. **Consulta General** - Evaluación médica completa
-3. **Ecografía** - Estudios con equipos de última generación
+1. **Desarrollo de Software** - Aplicaciones web, móviles y sistemas corporativos a medida
+2. **Infraestructura de Redes** - Cableado estructurado, fibra óptica, switching y routing empresarial
+3. **Sistemas de Videovigilancia CCTV** - Cámaras IP de alta resolución, DVR/NVR y monitoreo 24/7
+4. **Soporte Técnico Especializado** - Mantenimiento preventivo, correctivo y asistencia IT continua
 
 ## 🎨 Paleta de Colores
 
 ```css
-Primary (Navy Blue): #29339B
-Secondary (Sky Blue): #74A4BC
-Accent (Mint Green): #B6D6CC
-Light (Cream): #F1FEC6
+Primary (Deep Obsidian Navy): #022B3A
+Secondary (Cyan Teal):        #1F7A8C
+Accent (Soft Blue Ice):       #BFDBF7
+Light (Muted Alabaster):      #E1E5F2
 ```
 
 ## 🚀 Tecnologías
 
-- **Framework**: Nuxt.js 3
-- **Lenguaje**: TypeScript
-- **Estilos**: Tailwind CSS
-- **SEO**: @nuxtjs/seo
+- **Framework**: Nuxt 3 (v3.19+)
+- **Lenguaje**: TypeScript (Strict Mode)
+- **Estilos**: Tailwind CSS con Modo Oscuro nativo
+- **Internacionalización**: @nuxtjs/i18n (Español & English)
+- **Estado Global**: Pinia + Pinia Plugin Persistedstate
+- **SEO & Sitemaps**: @nuxtjs/seo, @nuxtjs/sitemap
 - **Imágenes**: @nuxt/image
+- **Animaciones**: AOS (Animate on Scroll) & GSAP
 - **Fuentes**: Google Fonts (Inter, Poppins)
 
 ## 📦 Instalación
@@ -91,7 +95,7 @@ net-and-soft-solutions/
 │   │   └── WhatsAppButton.vue    # Botón flotante de WhatsApp
 │   └── sections/
 │       ├── HeroSection.vue       # Sección hero principal
-│       ├── ServicesSection.vue   # Servicios médicos
+│       ├── ServicesSection.vue   # Servicios tecnológicos (Software, Redes, CCTV, Soporte)
 │       ├── AboutSection.vue      # Sobre nosotros
 │       └── ContactSection.vue    # Formulario de contacto
 ├── pages/
@@ -106,23 +110,20 @@ net-and-soft-solutions/
 ```
 
 ## 🔧 Configuración
-
-### Actualizar Número de WhatsApp
-
-Buscar y reemplazar `584241234567` en los siguientes archivos:
-- `components/layout/Header.vue`
-- `components/layout/WhatsAppButton.vue`
-- `components/layout/Footer.vue`
-- `components/sections/HeroSection.vue`
-- `components/sections/ServicesSection.vue`
-- `components/sections/ContactSection.vue`
-
-### Actualizar Información de Contacto
-
-Editar en `components/sections/ContactSection.vue`:
-- Teléfono
-- Email
-- Horarios
+ 
+### Información de Contacto (Variables de Entorno)
+ 
+Configura tus datos en el archivo `.env`:
+```env
+NUXT_PUBLIC_CONTACT_EMAIL=info@netandsoft.com.ve
+NUXT_PUBLIC_CONTACT_PHONE=+58 414-478-5215
+NUXT_PUBLIC_WHATSAPP_NUMBER=584144785215
+NUXT_PUBLIC_LOCATION_ADDRESS=27 C. Muñoz, San Fernando de Apure 7001, Apure.
+NUXT_PUBLIC_MAP_LATITUDE=7.8921750877067645
+NUXT_PUBLIC_MAP_LONGITUDE=-67.46952135309213
+NUXT_PUBLIC_MAP_ZOOM=13
+```
+Estos valores se reflejan automáticamente en toda la aplicación (botones de WhatsApp, encabezado, pie de página, sección de contacto, badge sobre el mapa, coordenadas del mapa interactivo y metadatos SEO Schema.org).
 
 ### Personalizar SEO
 

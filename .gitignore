@@ -1,13 +1,19 @@
-# Nuxt dev/build outputs
+# Nuxt & Next dev/build outputs
 .output
 .data
 .nuxt
 .nitro
 .cache
+.next
 dist
+.vercel
 
-# Node dependencies
+# Node & Bun dependencies
 node_modules
+bun.lock
+bun.lockb
+**/bun.lock
+**/bun.lockb
 
 # Logs
 logs

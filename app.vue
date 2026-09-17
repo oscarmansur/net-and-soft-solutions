@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-hidden">
+  <div class="overflow-x-hidden min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <NuxtPage />
     <ClientOnly>
       <BackToTopButton />
@@ -12,13 +12,17 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+html.dark {
+  color-scheme: dark;
+}
 </style>
 
 <script setup lang="ts">
-// Global CSS import
-import '~/assets/css/main.css'
-import 'aos/dist/aos.css'
+import { computed, onMounted } from 'vue'
 import BackToTopButton from '~/components/layout/BackToTopButton.vue'
+
+const { locale } = useI18n()
 
 // Default SEO Configuration for the entire app
 useHead({
@@ -43,8 +47,29 @@ useHead({
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }
   ],
+  script: [
+    {
+      innerHTML: `(function() {
+        try {
+          var stored = localStorage.getItem('theme') || localStorage.getItem('vueuse-color-scheme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (stored === 'auto' && prefersDark) || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();`,
+      tagPosition: 'head'
+    }
+  ],
   htmlAttrs: {
-    lang: 'es'
+    lang: computed(() => locale.value)
   }
+})
+
+const { initTheme } = useTheme()
+onMounted(() => {
+  initTheme()
 })
 </script>
